@@ -30,6 +30,16 @@ This is similar to the vision for MotherCare in terms of the recommendation resu
 
 However, FindHelp [1] mainly relies on search-driven results while MotherCare will have resources already loaded based on users profiles. While MotherCare should have a search feature, it should also use user information to automatically recommend resources based on their profile, without requiring a search at all. The main feature that would be used from this is the efficient and automatic resource recommender, because users of MotherCare may not have time to compare many different options, but just want a quick, good result.
 
+### Microsoft Rewards
+
+Microsoft Rewards [2] is part of microsoft that gives you incentives to interact with content (e.g. videos, articles, etc.). By interacting with this content users earn free rewards. The service has a dedicated page where you can see your points, what you earned them from as well as where to redeem your points.
+
+Microsoft Rewards point redemption allows you to exchange your points for gift cards, subscriptions to microsoft products, or make donations to charity.
+
+Mother Care would operate on a similar credit system gaining points for watching videos, reading articles, and staying consistent with your prescribed tasks from a councilor. This can tie into the self-help section of the app also for some of these tasks offering both self-help points and store points. 
+
+Microsoft Rewards [2] targets mostly engagement, search engines and gaming. Mother Cares focus would be repuroposes towards health and community support for the Mothers. This encourages learning and user participation in the app while addressing the needs of the Mothers.
 ## 10. Bibliography
 
 [1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https://www.findhelp.org/ 
+[2] Microsoft Rewards - Earn free rewards for searching, shopping, and gaming. Microsoft. (n.d.). https://www.microsoft.com/rewards
