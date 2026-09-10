@@ -20,6 +20,10 @@ It is Thursday, and Jan doesn't get paid until Friday. She has run out of diaper
 
 It is a Tuesday night and Jan is looking for ways to save money on baby expenses. She has 15 minutes of free time and Opens "Mother Care (name pending)". On the rewards screen she sees 3 short 5 minutes videos marked with credits. Jan watches the videos and earns engagement credits towards the MotherCare store which allow her to earn enough point for her child's diapers.
 
+### Task 3:
+
+Sarah is interested in finding resources to support her in raising her newborn. She hears about Family Life Network and wants to learn more about the services they provide but she is too busy to visit in person. She reaches out and an employee sends her a check-in form which she can complete on her own time. She completes the form, reporting that she needs help with food and childcare, and that she is interested in finding a local church. Family Life Network uses her response to suggest and provide the services that her family needs.
+
 ## 4. Related Work
 
 ### findhelp.org
