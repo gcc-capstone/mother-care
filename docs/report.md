@@ -22,7 +22,7 @@ It is a Tuesday night and Jan is looking for ways to save money on baby expenses
 
 ### Task 3:
 
-Sarah is interested in finding resources to support her in raising her newborn. She hears about Family Life Network and wants to learn more about the services they provide but she is too busy to visit in person. She reaches out and an employee sends her a check-in form which she can complete on her own time. She completes the form, reporting that she needs help with food and childcare, and that she is interested in finding a local church. Family Life Network uses her response to suggest and provide the services that her family needs.
+Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare and that she is interested in finding a local church. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
 
 ## 4. Related Work
 
