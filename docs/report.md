@@ -18,7 +18,7 @@ It is Thursday, and Jan doesn't get paid until Friday. She has run out of diaper
 
 ### Task 2:
 
-It is a Tuesday night and Jan is looking for ways to save money on baby expenses. She has 15 minutes of free time and Opens "Mother Care (name pending)". On the rewards screen she sees 3 short 5 minutes videos marked with credits. Jan watches the videos and earns credits towards the store and free items for her child.
+It is a Tuesday night and Jan is looking for ways to save money on baby expenses. She has 15 minutes of free time and Opens "Mother Care (name pending)". On the rewards screen she sees 3 short 5 minutes videos marked with credits. Jan watches the videos and earns engagement credits towards the MotherCare store which allow her to earn enough point for her child's diapers.
 
 ## 4. Related Work
 
