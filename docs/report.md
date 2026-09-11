@@ -28,6 +28,10 @@ Sarah recently had a newborn and is looking for support with some of the challen
 
 Emily has a 3 month old baby. She does not have much experience with babies or kids, and is worried she lacks information that could be useful in the near future when taking care of her child. She wants to learn more to make sure she is prepared to take care of her baby. Emily fills out some forms when she makes her Mother Care account. She answers a question asking "How much experience taking care of babies do you have?" by checking a box that says "Almost none". After she creates the account, the resources tab recommends her some online courses to take for new mothers and gives her some help lines for mothers who have questions while caring for their child.
 
+### Task 5: Admin Set Goals
+
+Carol is a counselor at FamilyLife Network and needs to assign Jan a daily goal of taking her prenatal vitamin. Since taking the vitamin is important but not overly serious for Jan, Carol doesn't feel that it's necessary to engage often in check-ins over MotherCare for this goal. However, Jan will be reminded daily of this goal until her next appointment.
+
 ## 4. Related Work
 
 ### findhelp.org
@@ -60,6 +64,14 @@ BetterHelp [4] connects people with licensed therapists through an online platfo
 BetterHelp has an onboarding questionnaire that asks about things like goals, concerns, preferences, and what the user is looking for. That information is used to personalize the user's experience and match them with a therapist.
 Mother Care [4] will likely be similar to BetterHelp because information from forms the users fill out could be saved and used to recommend resources, goals, priorities, etc.
 
+### Bible App
+
+The Bible App [5] is focuesed on sharing the Word of God through multiple mediums. The main function of the Bible App is naturally the words of the Bible, but also allows users to find local resources, such as churches, and web resources, such as ministry videos. 
+
+MotherCare would benefit from encorperating a similar structure. The main focus of resources would be the provided physical locations with services such as food, clothing, and other meeting of physical needs. However, some resources that could be useful for mothers could be digital, such as videos or orgainizations that have an online presence instead of a brick-and-mortar front. MotherCare should especially attend to the seperation of the types of resources that the Bible App [x] employs. Physical and digital resources are both included in searches, but are easy to seperate before searching.
+
+However, while the Bible App [5] prioritizes digital resources in their discover process, MotherCare would prioritize discovering physcial resources as it is created for a local ministry. The seperation but inclusion of digital resources with physical resources in the discover resources function of the Bible App will help meet the needs of the mothers in a wholistic but organized manor.
+
 ## 10. Bibliography
 
 [1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https://www.findhelp.org/
@@ -71,4 +83,6 @@ Mother Care [4] will likely be similar to BetterHelp because information from fo
 [4] BetterHelp - get matched with a therapist by filling out the questionare. (n.d.). https://www.betterhelp.com/
 
 [4] usa.gov - Find government benefits and financial help. usa.gov. (n.d.). https://www.usa.gov/benefit-finder?modal=b-welcome-1899
+
+[5] Bible App - https://www.bible.com/app
 
