@@ -52,7 +52,7 @@ Similarly, Mother Care will help people find resources that meet their needs. Ho
 
 ## 10. Bibliography
 
-[1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https://www.findhelp.org/ 
+[1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https://www.findhelp.org/
 [2] Microsoft Rewards - Earn free rewards for searching, shopping, and gaming. Microsoft. (n.d.). https://www.microsoft.com/rewards
-[3] https://www.211.org/
-[4] https://www.usa.gov/benefit-finder?modal=b-welcome-1899
+[3] 211 - "Get Connected. Get Help." 211. (n.d.). https://www.211.org/
+[4] usa.gov - Find government benefits and financial help. usa.gov. (n.d.). https://www.usa.gov/benefit-finder?modal=b-welcome-1899
