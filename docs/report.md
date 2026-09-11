@@ -20,6 +20,12 @@ It is Thursday, and Jan doesn't get paid until Friday. She has run out of diaper
 
 It is a Tuesday night and Jan is looking for ways to save money on baby expenses. She has 15 minutes of free time and Opens "Mother Care (name pending)". On the rewards screen she sees 3 short 5 minutes videos marked with credits. Jan watches the videos and earns engagement credits towards the MotherCare store which allow her to earn enough point for her child's diapers.
 
+### Task 3:
+
+Emilia has a 3 month old baby. She does not have much experience with babies or kids, and is worried she lacks information that could be useful in the near future when taking care of her child. She wants to learn more to make sure she is prepared to take care of her baby. Emilia fills out some forms when she makes her Mother Care account. 
+
+She answers a question asking "How much experience taking care of babies do you have?" by checking a box that says "Almost none". After she creates the account, the resources tab recommends her some online courses to take for new mothers and gives her some help lines for mothers who have questions while caring for their child.
+
 ## 4. Related Work
 
 ### findhelp.org
@@ -39,7 +45,17 @@ Microsoft Rewards point redemption allows you to exchange your points for gift c
 Mother Care would operate on a similar credit system gaining points for watching videos, reading articles, and staying consistent with your prescribed tasks from a councilor. This can tie into the self-help section of the app also for some of these tasks offering both self-help points and store points. 
 
 Microsoft Rewards [2] targets mostly engagement, search engines and gaming. Mother Cares focus would be repuroposes towards health and community support for the Mothers. This encourages learning and user participation in the app while addressing the needs of the Mothers.
+
+### BetterHelp
+
+BetterHelp [3] connects people with licensed therapists through an online platform. Its main purpose is mental-health support and counseling, rather than simply recommending self-help resources.
+
+BetterHelp has an onboarding questionnaire that asks about things like goals, concerns, preferences, and what the user is looking for. That information is used to personalize the user's experience and match them with a therapist.
+
+Mother Care [3] will likely be similar to BetterHelp because information from forms the users fill out could be saved and used to recommend resources, goals, priorities, etc.
+
 ## 10. Bibliography
 
 [1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https://www.findhelp.org/ 
 [2] Microsoft Rewards - Earn free rewards for searching, shopping, and gaming. Microsoft. (n.d.). https://www.microsoft.com/rewards
+[3] BetterHelp - get matched with a therapist by filling out the questionare. (n.d.). https://www.betterhelp.com/
