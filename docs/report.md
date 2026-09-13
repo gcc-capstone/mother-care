@@ -37,17 +37,24 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 **MVP** Carol is a counselor at FamilyLife Network and needs to assign Jan a daily goal of taking her prenatal vitamin. Since taking the vitamin is important but not overly serious for Jan, Carol doesn't feel that it's necessary to engage often in check-ins over MotherCare for this goal. Also, because of the repetition of this task, she assigns this goal to a lower priority for influencing the reward system. Jan will be reminded daily of this goal until her next appointment.
 
+### Task 6: Admin Reccomend Resources
+
+**MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information.
+
+
 ### Tasks Left to Expand Upon:
 
-- [] Admin Reccomend Resources
-- [] Admins Receive Analytics
-- [] Forms Edit Profiles
-- [] Different Admin Roles to Preserve Profile Permissions
+- [x] Admin Reccomend Resources
+- [] Admins Receive Analytics (on mothers ministered to and the resources they used)
+- [] Forms Edit Profiles - probably don't need whole story
+- [] Different Admin Roles to Preserve Profile Permissions - don't need story
 - [] Admins Follow Up After Recommendation
 - [] Admins Assign Forms
 - [] Admins Update Resource Database
 - [] Mothers View All Resources
 - [] Mothers can record how they're feeling daily
+- [] Mothers can rate the resources that they were given
+- [] Admins can edit forms
 
 ## 4. Related Work
 
