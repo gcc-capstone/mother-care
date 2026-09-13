@@ -10,6 +10,11 @@
 
 ## 2. Introduction
 
+    The system MotherCare intends to support FamilyLife Network's care of parents in need by taking away the burden of automatable process from administrators to allow them more time to care for the mothers.
+    The administrators for this application will be FamilyLife Network's volunteers and the users will be mothers that the volunteers are ministering to.
+    FamilyLife Network counsolers can set goals for the mothers they minister to and can update the resources that they point mothers towards. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
+
+
 ## 3. Representative Tasks
 
 ### Task 1: Finding Emergency Diaper Resource
