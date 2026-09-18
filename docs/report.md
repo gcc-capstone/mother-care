@@ -41,19 +41,38 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 **MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information.
 
+### Task 7: Admin Recieves Analytics
+
+**MVP** Lisa, the director, wants to get a large picture of how their clients are interacting with the resources that are being reccomended. She also needs these statistics for reporting purposes. She looks for a chart comparing the number of mothers reccomended the resources with how many recorded using the resource. She also looks for another graph comparing the resource with how it has been rated by the mothers that interacted with it.
+
+### Task 8: Mothers Can Rate Resources
+
+**MVP** Jan visted The Sparrows Nest and was able to find the clothes she needed. When she records that she interacted with the resource, she also records that she found the resource helpful and would reccomend it to another mother.
+
+### Task 9: Forms Edit Profile
+
+**MVP** Before Jan's next appointment, Carol needs her to fill out an updated intake form to track any changes in her household or needs. Carol can view both her form and the changes that the form made to Jan's profile to best care for her and determine what resources and goals should be assigned.
+
+### Task 10: Different Admin Roles
+
+**MVP** Stella is a volunteer with FamilyLife Network and is assisting in running the store. She needs to asses Jan's credit situation to purchase diapers from the FamilyLife store. She does not need access to Jan's goals or reccomended resources, but is able to compare Jan's total credits against the credits required for the box of diapers.
+
+### Task 11: Admin Follow Ups
+
+**MVP** 
 
 ### Tasks Left to Expand Upon:
 
 - [x] Admin Reccomend Resources
-- [] Admins Receive Analytics (on mothers ministered to and the resources they used)
-- [] Forms Edit Profiles - probably don't need whole story
-- [] Different Admin Roles to Preserve Profile Permissions - don't need story
+- [x] Admins Receive Analytics (on mothers ministered to and the resources they used)
+- [x] Forms Edit Profiles 
+- [x] Different Admin Roles to Preserve Profile Permissions 
 - [] Admins Follow Up After Recommendation
 - [] Admins Assign Forms
 - [] Admins Update Resource Database
 - [] Mothers View All Resources
 - [] Mothers can record how they're feeling daily
-- [] Mothers can rate the resources that they were given
+- [x] Mothers can rate the resources that they were given
 - [] Admins can edit forms
 
 ## 4. Related Work
