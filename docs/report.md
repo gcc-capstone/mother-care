@@ -59,7 +59,15 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 11: Admin Follow Ups
 
-**MVP** 
+**MVP** Carol 
+
+### Task 12: Admin Update Resource Database
+
+**MVP** Bethany is the resource manager for FamilyLife Network, and one of the councilers has reported that the The Sparrows Nest has changed their location. She then updates the information of the resource to reflect the new address, leaving the other correct information unchanged.
+
+### Task 13: Mothers View All Resources
+
+**MVP** Jan did not report needing 
 
 ### Tasks Left to Expand Upon:
 
@@ -69,7 +77,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 - [x] Different Admin Roles to Preserve Profile Permissions 
 - [] Admins Follow Up After Recommendation
 - [] Admins Assign Forms
-- [] Admins Update Resource Database
+- [x] Admins Update Resource Database
 - [] Mothers View All Resources
 - [] Mothers can record how they're feeling daily
 - [x] Mothers can rate the resources that they were given
