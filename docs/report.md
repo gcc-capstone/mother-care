@@ -55,7 +55,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 10: Different Admin Roles
 
-**MVP** Stella is a volunteer with FamilyLife Network and is assisting in running the store. She needs to asses Jan's credit situation to purchase diapers from the FamilyLife store. She does not need access to Jan's goals or reccomended resources, but is able to compare Jan's total credits against the credits required for the box of diapers.
+**MVP** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counciling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
 
 ### Task 11: Admin Follow Ups
 
