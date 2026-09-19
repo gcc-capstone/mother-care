@@ -17,9 +17,9 @@
 
 ## 3. Representative Tasks
 
-### Task 1: Finding Emergency Diaper Resource
+### Task 1: Finding Emergency Diaper Resource (Mothers View All Resources)
 
-**MVP** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6 month old kid. She has a 20 minute drive from work to daycare, and she wants somewhere nearby that she can get diapers for free or very cheap. Before leaving work, she opens MotherCare and goes to her Resources tab. Because she has used the app before, it already has diaper bank locations near her home preloaded based on her profile. She clicks on one of the locations, confirms it is open, and routes to it using her phone's map app.
+**MVP** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6 month old kid. She has a 20 minute drive from work to daycare, and she wants somewhere nearby that she can get diapers for free or very cheap. Before leaving work, _she opens MotherCare and goes to her Resources tab_ she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home preloaded based on her profile. She clicks on one of the locations, confirms it is open, and routes to it using her phone's map app.
 
 ### Task 2: Reward Users for Interaction
 
@@ -39,7 +39,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 6: Admin Reccomend Resources
 
-**MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information.
+**MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information. Carol also created a goal as she shared the resource and will follow up with Jan at a later date.
 
 ### Task 7: Admin Recieves Analytics
 
@@ -51,7 +51,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 9: Forms Edit Profile
 
-**MVP** Before Jan's next appointment, Carol needs her to fill out an updated intake form to track any changes in her household or needs. Carol can view both her form and the changes that the form made to Jan's profile to best care for her and determine what resources and goals should be assigned.
+**MVP** *MVP QUESTIONABLE Before Jan's next appointment, Carol needs her to fill out an updated intake form to track any changes in her household or needs. Carol can view both her form and the changes that the form made to Jan's profile to best care for her and determine what resources and goals should be assigned.
 
 ### Task 10: Different Admin Roles
 
@@ -59,15 +59,15 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 11: Admin Follow Ups
 
-**MVP** Carol 
+**MVP** Carol wants to inquire about Jan's experience with The Sparrows Nest and ensure that Jan made it there. To follow up with Jan 3 days later, Jan can complete her goal of visiting The Sparrows Nest, rate it, and record some detail in her own words of her experience. 
 
 ### Task 12: Admin Update Resource Database
 
 **MVP** Bethany is the resource manager for FamilyLife Network, and one of the councilers has reported that the The Sparrows Nest has changed their location. She then updates the information of the resource to reflect the new address, leaving the other correct information unchanged.
 
-### Task 13: Mothers View All Resources
+### Task 13: Mothers Can Record How They're Feeling Daily
 
-**MVP** Jan did not report needing 
+
 
 ### Tasks Left to Expand Upon:
 
@@ -75,10 +75,10 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 - [x] Admins Receive Analytics (on mothers ministered to and the resources they used)
 - [x] Forms Edit Profiles 
 - [x] Different Admin Roles to Preserve Profile Permissions 
-- [] Admins Follow Up After Recommendation
+- [x] Admins Follow Up After Recommendation
 - [] Admins Assign Forms
 - [x] Admins Update Resource Database
-- [] Mothers View All Resources
+- [x] Mothers View All Resources
 - [] Mothers can record how they're feeling daily
 - [x] Mothers can rate the resources that they were given
 - [] Admins can edit forms
