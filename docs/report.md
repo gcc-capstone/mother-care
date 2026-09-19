@@ -71,7 +71,7 @@ Jan wants to track how she is feeling between her appointments so that she can c
 
 ### Task 14: Admins Assign Forms
 
-**MVP** In preperation for Jan's upcoming appointment, an admin requests that Jan fill out the standard intake form. Jan can look before her appointment and be directed to the form.
+**MVP** On Monday morning, Carol is looking over her schedule to prepare for this weeks counciling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
 
 ### Task 15: Admins Can Edit Forms
 
