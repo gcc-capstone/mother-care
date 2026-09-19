@@ -23,7 +23,7 @@
 
 ### Task 2: Reward Users for Interaction
 
-It is a Tuesday night and Jan is looking for ways to save money on baby expenses. She has 15 minutes of free time and Opens "Mother Care (name pending)". On the rewards screen she sees 3 short 5 minutes videos marked with credits. Jan watches the videos and earns engagement credits towards the MotherCare store which allow her to earn enough point for her child's diapers.
+It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sleeping. She wants to earn store credits to afford diapers which cost 30 credits. Jan currently has 15 credits. She finds three videos on baby sleep, baby cpr, and baby feeding, each giving 5 credits. Once completed Jan officially has the 30 credits so she can pick up the diapers next visit.
 
 ### Task 3: Forms Affect Personalization
 
