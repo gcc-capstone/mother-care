@@ -63,7 +63,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 12: Admin Update Resource Database
 
-**MVP** Bethany is the resource manager for FamilyLife Network, and one of the councilers has reported that the The Sparrows Nest has changed their location. She then updates the information of the resource to reflect the new address, leaving the other correct information unchanged.
+**MVP** The resrouce manager Bethany receives a note from councilor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address from 1600 Pennslyvania Drive to P. Sherman, 42 Wallaby Way. After verifying the phone number remains 555-2368 and the hours are still Monday through Thursday, 9:00 AM to 1:00 PM. She saves the updated records navigating all Mothers to the new location.
 
 ### Task 13: Mothers Can Record How They're Feeling Daily
 
