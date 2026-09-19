@@ -67,6 +67,15 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 13: Mothers Can Record How They're Feeling Daily
 
+Jan wants to track how she is feeling between her appointments so that she can come with a more in-depth picture of her situation for the best recomendations from her cousoler. 
+
+### Task 14: Admins Assign Forms
+
+**MVP** In preperation for Jan's upcoming appointment, an admin requests that Jan fill out the standard intake form. Jan can look before her appointment and be directed to the form.
+
+### Task 15: Admins Can Edit Forms
+
+Lisa discovers the need to update the intake form to add a "Find local Bible Study" option to the spiritual needs section. 
 
 
 ### Tasks Left to Expand Upon:
@@ -76,12 +85,12 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 - [x] Forms Edit Profiles 
 - [x] Different Admin Roles to Preserve Profile Permissions 
 - [x] Admins Follow Up After Recommendation
-- [] Admins Assign Forms
+- [x] Admins Assign Forms
 - [x] Admins Update Resource Database
 - [x] Mothers View All Resources
-- [] Mothers can record how they're feeling daily
+- [x] Mothers can record how they're feeling daily
 - [x] Mothers can rate the resources that they were given
-- [] Admins can edit forms
+- [x] Admins can edit forms
 
 ## 4. Related Work
 
