@@ -67,7 +67,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 13: Mothers Can Record How They're Feeling Daily
 
-Jan wants to track how she is feeling between her appointments so that she can come with a more in-depth picture of her situation for the best recomendations from her cousoler. 
+On Wednesday night after putting her child to bed Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent along with grocery bill. She saves her daily check-in giving her councilor Carol a full record of her worries, how she can better help, and things to discuss at the next session.
 
 ### Task 14: Admins Assign Forms
 
