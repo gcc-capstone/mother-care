@@ -75,7 +75,7 @@ Jan wants to track how she is feeling between her appointments so that she can c
 
 ### Task 15: Admins Can Edit Forms
 
-Lisa discovers the need to update the intake form to add a "Find local Bible Study" option to the spiritual needs section. 
+During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the Mothers Lisa updates the standard check-in form to include a "Find local Bible Study" section. She finalizes and saves the changes so any Mother will have the new form at their next appointment.
 
 
 ### Tasks Left to Expand Upon:
