@@ -59,7 +59,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 11: Admin Follow Ups
 
-**MVP** Carol wants to inquire about Jan's experience with The Sparrows Nest and ensure that Jan made it there. To follow up with Jan 3 days later, Jan can complete her goal of visiting The Sparrows Nest, rate it, and record some detail in her own words of her experience. 
+**MVP** On Monday morning, three days after assigning The Sparrows Nest as a goal for Jan, Carol checks in on Jans progress. She reviews Jans record, seeing that Jan rated The Sparrows NEst 5/5 stars and left a note saying "Found shoes that fit my child perfectly!". Carol records the referral wa successful and logs a note for Jan to celebrate.
 
 ### Task 12: Admin Update Resource Database
 
