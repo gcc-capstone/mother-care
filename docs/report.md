@@ -51,7 +51,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 9: Forms Edit Profile
 
-**MVP** *MVP QUESTIONABLE Before Jan's next appointment, Carol needs her to fill out an updated intake form to track any changes in her household or needs. Carol can view both her form and the changes that the form made to Jan's profile to best care for her and determine what resources and goals should be assigned.
+**MVP** Before Jan's appointment on thursday she completes her standard intake form. Noting on that form her monthly income has decreased to $1200. When her coucilor Carol opens Jan's profile to prepare for the session, she sees Jan's profile details. Household of 2, infant needs care, low income, have automatically updated from the form submission. Using this update profile, Carol assigns Jan new goals to help her look for work and childcare.
 
 ### Task 10: Different Admin Roles
 
