@@ -43,11 +43,11 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 7: Admin Recieves Analytics
 
-**MVP** Lisa, the director, wants to get a large picture of how their clients are interacting with the resources that are being reccomended. She also needs these statistics for reporting purposes. She looks for a chart comparing the number of mothers reccomended the resources with how many recorded using the resource. She also looks for another graph comparing the resource with how it has been rated by the mothers that interacted with it.
+On Friday afternoon Lisa is preparing for a Q3 community impact kpi for FamilyLife Network. She reviews resource utilization for the past quarter. specifically looking at The Sparrows Nest. She compares the number of clients recommended TSN (50 mothers) and those who confirmed they went tehre (38 mothers). She notes that 76% of mothers went and the average rating was 4.7 stars. LIsa compilers these stats into her summary to show high engagement and positive impact.
 
 ### Task 8: Mothers Can Rate Resources
 
-**MVP** Jan visted The Sparrows Nest and was able to find the clothes she needed. When she records that she interacted with the resource, she also records that she found the resource helpful and would reccomend it to another mother.
+**MVP** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her visit. She record that she successfully found shoes for her child. When submitting her visit record, she rates it a 5/5 stars. Then selects 'yes' she would recommend to other mothers. She adds an optional note: "Very kind staff and great selection". She submits her review so other mothers and FamilyLife Network can see the updated feedback on teh resource.
 
 ### Task 9: Forms Edit Profile
 
