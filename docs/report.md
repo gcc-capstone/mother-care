@@ -29,13 +29,13 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 **MVP** Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
 
-### Task 4: 
+### Task 4: Onboarding Recommendations
 
-Emily has a 3 month old baby. She does not have much experience with babies or kids, and is worried she lacks information that could be useful in the near future when taking care of her child. She wants to learn more to make sure she is prepared to take care of her baby. Emily fills out some forms when she makes her Mother Care account. She answers a question asking "How much experience taking care of babies do you have?" by saying "Almost none". After she creates the account, reccomended to her are some online courses to take for new mothers and gives her some help lines for mothers who have questions while caring for their child.
+Emily is a first time mother to her 3 month old son luis. Having almost no experience about handling emergencies with her son she feels anxious. While registering for MOtherCare she completes a New Parent needs assessment. To the question of "How much experience taking care of babies do you have?" Emily selects "almost none". After she finishing her profile, the system recommends "Infant care basics" and "Infants in emergencies" videos. Emily completes the videos feeling more confident in her abilities.
 
 ### Task 5: Admin Set Goals
 
-**MVP** Carol is a counselor at FamilyLife Network and needs to assign Jan a daily goal of taking her prenatal vitamin. Since taking the vitamin is important but not overly serious for Jan, Carol doesn't feel that it's necessary to engage often in check-ins over MotherCare for this goal. Also, because of the repetition of this task, she assigns this goal to a lower priority for influencing the reward system. Jan will be reminded daily of this goal until her next appointment.
+**MVP** During Jan's first meeting with councilor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Since this is a simple task Carol sets it to Client self-report only, with no councilor review. Carol also assigns it 1 store credit per day, with an expiration 14 days from their first meeting. Ensuring Jan earns daily credits and stays consistent leading up to their first follow up appointment.
 
 ### Task 6: Admin Reccomend Resources
 
