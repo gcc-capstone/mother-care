@@ -39,7 +39,7 @@ Emily has a 3 month old baby. She does not have much experience with babies or k
 
 ### Task 6: Admin Reccomend Resources
 
-**MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information. Carol also created a goal as she shared the resource and will follow up with Jan at a later date.
+**MVP** During the thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Tuesday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Monday from 9:00AM to 1:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Monday at 12:00PM so she can follow up on Jan's progress before the interview.
 
 ### Task 7: Admin Recieves Analytics
 
