@@ -1,7 +1,7 @@
 # Mother Care
 
 ## 1. Cover Page
-**add logo here when we make it**
+![MotherCare Logo](MotherCareLogo.png)
 
 ### Mother Care ###
 
@@ -29,53 +29,49 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 **MVP** Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
 
-### Task 4: 
+### Task 4: Admin Set Goals
 
-Emily has a 3 month old baby. She does not have much experience with babies or kids, and is worried she lacks information that could be useful in the near future when taking care of her child. She wants to learn more to make sure she is prepared to take care of her baby. Emily fills out some forms when she makes her Mother Care account. She answers a question asking "How much experience taking care of babies do you have?" by saying "Almost none". After she creates the account, reccomended to her are some online courses to take for new mothers and gives her some help lines for mothers who have questions while caring for their child.
+**MVP** During Jan's first meeting with councilor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Carol wanats Jan to track it on her own without needing councilor verification. Ensuring Jan stays consistent leading up to their first follow up appointment.
 
-### Task 5: Admin Set Goals
+### Task 5: Admin Reccomend Resources
 
-**MVP** Carol is a counselor at FamilyLife Network and needs to assign Jan a daily goal of taking her prenatal vitamin. Since taking the vitamin is important but not overly serious for Jan, Carol doesn't feel that it's necessary to engage often in check-ins over MotherCare for this goal. Also, because of the repetition of this task, she assigns this goal to a lower priority for influencing the reward system. Jan will be reminded daily of this goal until her next appointment.
+**MVP** During the thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
 
-### Task 6: Admin Reccomend Resources
+### Task 6: Admin Recieves Analytics
 
-**MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information. Carol also created a goal as she shared the resource and will follow up with Jan at a later date.
+On Friday afternoon Lisa is preparing for a Q3 community impact report for FamilyLife Network. She reviews resource utilization for the past quarter. specifically looking at The Sparrows Nest. She compares the number of clients recommended TSN (50 mothers) and those who confirmed they went tehre (38 mothers). She notes that 76% of mothers went and the average rating was 4.7 stars. LIsa compilers these stats into her summary to show high engagement and positive impact.
 
-### Task 7: Admin Recieves Analytics
+### Task 7: Mothers Can Rate Resources
 
-**MVP** Lisa, the director, wants to get a large picture of how their clients are interacting with the resources that are being reccomended. She also needs these statistics for reporting purposes. She looks for a chart comparing the number of mothers reccomended the resources with how many recorded using the resource. She also looks for another graph comparing the resource with how it has been rated by the mothers that interacted with it.
+**MVP** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource 5/5 stars and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and family life network team have updated records on partner service quality.
 
-### Task 8: Mothers Can Rate Resources
+### Task 8: Forms Edit Profile
 
-**MVP** Jan visted The Sparrows Nest and was able to find the clothes she needed. When she records that she interacted with the resource, she also records that she found the resource helpful and would reccomend it to another mother.
+**MVP** Before Jan's appointment on thursday she completes her standard intake form. Noting that her location has changed from Westmoreland to Allegheny. Carol, her councilor, reads over the changes before the appointment, and changes her recommended resources from The Clothesline in Westmoreland to The Sparrows Nest in Allegheny county.
 
-### Task 9: Forms Edit Profile
+### Task 9: Different Admin Roles
 
-**MVP** *MVP QUESTIONABLE Before Jan's next appointment, Carol needs her to fill out an updated intake form to track any changes in her household or needs. Carol can view both her form and the changes that the form made to Jan's profile to best care for her and determine what resources and goals should be assigned.
+**MVP** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counciling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
 
-### Task 10: Different Admin Roles
+### Task 10: Admin Follow Ups
 
-**MVP** Stella is a volunteer with FamilyLife Network and is assisting in running the store. She needs to asses Jan's credit situation to purchase diapers from the FamilyLife store. She does not need access to Jan's goals or reccomended resources, but is able to compare Jan's total credits against the credits required for the box of diapers.
+**MVP** On Monday morning, three days after assigning The Sparrows Nest as a goal for Jan, Carol checks in on Jans progress. She reviews Jans record, seeing that Jan rated The Sparrows NEst 5/5 stars and left a note saying "Found shoes that fit my child perfectly!". Carol records the referral wa successful and logs a note for Jan to celebrate.
 
-### Task 11: Admin Follow Ups
+### Task 11: Admin Update Resource Database
 
-**MVP** Carol wants to inquire about Jan's experience with The Sparrows Nest and ensure that Jan made it there. To follow up with Jan 3 days later, Jan can complete her goal of visiting The Sparrows Nest, rate it, and record some detail in her own words of her experience. 
+**MVP** The resrouce manager Bethany receives a note from councilor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address; P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM. She saves the updated records navigating all Mothers to the new location.
 
-### Task 12: Admin Update Resource Database
+### Task 12: Mothers Can Record How They're Feeling Daily
 
-**MVP** Bethany is the resource manager for FamilyLife Network, and one of the councilers has reported that the The Sparrows Nest has changed their location. She then updates the information of the resource to reflect the new address, leaving the other correct information unchanged.
+On Wednesday night after putting her child to bed Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent along with grocery bill. She saves her daily check-in giving her councilor Carol a full record of her worries, how she can better help, and things to discuss at the next session.
 
-### Task 13: Mothers Can Record How They're Feeling Daily
+### Task 13: Admins Assign Forms
 
-Jan wants to track how she is feeling between her appointments so that she can come with a more in-depth picture of her situation for the best recomendations from her cousoler. 
+**MVP** On Monday morning, Carol is looking over her schedule to prepare for this weeks counciling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
 
-### Task 14: Admins Assign Forms
+### Task 14: Admins Can Edit Forms
 
-**MVP** In preperation for Jan's upcoming appointment, an admin requests that Jan fill out the standard intake form. Jan can look before her appointment and be directed to the form.
-
-### Task 15: Admins Can Edit Forms
-
-Lisa discovers the need to update the intake form to add a "Find local Bible Study" option to the spiritual needs section. 
+During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the Mothers Lisa updates the standard check-in form to include a "Find local Bible Study" section, ensuring all mothers receive the new question at the start of their next appointment.
 
 
 ### Tasks Left to Expand Upon:
