@@ -1,7 +1,7 @@
 # Mother Care
 
 ## 1. Cover Page
-**add logo here when we make it**
+
 
 ### Mother Care ###
 
@@ -19,7 +19,7 @@
 
 ### Task 1: Finding Emergency Diaper Resource (Mothers View All Resources)
 
-**MVP** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6 month old kid. She has a 20 minute drive from work to daycare, and she wants somewhere nearby that she can get diapers for free or very cheap. Before leaving work, _she opens MotherCare and goes to her Resources tab_ she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home preloaded based on her profile. She clicks on one of the locations, confirms it is open, and routes to it using her phone's map app.
+**MVP** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6 month old kid. She has a 20 minute drive from work to daycare, and she wants somewhere nearby that she can get diapers for free or very cheap. Before leaving work, she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home preloaded based on her profile. She clicks on one of the locations, confirms it is open, and routes to it using her phone's map app.
 
 ### Task 2: Reward Users for Interaction
 
@@ -29,68 +29,49 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 **MVP** Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
 
-### Task 4: 
-
-Emily has a 3 month old baby. She does not have much experience with babies or kids, and is worried she lacks information that could be useful in the near future when taking care of her child. She wants to learn more to make sure she is prepared to take care of her baby. Emily fills out some forms when she makes her Mother Care account. She answers a question asking "How much experience taking care of babies do you have?" by saying "Almost none". After she creates the account, reccomended to her are some online courses to take for new mothers and gives her some help lines for mothers who have questions while caring for their child.
-
-### Task 5: Admin Set Goals
+### Task 4: Admin Set Goals
 
 **MVP** Carol is a counselor at FamilyLife Network and needs to assign Jan a daily goal of taking her prenatal vitamin. Since taking the vitamin is important but not overly serious for Jan, Carol doesn't feel that it's necessary to engage often in check-ins over MotherCare for this goal. Also, because of the repetition of this task, she assigns this goal to a lower priority for influencing the reward system. Jan will be reminded daily of this goal until her next appointment.
 
-### Task 6: Admin Reccomend Resources
+### Task 5: Admin Reccomend Resources
 
 **MVP** Carol wants to assit Jan with finding professional clothes for her upcoming job interview. Carol remembers the name of The Sparrows Nest, in Alleghany, but she can't remember the hours they're open or their address. Carol shares the name of the resource with Jan in their meeting, but she shares The Sparrows Nest's entry though MotherCare with Jan, so that Jan can view the updated information. Carol also created a goal as she shared the resource and will follow up with Jan at a later date.
 
-### Task 7: Admin Recieves Analytics
+### Task 6: Admin Recieves Analytics
 
 **MVP** Lisa, the director, wants to get a large picture of how their clients are interacting with the resources that are being reccomended. She also needs these statistics for reporting purposes. She looks for a chart comparing the number of mothers reccomended the resources with how many recorded using the resource. She also looks for another graph comparing the resource with how it has been rated by the mothers that interacted with it.
 
-### Task 8: Mothers Can Rate Resources
+### Task 7: Mothers Can Rate Resources
 
 **MVP** Jan visted The Sparrows Nest and was able to find the clothes she needed. When she records that she interacted with the resource, she also records that she found the resource helpful and would reccomend it to another mother.
 
-### Task 9: Forms Edit Profile
+### Task 8: Forms Edit Profile
 
 **MVP** *MVP QUESTIONABLE Before Jan's next appointment, Carol needs her to fill out an updated intake form to track any changes in her household or needs. Carol can view both her form and the changes that the form made to Jan's profile to best care for her and determine what resources and goals should be assigned.
 
-### Task 10: Different Admin Roles
+### Task 9: Different Admin Roles
 
 **MVP** Stella is a volunteer with FamilyLife Network and is assisting in running the store. She needs to asses Jan's credit situation to purchase diapers from the FamilyLife store. She does not need access to Jan's goals or reccomended resources, but is able to compare Jan's total credits against the credits required for the box of diapers.
 
-### Task 11: Admin Follow Ups
+### Task 10 Admin Follow Ups
 
 **MVP** Carol wants to inquire about Jan's experience with The Sparrows Nest and ensure that Jan made it there. To follow up with Jan 3 days later, Jan can complete her goal of visiting The Sparrows Nest, rate it, and record some detail in her own words of her experience. 
 
-### Task 12: Admin Update Resource Database
+### Task 11: Admin Update Resource Database
 
 **MVP** Bethany is the resource manager for FamilyLife Network, and one of the councilers has reported that the The Sparrows Nest has changed their location. She then updates the information of the resource to reflect the new address, leaving the other correct information unchanged.
 
-### Task 13: Mothers Can Record How They're Feeling Daily
+### Task 12: Mothers Can Record How They're Feeling Daily
 
 Jan wants to track how she is feeling between her appointments so that she can come with a more in-depth picture of her situation for the best recomendations from her cousoler. 
 
-### Task 14: Admins Assign Forms
+### Task 13: Admins Assign Forms
 
 **MVP** In preperation for Jan's upcoming appointment, an admin requests that Jan fill out the standard intake form. Jan can look before her appointment and be directed to the form.
 
-### Task 15: Admins Can Edit Forms
+### Task 14: Admins Can Edit Forms
 
 Lisa discovers the need to update the intake form to add a "Find local Bible Study" option to the spiritual needs section. 
-
-
-### Tasks Left to Expand Upon:
-
-- [x] Admin Reccomend Resources
-- [x] Admins Receive Analytics (on mothers ministered to and the resources they used)
-- [x] Forms Edit Profiles 
-- [x] Different Admin Roles to Preserve Profile Permissions 
-- [x] Admins Follow Up After Recommendation
-- [x] Admins Assign Forms
-- [x] Admins Update Resource Database
-- [x] Mothers View All Resources
-- [x] Mothers can record how they're feeling daily
-- [x] Mothers can rate the resources that they were given
-- [x] Admins can edit forms
 
 ## 4. Related Work
 
