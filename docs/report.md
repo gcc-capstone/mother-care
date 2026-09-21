@@ -1,8 +1,7 @@
 # Mother Care
 
 ## 1. Cover Page
-
-
+![MotherCare Logo](MotherCareLogo.png)
 ### Mother Care ###
 
 **Team:** Joshua Smullen, Carl Foerster, Jacqueline Marriott, Ryan Merrick, Christian Viekman\
