@@ -1,7 +1,7 @@
 # Mother Care
 
 ## 1. Cover Page
-**add logo here when we make it**
+![MotherCare Logo](MotherCareLogo.png)
 
 ### Mother Care ###
 
