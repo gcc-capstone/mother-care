@@ -1,25 +1,30 @@
 # Mother Care
 
 ## 1. Cover Page
-![MotherCare Logo](MotherCareLogo.png)
+
+![MotherCare Logo]\(MotherCareLogo.png)
 
 ### Mother Care ###
 
-**Team:** Joshua Smullen, Carl Foerster, Jacqueline Marriott, Ryan Merrick, Christian Viekman\
+**Team:** Joshua Smullen, Carl Foerster, Jacqueline Marriott, Ryan Merrick, Christian Viekman\\
+
 **Date:** 9/10/2026
 
 ## 2. Introduction
 
-    The system MotherCare intends to support FamilyLife Network's care of parents in need by taking away the burden of automatable process from administrators to allow them more time to care for the mothers.
-    The administrators for this application will be FamilyLife Network's volunteers and the users will be mothers that the volunteers are ministering to.
-    FamilyLife Network counsolers can set goals for the mothers they minister to and can update the resources that they point mothers towards. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
+     The system MotherCare intends to support FamilyLife Network's care of parents in need by taking away the burden of automatable process from administrators to allow them more time to care for the mothers.
+
+     The administrators for this application will be FamilyLife Network's volunteers and the users will be mothers that the volunteers are ministering to.
+
+     FamilyLife Network counsolers can set goals for the mothers they minister to and can update the resources that they point mothers towards. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
+
 
 
 ## 3. Representative Tasks
 
 ### Task 1: Finding Emergency Diaper Resource (Mothers View All Resources)
 
-**MVP** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6 month old kid. She has a 20 minute drive from work to daycare, and she wants somewhere nearby that she can get diapers for free or very cheap. Before leaving work, _she opens MotherCare and goes to her Resources tab_ she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home preloaded based on her profile. She clicks on one of the locations, confirms it is open, and routes to it using her phone's map app.
+**\*\*MVP\*\*** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6-month-old child. She has a 20-minute drive from work to daycare, and she wants somewhere nearby where she can get diapers for free or very cheaply. Before leaving work, she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home based on her profile. She finds a location, confirms that it is open, and goes there using her phone's map app.
 
 ### Task 2: Reward Users for Interaction
 
@@ -27,15 +32,15 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 ### Task 3: Forms Affect Personalization
 
-**MVP** Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
+**\*\*MVP\*\*** Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
 
 ### Task 4: Admin Set Goals
 
-**MVP** During Jan's first meeting with councilor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Carol wanats Jan to track it on her own without needing councilor verification. Ensuring Jan stays consistent leading up to their first follow up appointment.
+**\*\*MVP\*\*** During Jan's first meeting with councilor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Carol wanats Jan to track it on her own without needing councilor verification. Ensuring Jan stays consistent leading up to their first follow up appointment.
 
 ### Task 5: Admin Reccomend Resources
 
-**MVP** During the thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
+**\*\*MVP\*\*** During the thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
 
 ### Task 6: Admin Recieves Analytics
 
@@ -43,23 +48,23 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 7: Mothers Can Rate Resources
 
-**MVP** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource 5/5 stars and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and family life network team have updated records on partner service quality.
+**\*\*MVP\*\*** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource 5/5 stars and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and family life network team have updated records on partner service quality.
 
 ### Task 8: Forms Edit Profile
 
-**MVP** Before Jan's appointment on thursday she completes her standard intake form. Noting that her location has changed from Westmoreland to Allegheny. Carol, her councilor, reads over the changes before the appointment, and changes her recommended resources from The Clothesline in Westmoreland to The Sparrows Nest in Allegheny county.
+**\*\*MVP\*\*** Before Jan's appointment on thursday she completes her standard intake form. Noting that her location has changed from Westmoreland to Allegheny. Carol, her councilor, reads over the changes before the appointment, and changes her recommended resources from The Clothesline in Westmoreland to The Sparrows Nest in Allegheny county.
 
 ### Task 9: Different Admin Roles
 
-**MVP** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counciling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
+**\*\*MVP\*\*** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counciling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
 
 ### Task 10: Admin Follow Ups
 
-**MVP** On Monday morning, three days after assigning The Sparrows Nest as a goal for Jan, Carol checks in on Jans progress. She reviews Jans record, seeing that Jan rated The Sparrows NEst 5/5 stars and left a note saying "Found shoes that fit my child perfectly!". Carol records the referral wa successful and logs a note for Jan to celebrate.
+**\*\*MVP\*\*** On Monday morning, three days after assigning The Sparrows Nest as a goal for Jan, Carol checks in on Jans progress. She reviews Jans record, seeing that Jan rated The Sparrows NEst 5/5 stars and left a note saying "Found shoes that fit my child perfectly!". Carol records the referral wa successful and logs a note for Jan to celebrate.
 
 ### Task 11: Admin Update Resource Database
 
-**MVP** The resrouce manager Bethany receives a note from councilor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address; P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM. She saves the updated records navigating all Mothers to the new location.
+**\*\*MVP\*\*** The resrouce manager Bethany receives a note from councilor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address; P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM. She saves the updated records navigating all Mothers to the new location.
 
 ### Task 12: Mothers Can Record How They're Feeling Daily
 
@@ -67,26 +72,11 @@ On Wednesday night after putting her child to bed Jan sits down to log her daily
 
 ### Task 13: Admins Assign Forms
 
-**MVP** On Monday morning, Carol is looking over her schedule to prepare for this weeks counciling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
+**\*\*MVP\*\*** On Monday morning, Carol is looking over her schedule to prepare for this weeks counciling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
 
 ### Task 14: Admins Can Edit Forms
 
 During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the Mothers Lisa updates the standard check-in form to include a "Find local Bible Study" section, ensuring all mothers receive the new question at the start of their next appointment.
-
-
-### Tasks Left to Expand Upon:
-
-- [x] Admin Reccomend Resources
-- [x] Admins Receive Analytics (on mothers ministered to and the resources they used)
-- [x] Forms Edit Profiles 
-- [x] Different Admin Roles to Preserve Profile Permissions 
-- [x] Admins Follow Up After Recommendation
-- [x] Admins Assign Forms
-- [x] Admins Update Resource Database
-- [x] Mothers View All Resources
-- [x] Mothers can record how they're feeling daily
-- [x] Mothers can rate the resources that they were given
-- [x] Admins can edit forms
 
 ## 4. Related Work
 
@@ -117,7 +107,9 @@ Similarly, Mother Care will help people find resources that meet their needs. Ho
 ### BetterHelp
 
 BetterHelp [4] connects people with licensed therapists through an online platform. Its main purpose is mental-health support and counseling, rather than simply recommending self-help resources.
+
 BetterHelp has an onboarding questionnaire that asks about things like goals, concerns, preferences, and what the user is looking for. That information is used to personalize the user's experience and match them with a therapist.
+
 Mother Care [4] will likely be similar to BetterHelp because information from forms the users fill out could be saved and used to recommend resources, goals, priorities, etc.
 
 ### Bible App
@@ -130,15 +122,14 @@ However, while the Bible App [5] prioritizes digital resources in their discover
 
 ## 10. Bibliography
 
-[1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https://www.findhelp.org/
+[1] Findhelp.org by Findhelp - search and connect to Social Care. findhelp.org. (n.d.). https\://www\.findhelp.org/
 
-[2] Microsoft Rewards - Earn free rewards for searching, shopping, and gaming. Microsoft. (n.d.). https://www.microsoft.com/rewards
+[2] Microsoft Rewards - Earn free rewards for searching, shopping, and gaming. Microsoft. (n.d.). https\://www\.microsoft\.com/rewards
 
-[3] 211 - "Get Connected. Get Help." 211. (n.d.). https://www.211.org/
+[3] 211 - "Get Connected. Get Help." 211. (n.d.). https\://www\.211.org/
 
-[4] BetterHelp - get matched with a therapist by filling out the questionare. (n.d.). https://www.betterhelp.com/
+[4] BetterHelp - get matched with a therapist by filling out the questionare. (n.d.). https\://www\.betterhelp\.com/
 
-[4] usa.gov - Find government benefits and financial help. usa.gov. (n.d.). https://www.usa.gov/benefit-finder?modal=b-welcome-1899
+[4] usa.gov - Find government benefits and financial help. usa.gov. (n.d.). https\://www\.usa.gov/benefit-finder?modal=b-welcome-1899
 
-[5] Bible App - https://www.bible.com/app
-
+[5] Bible App - https\://www\.bible\.com/app
