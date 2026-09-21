@@ -2,7 +2,7 @@
 
 ## 1. Cover Page
 
-![MotherCare Logo]\(MotherCareLogo.png)
+![MotherCare Logo](MotherCareLogo.png)
 
 ### Mother Care ###
 
