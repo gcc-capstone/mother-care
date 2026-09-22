@@ -14,9 +14,9 @@
 
      The system MotherCare intends to support FamilyLife Network's care of parents in need by taking away the burden of automatable process from administrators to allow them more time to care for the mothers.
 
-     The administrators for this application will be FamilyLife Network's volunteers and the users will be mothers that the volunteers are ministering to.
+     The administrators for this application will be FamilyLife Network's volunteers and counselors and the users will be mothers that the volunteers are ministering to.
 
-     FamilyLife Network counsolers can set goals for the mothers they minister to and can update the resources that they point mothers towards. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
+     FamilyLife Network counselors can set goals for the mothers they minister to and can update the resources that they point mothers towards. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
 
 
 
@@ -36,11 +36,11 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 ### Task 4: Admin Set Goals
 
-**\*\*MVP\*\*** During Jan's first meeting with councilor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Carol wanats Jan to track it on her own without needing councilor verification. Ensuring Jan stays consistent leading up to their first follow up appointment.
+**\*\*MVP\*\*** During Jan's first meeting with counselor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Carol wants Jan to track it on her own without needing counselor verification, ensuring Jan stays consistent leading up to their first follow up appointment.
 
 ### Task 5: Admin Reccomend Resources
 
-**\*\*MVP\*\*** During the thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
+**\*\*MVP\*\*** During the Thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
 
 ### Task 6: Admin Recieves Analytics
 
@@ -52,11 +52,11 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 8: Forms Edit Profile
 
-**\*\*MVP\*\*** Before Jan's appointment on thursday she completes her standard intake form. Noting that her location has changed from Westmoreland to Allegheny. Carol, her councilor, reads over the changes before the appointment, and changes her recommended resources from The Clothesline in Westmoreland to The Sparrows Nest in Allegheny county.
+**\*\*MVP\*\*** Before Jan's appointment on thursday she completes her standard intake form. Noting that her location has changed from Westmoreland to Allegheny. Carol, her counselors, reads over the changes before the appointment, and changes her recommended resources from The Clothesline in Westmoreland to The Sparrows Nest in Allegheny county.
 
 ### Task 9: Different Admin Roles
 
-**\*\*MVP\*\*** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counciling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
+**\*\*MVP\*\*** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counceling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
 
 ### Task 10: Admin Follow Ups
 
@@ -64,15 +64,15 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 11: Admin Update Resource Database
 
-**\*\*MVP\*\*** The resrouce manager Bethany receives a note from councilor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address; P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM. She saves the updated records navigating all Mothers to the new location.
+**\*\*MVP\*\*** The resrouce manager Bethany receives a note from counselor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address; P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM. She saves the updated records navigating all Mothers to the new location.
 
 ### Task 12: Mothers Can Record How They're Feeling Daily
 
-On Wednesday night after putting her child to bed Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent along with grocery bill. She saves her daily check-in giving her councilor Carol a full record of her worries, how she can better help, and things to discuss at the next session.
+On Wednesday night after putting her child to bed Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent along with grocery bill. She saves her daily check-in giving her counselor, Carol, a full record of her worries, how she can better help, and things to discuss at the next session.
 
 ### Task 13: Admins Assign Forms
 
-**\*\*MVP\*\*** On Monday morning, Carol is looking over her schedule to prepare for this weeks counciling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
+**\*\*MVP\*\*** On Monday morning, Carol is looking over her schedule to prepare for this weeks counseling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
 
 ### Task 14: Admins Can Edit Forms
 
