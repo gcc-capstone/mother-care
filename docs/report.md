@@ -28,55 +28,55 @@
 
 ### Task 2: Reward Users for Interaction
 
-It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sleeping. She wants to earn store credits to afford diapers which cost 30 credits. Jan currently has 15 credits. She finds three videos on baby sleep, baby cpr, and baby feeding, each giving 5 credits. Once completed Jan officially has the 30 credits so she can pick up the diapers next visit.
+It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sleeping. She wants to earn store credits to afford diapers which cost 30 credits. Jan currently has 15 credits. She finds two videos on baby CPR and feeding, each giving 5 credits. Once completed, Jan officially has the 30 credits so she can pick up the diapers next visit.
 
 ### Task 3: Forms Affect Personalization
 
-**\*\*MVP\*\*** Sarah recently had a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family, but she is too busy to visit in person. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
+**\*\*MVP\*\*** Sarah has a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
 
 ### Task 4: Admin Set Goals
 
-**\*\*MVP\*\*** During Jan's first meeting with counselor Carol. Carol recommended a goal of taking a daily prenatal vitamin. Carol titles the goal "Take daily prenatal vitamin", scheduled with a reminder 8:00AM daily. Carol wants Jan to track it on her own without needing counselor verification, ensuring Jan stays consistent leading up to their first follow up appointment.
+**\*\*MVP\*\*** During Jan's first meeting with counselor Carol, Carol recommends a goal of taking a daily prenatal vitamin. Carol titles the goal "Take Daily Prenatal Vitamin", scheduled with a reminder 8:00AM daily.
 
 ### Task 5: Admin Reccomend Resources
 
-**\*\*MVP\*\*** During the Thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick up interview clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
+**\*\*MVP\*\*** During the Thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest (TSN) in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick Up Interview Clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
 
 ### Task 6: Admin Recieves Analytics
 
-On Friday afternoon Lisa is preparing for a Q3 community impact report for FamilyLife Network. She reviews resource utilization for the past quarter. specifically looking at The Sparrows Nest. She compares the number of clients recommended TSN (50 mothers) and those who confirmed they went tehre (38 mothers). She notes that 76% of mothers went and the average rating was 4.7 stars. LIsa compilers these stats into her summary to show high engagement and positive impact.
+On Friday afternoon Lisa is preparing for a Q3 community impact report for FamilyLife Network. She reviews resource utilization for the past quarter. specifically looking at The Sparrows Nest (TSN). She compares the number of clients recommended TSN (50 mothers) and those who confirmed they visited (38 mothers). She notes that 76% of mothers interacted with TSN. Lisa compiles these stats into her summary to show engagement and the positive impact FamilyLife is making.
 
 ### Task 7: Mothers Can Rate Resources
 
-**\*\*MVP\*\*** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource 5/5 stars and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and family life network team have updated records on partner service quality.
+**\*\*MVP\*\*** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource well and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and the FamilyLife Network team have updated records on resource engagement.
 
 ### Task 8: Forms Edit Profile
 
-**\*\*MVP\*\*** Before Jan's appointment on thursday she completes her standard intake form. Noting that her location has changed from Westmoreland to Allegheny. Carol, her counselors, reads over the changes before the appointment, and changes her recommended resources from The Clothesline in Westmoreland to The Sparrows Nest in Allegheny county.
+**\*\*MVP\*\*** Before Jan's appointment on Thursday, she completes the standard intake form and notes that her location has changed from Westmoreland to Allegheny. Carol, her counselor, reads over the changes before the appointment and changes her outstanding "Visit The Clothesline" task to "Visit The Sparrows Nest" in Allegheny county.
 
 ### Task 9: Different Admin Roles
 
-**\*\*MVP\*\*** On saturday Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits. Using the stores account Stella looks up Jan and sees she has 40 credits, while keeping Jan's counceling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
+**\*\*MVP\*\*** On Saturday, Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits, Stella looks up Jan and sees she has 40 credits, while keeping Jan's counceling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
 
 ### Task 10: Admin Follow Ups
 
-**\*\*MVP\*\*** On Monday morning, three days after assigning The Sparrows Nest as a goal for Jan, Carol checks in on Jans progress. She reviews Jans record, seeing that Jan rated The Sparrows NEst 5/5 stars and left a note saying "Found shoes that fit my child perfectly!". Carol records the referral wa successful and logs a note for Jan to celebrate.
+**\*\*MVP\*\*** On Monday morning, three days after assigning visiting The Sparrows Nest as a goal for Jan, Carol checks in on Jan's progress. She reviews Jans record, seeing that Jan visted and bought clothes, rated The Sparrows Nest well, and left a note. Carol records the referral was successful.
 
 ### Task 11: Admin Update Resource Database
 
-**\*\*MVP\*\*** The resrouce manager Bethany receives a note from counselor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address; P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM. She saves the updated records navigating all Mothers to the new location.
+**\*\*MVP\*\*** The resource manager Bethany receives a note from counselor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address from P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM, she saves the updated record so all mothers can see the new location.
 
 ### Task 12: Mothers Can Record How They're Feeling Daily
 
-On Wednesday night after putting her child to bed Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent along with grocery bill. She saves her daily check-in giving her counselor, Carol, a full record of her worries, how she can better help, and things to discuss at the next session.
+On Wednesday night after putting her child to bed, Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent, along with grocery bill. She saves her daily check-in, giving her counselor, Carol, a full record of her worries and things to discuss at the next session.
 
 ### Task 13: Admins Assign Forms
 
-**\*\*MVP\*\*** On Monday morning, Carol is looking over her schedule to prepare for this weeks counseling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
+**\*\*MVP\*\*** On Monday morning, Carol is looking over her schedule to prepare for this week's counseling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
 
 ### Task 14: Admins Can Edit Forms
 
-During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the Mothers Lisa updates the standard check-in form to include a "Find local Bible Study" section, ensuring all mothers receive the new question at the start of their next appointment.
+During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the mothers, Lisa updates the standard check-in form to include a "Find local Bible Study" section, ensuring all mothers receive the new question at the start of their next appointment.
 
 ## 4. Related Work
 
@@ -132,4 +132,4 @@ However, while the Bible App [5] prioritizes digital resources in their discover
 
 [4] usa.gov - Find government benefits and financial help. usa.gov. (n.d.). https\://www\.usa.gov/benefit-finder?modal=b-welcome-1899
 
-[5] Bible App - https\://www\.bible\.com/app
+[5] Life.Church. (2008) Bible App [Mobile App]. https\://www\.bible\.com/app
