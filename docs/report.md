@@ -36,7 +36,7 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 ### Task 4: Admin Set Goals
 
-**\*\*MVP\*\*** During Jan's first meeting with counselor Carol, Carol recommends a goal of taking a daily prenatal vitamin. Carol titles the goal "Take Daily Prenatal Vitamin", scheduled with a reminder 8:00AM daily.
+**\*\*MVP\*\*** During Jan's first meeting with counselor Carol, Carol recommends a goal of taking a daily prenatal vitamin. Carol titles the goal "Take Daily Prenatal Vitamin," scheduled with a reminder at 8:00AM daily.
 
 ### Task 5: Admin Reccomend Resources
 
