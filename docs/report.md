@@ -40,7 +40,7 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 ### Task 5: Admin Reccomend Resources
 
-**\*\*MVP\*\*** During the Thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest (TSN) in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing their open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick Up Interview Clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
+**\*\*MVP\*\*** During the Thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest (TSN) in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing they're open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick Up Interview Clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
 
 ### Task 6: Admin Recieves Analytics
 
