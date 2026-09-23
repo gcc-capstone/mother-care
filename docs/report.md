@@ -68,7 +68,7 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 12: Mothers Can Record How They're Feeling Daily
 
-On Wednesday night after putting her child to bed, Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this months rent, along with grocery bill. She saves her daily check-in, giving her counselor, Carol, a full record of her worries and things to discuss at the next session.
+On Wednesday night after putting her child to bed, Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this month's rent, along with her grocery bill. She saves her daily check-in, giving her counselor, Carol, a full record of her worries and things to discuss at the next session.
 
 ### Task 13: Admins Assign Forms
 
