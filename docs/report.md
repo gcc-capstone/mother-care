@@ -42,7 +42,7 @@ It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sle
 
 **\*\*MVP\*\*** During the Thursday session, Carol wants to help Jan in finding professional clothes for an upcoming receptionist job interview next Thursday. Carol remembers The Sparrows Nest (TSN) in Alleghany provides clothing vouchers. Carol looks at the details of TSN seeing they're open on Wednesday from 1:00PM to 4:00PM and recommends the resource to Jan. Carol creates the goal for Jan titled "Pick Up Interview Clothes" to be completed by Wednesday at 3:00PM so she can follow up on Jan's progress before the interview.
 
-### Task 6: Admin Recieves Analytics
+### Task 6: Admin Receives Analytics
 
 On Friday afternoon Lisa is preparing for a Q3 community impact report for FamilyLife Network. She reviews resource utilization for the past quarter. specifically looking at The Sparrows Nest (TSN). She compares the number of clients recommended TSN (50 mothers) and those who confirmed they visited (38 mothers). She notes that 76% of mothers interacted with TSN. Lisa compiles these stats into her summary to show engagement and the positive impact FamilyLife is making.
 
