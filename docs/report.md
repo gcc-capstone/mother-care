@@ -56,7 +56,7 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 9: Different Admin Roles
 
-**\*\*MVP\*\*** On Saturday, Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits, Stella looks up Jan and sees she has 40 credits, while keeping Jan's counceling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
+**\*\*MVP\*\*** On Saturday, Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits, Stella looks up Jan and sees she has 40 credits, while keeping Jan's counseling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
 
 ### Task 10: Admin Follow Ups
 
