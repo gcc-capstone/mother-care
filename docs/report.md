@@ -60,7 +60,7 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 10: Admin Follow Ups
 
-**\*\*MVP\*\*** On Monday morning, three days after assigning visiting The Sparrows Nest as a goal for Jan, Carol checks in on Jan's progress. She reviews Jans record, seeing that Jan visted and bought clothes, rated The Sparrows Nest well, and left a note. Carol records the referral was successful.
+**\*\*MVP\*\*** On Monday morning, three days after assigning visiting The Sparrows Nest as a goal for Jan, Carol checks in on Jan's progress. She reviews Jans record, seeing that Jan visited and bought clothes, rated The Sparrows Nest well, and left a note. Carol records the referral was successful.
 
 ### Task 11: Admin Update Resource Database
 
