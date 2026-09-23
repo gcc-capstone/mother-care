@@ -64,7 +64,7 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 11: Admin Update Resource Database
 
-**\*\*MVP\*\*** The resource manager Bethany receives a note from counselor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organizations resource records and updates the address from P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Notrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM, she saves the updated record so all mothers can see the new location.
+**\*\*MVP\*\*** The resource manager Bethany receives a note from counselor Carol that The Sparrows Nest has moved to a bigger location. Bethany finds the organization's resource records and updates the address from P. Sherman, 42 Wallaby Way to 1917 Freeport Road, Natrona Heights, PA 15065. After verifying the phone number remains (724) 226-0606 and the hours are still Wednesday from 1:00PM to 4:00PM, she saves the updated record so all mothers can see the new location.
 
 ### Task 12: Mothers Can Record How They're Feeling Daily
 
