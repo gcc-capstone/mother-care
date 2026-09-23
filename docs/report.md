@@ -48,7 +48,7 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 ### Task 7: Mothers Can Rate Resources
 
-**\*\*MVP\*\*** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource well and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and the FamilyLife Network team have updated records on resource engagement.
+**\*\*MVP\*\*** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found a professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource well and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and the FamilyLife Network team have updated records on resource engagement.
 
 ### Task 8: Forms Edit Profile
 
