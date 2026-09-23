@@ -28,7 +28,7 @@
 
 ### Task 2: Reward Users for Interaction
 
-It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sleeping. She wants to earn store credits to afford diapers which cost 30 credits. Jan currently has 15 credits. She finds two videos on baby CPR and feeding, each giving 5 credits. Once completed, Jan officially has the 30 credits so she can pick up the diapers next visit.
+It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sleeping. She wants to earn store credits to afford diapers which cost 30 credits. Jan currently has 20 credits. She finds two videos on baby CPR and feeding, each giving 5 credits. Once completed, Jan officially has the 30 credits so she can pick up the diapers next visit.
 
 ### Task 3: Forms Affect Personalization
 
