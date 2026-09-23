@@ -22,6 +22,8 @@
 
 ## 3. Representative Tasks
 
+The following are the representative tasks that tell the stories of those who would be impacted by MotherCare and the goals for their interactions.
+
 ### Task 1: Finding Emergency Diaper Resource (Mothers View All Resources)
 
 **\*\*MVP\*\*** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6-month-old child. She has a 20-minute drive from work to daycare, and she wants somewhere nearby where she can get diapers for free or very cheaply. Before leaving work, she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home based on her profile. She finds a location, confirms that it is open, and goes there using her phone's map app.
@@ -79,6 +81,8 @@ On Wednesday night after putting her child to bed, Jan sits down to log her dail
 During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the mothers, Lisa updates the standard check-in form to include a "Find local Bible Study" section, ensuring all mothers receive the new question at the start of their next appointment.
 
 ## 4. Related Work
+
+The following are applications and websites that MotherCare seeks to emulate at least one quality from and will be used as examples during the development process.
 
 ### findhelp.org
 
