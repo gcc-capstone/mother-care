@@ -94,13 +94,13 @@ However, FindHelp [1] mainly relies on search-driven results while MotherCare wi
 
 ### Microsoft Rewards
 
-Microsoft Rewards [2] is part of microsoft that gives you incentives to interact with content (e.g. videos, articles, etc.). By interacting with this content users earn free rewards. The service has a dedicated page where you can see your points, what you earned them from as well as where to redeem your points.
+Microsoft Rewards [2] is part of Microsoft that gives you incentives to interact with content (e.g., videos, articles, etc.). By interacting with this content, users earn free rewards. The service has a dedicated page where you can see your points, what you earned them from, as well as where to redeem your points.
 
-Microsoft Rewards point redemption allows you to exchange your points for gift cards, subscriptions to microsoft products, or make donations to charity.
+Microsoft Rewards point redemption allows you to exchange your points for gift cards, subscriptions to Microsoft products, or donations to charity.
 
-Mother Care would operate on a similar credit system gaining points for watching videos, reading articles, and staying consistent with your prescribed tasks from a councilor. This can tie into the self-help section of the app also for some of these tasks offering both self-help points and store points. 
+Mother Care would operate on a similar credit system, where you gain points for watching videos, reading articles, and staying consistent with your prescribed tasks from a counselor. For some of these tasks, this can also tie into the self-help section of the app, offering both self-help points and store points. 
 
-Microsoft Rewards [2] targets mostly engagement, search engines and gaming. Mother Cares focus would be repuroposes towards health and community support for the Mothers. This encourages learning and user participation in the app while addressing the needs of the Mothers.
+Microsoft Rewards [2] targets mostly engagement, search engines, and gaming. Mother Care's focus would be repurposed toward health and community support for mothers. This encourages learning and user participation in the app while addressing the needs of mothers.
 
 ### 211
 
