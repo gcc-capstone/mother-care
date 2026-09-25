@@ -118,11 +118,11 @@ Mother Care [4] will likely be similar to BetterHelp because information from fo
 
 ### Bible App
 
-The Bible App [5] is focuesed on sharing the Word of God through multiple mediums. The main function of the Bible App is naturally the words of the Bible, but also allows users to find local resources, such as churches, and web resources, such as ministry videos. 
+The Bible App [5] is focused on sharing the Word of God through multiple mediums. The main function of the Bible App is naturally sharing the words of the Bible, but the app also allows users to find local resources, such as churches, and web resources, such as ministry videos. 
 
-MotherCare would benefit from encorperating a similar structure. The main focus of resources would be the provided physical locations with services such as food, clothing, and other meeting of physical needs. However, some resources that could be useful for mothers could be digital, such as videos or orgainizations that have an online presence instead of a brick-and-mortar front. MotherCare should especially attend to the seperation of the types of resources that the Bible App [x] employs. Physical and digital resources are both included in searches, but are easy to seperate before searching.
+MotherCare would benefit from Incorporating a similar structure. The main focus of resources would be the provided physical locations with services such as food, clothing, and other meeting of physical needs. However, some resources that could be useful for mothers could be digital, such as videos or orgainizations that have an online presence instead of a brick-and-mortar front. MotherCare should especially attend to the seperation of the types of resources that the Bible App [5] employs. Physical and digital resources are both included in searches, but are easy to seperate with tags.
 
-However, while the Bible App [5] prioritizes digital resources in their discover process, MotherCare would prioritize discovering physcial resources as it is created for a local ministry. The seperation but inclusion of digital resources with physical resources in the discover resources function of the Bible App will help meet the needs of the mothers in a wholistic but organized manor.
+However, while the Bible App [5] prioritizes digital resources in their discover process, MotherCare would prioritize discovering physcial resources as it is created for a local ministry. The seperation but inclusion of digital resources with physical resources as in the discover resources function of the Bible App will help meet the needs of the mothers in a wholistic but organized manner.
 
 ## 10. Bibliography
 
