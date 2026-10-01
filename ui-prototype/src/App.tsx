@@ -1,17 +1,25 @@
-import './App.css'
-import logo from './assets/MotherCareLogo.png'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Home from './screens/Home'
+import Forms from './screens/Forms'
+import Resources from './screens/Resources'
+import Earn from './screens/Earn'
+import Goals from './screens/Goals'
 
 function App() {
-  
   return (
-
-    <main>
-      <img src={logo} alt="MotherCare Hero" width={200}/>
-      <h1>MotherCare</h1>
-      <h2>Senior Capstone </h2>
-      <h3>Carl Foerster, Jacqueline Marriott, Ryan Merrick, Joshua Smullen, Christian Viekman</h3>
-    </main>
-    
+    <BrowserRouter>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/forms" element={<Forms />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/earn" element={<Earn />} />
+          <Route path="/goals" element={<Goals />} />
+        </Routes>
+        <NavBar />
+      </div>
+    </BrowserRouter>
   )
 }
 
