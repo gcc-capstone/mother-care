@@ -5,22 +5,43 @@ import Forms from './screens/Forms'
 import Resources from './screens/Resources'
 import Earn from './screens/Earn'
 import Goals from './screens/Goals'
+import AdminGoals from './screens/AdminGoals'
+
+function MobileLayout() {
+  return (
+    <div className="app mobile-app">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/forms" element={<Forms />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/earn" element={<Earn />} />
+        <Route path="/goals" element={<Goals />} />
+      </Routes>
+
+      <NavBar />
+    </div>
+  );
+}
+
+function AdminLayout() {
+  return (
+    <div className="admin-app">
+      <Routes>
+        <Route path="/admingoals" element={<AdminGoals />} />
+      </Routes>
+    </div>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/forms" element={<Forms />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/earn" element={<Earn />} />
-          <Route path="/goals" element={<Goals />} />
-        </Routes>
-        <NavBar />
-      </div>
+      <Routes>
+        <Route path="/*" element={<MobileLayout />} />
+        <Route path="/admin/*" element={<AdminLayout />} />
+      </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App
