@@ -1,6 +1,12 @@
+import assetb356d from "../assets/b356d.svg"
+import assetaf6c9 from "../assets/af6c9.svg"
+import assetce264 from "../assets/ce264.svg"
+import asset8878d from "../assets/8878d.svg"
+import asset46af3 from "../assets/46af3.svg"
+import asset4e6f4 from "../assets/4e6f4.svg"
+import asset8d6a0 from "../assets/8d6a0.svg"
 import { useRef } from "react"
 import "./AdminGoals.css";
-const assetPath = "../assets"
 
 const metrics = [
   ["DAYS ACTIVE", "148", "Since May 6, 2026"],
@@ -13,7 +19,7 @@ function FilterButton({ children }: { children: string }) {
   return (
     <button className="filter" type="button">
       {children}
-      <img src={`${assetPath}/b356d.svg`} alt="" />
+      <img src={assetb356d} alt="" />
     </button>
   )
 }
@@ -30,7 +36,7 @@ export default function App() {
     <main className="workspace">
       <header className="topbar">
         <div className="secure-status">
-          <img src={`${assetPath}/af6c9.svg`} alt="" />
+          <img src={assetaf6c9} alt="" />
           <span>Secure Mother Care workspace</span>
         </div>
         <div className="account">
@@ -50,12 +56,12 @@ export default function App() {
           </div>
           <button className="primary-button" type="button" onClick={beginGoal}>
             Create goal
-            <img src={`${assetPath}/ce264.svg`} alt="" />
+            <img src={assetce264} alt="" />
           </button>
         </section>
 
         <aside className="security-banner">
-          <img src={`${assetPath}/8878d.svg`} alt="" />
+          <img src={asset8878d} alt="" />
           <p>
             Goals are written in supportive, mother-facing language. Reminders
             respect Jan’s contact preferences and quiet hours.
@@ -82,7 +88,7 @@ export default function App() {
 
               <div className="toolbar">
                 <label className="search">
-                  <img src={`${assetPath}/46af3.svg`} alt="" />
+                  <img src={asset46af3} alt="" />
                   <input
                     aria-label="Search goals"
                     placeholder="Search Jan’s goals…"
@@ -210,7 +216,7 @@ export default function App() {
               <div className="settings">
                 <label className="choice">
                   <input type="checkbox" defaultChecked />
-                  <img src={`${assetPath}/4e6f4.svg`} alt="" />
+                  <img src={asset4e6f4} alt="" />
                   <span>
                     <strong>Visible to Jan</strong>
                     <small>Client app</small>
@@ -218,7 +224,7 @@ export default function App() {
                 </label>
                 <label className="choice">
                   <input type="checkbox" defaultChecked />
-                  <img src={`${assetPath}/4e6f4.svg`} alt="" />
+                  <img src={asset4e6f4} alt="" />
                   <span>
                     <strong>Weekly review</strong>
                     <small>Care cadence</small>
@@ -229,7 +235,7 @@ export default function App() {
 
             <div className="dispatch">
               <div className="sync-status">
-                <img src={`${assetPath}/8d6a0.svg`} alt="" />
+                <img src={asset8d6a0} alt="" />
                 <strong>⚡ Jan’s app connection is active</strong>
               </div>
               <button type="button">

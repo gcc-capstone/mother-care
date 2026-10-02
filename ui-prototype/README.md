@@ -1,44 +1,56 @@
 # MotherCare UI Prototype
 
-This directory contains the React and TypeScript UI prototype for MotherCare.
+Two independent React, TypeScript, and Vite apps for customer feedback and user
+testing. Both use local dummy data and frontend state, with no backend or authentication.
 
-The prototype is for customer feedback, user testing, and evaluating navigation
-and workflow. It is **not production code** and uses hardcoded, in-memory dummy
-data. There is no backend, database, or authentication.
+- `mother-pwa/`: mother-facing screens, mobile layout, bottom navigation, data, and assets.
+- `admin-web/`: staff-facing screens, desktop layout, sidebar, and assets.
 
-The production frontend lives in `frontend/`.
+Each app owns its package manifest, HTML entry point, Vite and TypeScript
+configuration, public assets, and build output. The root is an npm workspace
+with a shared dependency lockfile. The production frontend lives in `frontend/`.
 
-## Requirements
+## Install
 
-* Node.js
-* npm
-
-## Install Dependencies
-
-From the `ui-prototype/` directory:
+From `ui-prototype/`, with Node.js and npm installed:
 
 ```bash
 npm install
 ```
 
-## Run Locally
+## Run
+
+Run these in separate terminals to use both apps:
 
 ```bash
-npm run dev
+npm run dev:mother  # http://localhost:5173
+npm run dev:admin   # http://localhost:5174
 ```
 
-Vite starts a local development server and prints the local URL in the terminal.
+`npm run dev` also starts the mother app. Mother routes are `/`, `/forms`,
+`/resources`, `/earn`, and `/goals`. Admin routes retain `/admin/performance`,
+`/admin/motherselection`, `/admin/admingoals`, `/admin/reccomendresources`, and
+`/admin/followup`. The admin root redirects to `/admin/performance`.
 
-## Lint
+## Build and lint
 
 ```bash
-npm run lint
+npm run build         # build both apps
+npm run build:mother  # mother-pwa/dist/
+npm run build:admin   # admin-web/dist/
+npm run lint          # lint both apps
 ```
 
-## Build for Production
+Each app also supports `npm run dev`, `npm run build`, `npm run lint`, and
+`npm run preview` from its own folder, and can be installed independently
+with `npm install` there if needed.
+
+## Preview builds
 
 ```bash
-npm run build
+npm run preview:mother  # http://localhost:4173
+npm run preview:admin   # http://localhost:4174
 ```
 
-The build output is created in `ui-prototype/dist/`.
+Deploy the two `dist/` directories independently. Configure each static host to
+serve its `index.html` for client-side routes, including direct links to admin pages.

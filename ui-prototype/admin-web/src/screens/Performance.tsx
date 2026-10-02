@@ -1,11 +1,10 @@
-const assetPathPrefix = "../assets";
-const imgStatus = `${assetPathPrefix}/af6c9.svg`;
-const imgPlus = `${assetPathPrefix}/ce264.svg`;
-const imgShieldCheck = `${assetPathPrefix}/8878d.svg`;
-const imgInfo = `${assetPathPrefix}/30180.svg`;
-const imgSelector = `${assetPathPrefix}/4e6f4.svg`;
-const imgSelector1 = `${assetPathPrefix}/56fc8.svg`;
-const imgStatus1 = `${assetPathPrefix}/8d6a0.svg`;
+import imgStatus from "../assets/af6c9.svg";
+import imgPlus from "../assets/ce264.svg";
+import imgShieldCheck from "../assets/8878d.svg";
+import imgInfo from "../assets/30180.svg";
+import imgSelector from "../assets/4e6f4.svg";
+import imgSelector1 from "../assets/56fc8.svg";
+import imgStatus1 from "../assets/8d6a0.svg";
 import "./Performance.css";
 
 

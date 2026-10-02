@@ -1,5 +1,5 @@
-const assetPathPrefix = "../assets";
-const imgIndicator = `${assetPathPrefix}/8ee66.svg`;
+import { NavLink } from 'react-router-dom'
+import imgIndicator from "../assets/8ee66.svg";
 
 export default function PersistentNavigation() {
   return (
@@ -16,20 +16,27 @@ export default function PersistentNavigation() {
         </div>
       </div>
       <div className="content-stretch flex flex-col gap-[6px] items-start overflow-clip relative shrink-0 w-full">
-        <div className="bg-[#2d5b52] content-stretch flex gap-[9px] h-[40px] items-center overflow-clip px-[12px] relative rounded-[10px] shrink-0 w-full">
-          <div className="relative shrink-0 size-[8px]">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIndicator} />
-          </div>
-          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] min-w-px not-italic relative text-[11px] text-white">
-            Dashboard
-          </p>
-        </div>
-        {["Mothers", "Appointments", "Follow-ups · 4", "Forms", "Resources", "Analytics", "Roles & access", "Audit & settings"].map((item) => (
-          <div key={item} className="content-stretch flex h-[40px] items-center overflow-clip px-[12px] relative rounded-[10px] shrink-0 w-full">
-            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] min-w-px not-italic relative text-[#c7dad5] text-[11px]">
-              {item}
-            </p>
-          </div>
+        {[
+          ['Dashboard', '/admin/performance'],
+          ['Mothers', '/admin/motherselection'],
+          ['Goals', '/admin/admingoals'],
+          ['Follow-ups · 4', '/admin/followup'],
+          ['Resources', '/admin/reccomendresources'],
+        ].map(([label, path]) => (
+          <NavLink
+            key={path}
+            to={path}
+            className={({ isActive }) =>
+              `content-stretch flex gap-[9px] h-[40px] items-center overflow-clip px-[12px] relative rounded-[10px] shrink-0 w-full ${isActive ? 'bg-[#2d5b52] text-white' : 'text-[#c7dad5]'}`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                {isActive && <img alt="" className="size-[8px] shrink-0" src={imgIndicator} />}
+                <span className="font-extrabold text-[11px]">{label}</span>
+              </>
+            )}
+          </NavLink>
         ))}
       </div>
       <div className="flex-[1_0_0] min-h-px relative w-full" />
