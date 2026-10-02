@@ -2,6 +2,8 @@ import { createContext, useContext } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import type { FormResponse, Goal, Mother, Notification } from '../types'
 export interface MotherState {
+  activeMotherId: string; selectMother: (id: string) => void
+  counselorName: string; streakDays: number
   goals: Goal[]; setGoals: Dispatch<SetStateAction<Goal[]>>
   mood: string | null; setMood: Dispatch<SetStateAction<string | null>>
   profile: Mother; setProfile: Dispatch<SetStateAction<Mother>>

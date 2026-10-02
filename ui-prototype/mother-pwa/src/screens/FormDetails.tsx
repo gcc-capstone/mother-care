@@ -5,12 +5,13 @@ import { Page, ActionLink, MissingRecord, PrimaryButton } from '../components/Pa
 import { useMotherState } from '../hooks/useMotherState'
 
 export default function FormDetails() {
+  const { activeMotherId } = useMotherState()
   const { id } = useParams()
-  return <FormContent key={id} id={id} />
+  return <FormContent key={`${activeMotherId}-${id}`} id={id} />
 }
 function FormContent({ id }: { id: string | undefined }) {
   const form = [intakeForm, ...assignedForms, ...otherForms].find(f => f.id === id)
-  const { profile, formResponses, setFormResponses } = useMotherState()
+  const { profile, counselorName, formResponses, setFormResponses } = useMotherState()
   const saved = form ? formResponses[form.id] : undefined
   const [name, setName] = useState(saved?.name ?? `${profile.firstName} ${profile.familyName}`)
   const [notes, setNotes] = useState(saved?.notes ?? '')
@@ -26,7 +27,7 @@ function FormContent({ id }: { id: string | undefined }) {
   }
   return <Page title={form.title} back="/forms">
     <p>{form.description}</p>
-    {submitted ? <section className="flex flex-col gap-4 rounded-3xl bg-white p-5" role="status"><h2 className="text-lg font-semibold">Thank you, your form is saved</h2><p>Carol can review this information at your next visit.</p><ActionLink to="/forms">Back to forms</ActionLink><button className="min-h-11 font-semibold" onClick={() => setSubmitted(false)}>Edit response</button></section> :
+    {submitted ? <section className="flex flex-col gap-4 rounded-3xl bg-white p-5" role="status"><h2 className="text-lg font-semibold">Thank you, your form is saved</h2><p>{counselorName} can review this information at your next visit.</p><ActionLink to="/forms">Back to forms</ActionLink><button className="min-h-11 font-semibold" onClick={() => setSubmitted(false)}>Edit response</button></section> :
       <form onSubmit={submit} className="flex flex-col gap-4 rounded-3xl bg-white p-5">
         <label className="flex flex-col gap-2 font-medium">Your name<input required maxLength={100} value={name} onChange={e => setName(e.target.value)} className="min-h-11 rounded-xl border border-[var(--border)] p-3" /></label>
         <label className="flex flex-col gap-2 font-medium">{form.id === 'family-intake' ? 'Tell us about your household and current needs' : form.id === 'monthly-check-in' ? 'How is your family doing this month?' : 'Describe the childcare support you need'}<textarea required maxLength={2000} rows={5} value={notes} onChange={e => setNotes(e.target.value)} className="rounded-xl border border-[var(--border)] p-3 font-normal" /></label>

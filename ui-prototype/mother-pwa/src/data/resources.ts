@@ -3,8 +3,6 @@ export type { Resource } from '../types'
 // Hardcoded dummy data for the Resources screen. Copy comes from the Figma frame "03 Resources".
 import sparrowsNestLogo from '../assets/images/sparrows-nest-logo.png'
 
-export const location = 'Natrona Heights, PA 15065'
-
 export const categories = ['All', 'Food', 'Diapers', 'Clothing', 'Childcare'] as const
 export type { Category } from '../types'
 

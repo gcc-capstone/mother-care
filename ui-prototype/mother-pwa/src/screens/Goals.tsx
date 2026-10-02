@@ -4,7 +4,7 @@ import { useState, type FormEvent } from 'react'
 import checkCircleIcon from '../assets/icons/check-circle.svg'
 import chevronIcon from '../assets/icons/chevron-down.svg'
 import plusIcon from '../assets/icons/plus.svg'
-import { streakDays, type Goal } from '../data/goals'
+import { type Goal } from '../data/goals'
 import { useMotherState } from '../hooks/useMotherState'
 
 function GoalList({ goals, onToggle }: { goals: Goal[]; onToggle: (id: string) => void }) {
@@ -17,6 +17,7 @@ function GoalList({ goals, onToggle }: { goals: Goal[]; onToggle: (id: string) =
               type="checkbox"
               className="size-[22px] shrink-0 cursor-pointer accent-[var(--ink)]"
               checked={g.done}
+                  disabled={Boolean(g.credits && g.done)}
               onChange={() => onToggle(g.id)}
             />
             <span className="flex min-w-0 flex-1 flex-col gap-px">
@@ -33,7 +34,7 @@ function GoalList({ goals, onToggle }: { goals: Goal[]; onToggle: (id: string) =
 }
 
 export default function Goals() {
-  const { goals, setGoals, completeOpportunity } = useMotherState()
+  const { goals, setGoals, completeOpportunity, streakDays } = useMotherState()
   const [showCompleted, setShowCompleted] = useState(false)
   const [adding, setAdding] = useState(false)
   const [draft, setDraft] = useState('')

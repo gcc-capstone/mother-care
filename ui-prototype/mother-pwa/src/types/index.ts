@@ -45,6 +45,8 @@ export interface Opportunity {
   action: string
 }
 export interface Mother {
+  id: string
+  counselorId: string
   firstName: string
   familyName: string
   email: string
@@ -59,4 +61,19 @@ export interface Notification {
 export interface FormResponse {
   name: string
   notes: string
+}
+
+export interface Counselor { id: string; name: string }
+export interface MotherDemo {
+  profile: Mother
+  goals: Goal[]
+  mood: string | null
+  notifications: Notification[]
+  completedOpportunities: string[]
+  reservations: string[]
+  redemptions: string[]
+  formResponses: Record<string, FormResponse>
+  openingCredits: number
+  openingEarned: number
+  streakDays: number
 }

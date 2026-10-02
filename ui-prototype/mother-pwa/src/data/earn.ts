@@ -7,11 +7,6 @@ import playIcon from '../assets/icons/play.svg'
 import peopleIcon from '../assets/icons/people.svg'
 import bookIcon from '../assets/icons/book.svg'
 
-export const balance = {
-  credits: 12,
-  earnedThisWeek: 4,
-}
-
 export const storeItems: Reward[] = [
   { id: 'diapers', name: 'Diapers, size 2', cost: 12, image: diapersImage },
   { id: 'wipes', name: 'Baby wipes', cost: 6, image: wipesImage },

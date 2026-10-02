@@ -23,6 +23,9 @@ expects deployment at the origin root, separately from Admin Web.
 
 ## Prototype walkthrough
 
+- Profile: use the Demo mother selector to switch between Jan Miller and the five
+  mothers shown in the admin roster. Each keeps separate edits, forms, goals, mood,
+  notifications, lesson progress, reservations, and credits until reload.
 - Home: select a mood, complete a goal, open recommendations, or edit your profile.
 - Goals: complete/undo goals, expand completed goals, and add your own weekly goal.
 - Forms: fill out intake, check-in, or childcare forms; submit and review responses.

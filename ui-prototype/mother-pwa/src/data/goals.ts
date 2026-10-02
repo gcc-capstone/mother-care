@@ -3,8 +3,6 @@ export type { Goal } from '../types'
 // One shared set of goals for Jan, used on Home and Goals.
 // Demo date: October 1, 2026; Carol assigned the upcoming group for October 6.
 
-export const streakDays = 5
-
 export const initialGoals: Goal[] = [
   { id: 'vitamin', title: 'Take prenatal vitamin', source: 'From Carol', when: 'today', done: true },
   { id: 'sleep-video', title: 'Watch: Newborn Sleep Basics', credits: 2, source: 'From Carol', when: 'today', done: false },

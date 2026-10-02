@@ -69,6 +69,7 @@ export default function Home() {
                   type="checkbox"
                   className="size-[22px] shrink-0 cursor-pointer accent-[var(--ink)]"
                   checked={g.done}
+                  disabled={Boolean(g.credits && g.done)}
                   onChange={() => toggleGoal(g.id)}
                 />
                 <span className="text-[15px] leading-relaxed min-w-0 flex-1 group-has-[:checked]:text-[var(--muted)] group-has-[:checked]:line-through">{g.title}</span>

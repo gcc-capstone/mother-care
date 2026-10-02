@@ -9,6 +9,8 @@ import goodIcon from '../assets/icons/mood-good.svg'
 import greatIcon from '../assets/icons/mood-great.svg'
 
 export const user: Mother = {
+  id: 'mother-001',
+  counselorId: 'counselor-001',
   firstName: 'Jan',
   familyName: 'Miller',
   email: 'jan.miller@example.com',

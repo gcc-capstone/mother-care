@@ -5,14 +5,14 @@ import { ActionLink, MissingRecord, Page, PrimaryButton } from '../components/Pa
 
 export default function Store() {
   const { id } = useParams()
-  const { credits, redemptions, redeem } = useMotherState()
+  const { credits, redemptions, redeem, counselorName } = useMotherState()
   const item = storeItems.find(r => r.id === id)
   if (id && !item) return <MissingRecord back="/store" />
   if (item) {
     const redeemed = redemptions.includes(item.id)
     return <Page title={item.name} back="/store"><img className="h-48 w-full rounded-3xl object-cover" src={item.image} alt={item.name} />
       <p className="text-lg font-semibold">{item.cost} credits</p><p>Your balance: {credits} credits</p>
-      {redeemed ? <p role="status" className="rounded-2xl bg-[var(--sage-strip)] p-4">✓ Redeemed. Your item is reserved for pickup at your next visit with Carol.</p> : <><p>Redeem your credits to reserve this item for pickup with Carol. One of each item is available per visit.</p><PrimaryButton disabled={credits < item.cost} onClick={() => { redeem(item.id) }}>Redeem for {item.cost} credits</PrimaryButton>{credits < item.cost && <p>You need {item.cost - credits} more credits.</p>}</>}
+      {redeemed ? <p role="status" className="rounded-2xl bg-[var(--sage-strip)] p-4">✓ Redeemed. Your item is reserved for pickup at your next visit with {counselorName}.</p> : <><p>Redeem your credits to reserve this item for pickup with {counselorName}. One of each item is available per visit.</p><PrimaryButton disabled={credits < item.cost} onClick={() => { redeem(item.id) }}>Redeem for {item.cost} credits</PrimaryButton>{credits < item.cost && <p>You need {item.cost - credits} more credits.</p>}</>}
       <ActionLink to="/earn">Earn more credits</ActionLink>
     </Page>
   }
