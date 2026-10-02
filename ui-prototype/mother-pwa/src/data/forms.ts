@@ -1,16 +1,14 @@
+import type { FormItem } from '../types'
+export type { FormItem } from '../types'
 // Hardcoded dummy data for the Forms screen. Copy comes from the Figma frame "02 Forms".
 
-export const intakeForm = {
+export const intakeForm: FormItem = {
+  id: 'family-intake',
+  meta: 'Start here',
   title: 'Family Intake Form',
   description: 'Tell us about your family so we can match you with the right resources.',
 }
 
-export type FormItem = {
-  id: string
-  title: string
-  description: string
-  meta: string
-}
 
 export const assignedForms: FormItem[] = [
   {

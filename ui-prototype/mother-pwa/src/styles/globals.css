@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Application palette retained from the existing MotherCare design. */
+@layer base {
+  :root {
+    --bg: #f7f4ec;
+    --surface: #ffffff;
+    --border: #e3e0d6;
+    --ink: #123f42;
+    --text: #3a4a4c;
+    --muted: #5f7072;
+    --sage: #536b43;
+    --sage-bg: #eef2e9;
+    --sage-strip: #e7ede2;
+    --alert: #c45b5b;
+    --mood-rough: #d98c86;
+    --mood-low: #f0c4c2;
+    --mood-okay: #e8e3d5;
+    --mood-good: #afc09a;
+    --mood-great: #7a9264;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body { margin: 0; min-width: 320px; background: var(--bg); }
+  button, input, textarea, select { font: inherit; }
+  input, textarea, select { max-width: 100%; }
+  button:not(:disabled) { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+}

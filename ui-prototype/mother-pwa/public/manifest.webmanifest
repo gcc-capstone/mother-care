@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "MotherCare",
+  "short_name": "MotherCare",
+  "description": "Your family’s goals, local resources, and support.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ec",
+  "theme_color": "#123f42",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

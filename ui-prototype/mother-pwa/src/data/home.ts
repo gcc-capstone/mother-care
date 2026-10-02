@@ -1,3 +1,4 @@
+import type { Mother } from '../types'
 // Hardcoded dummy data for the Home screen. Copy comes from the Figma frame "01 Home".
 import diaperBankImage from '../assets/images/diaper-bank.png'
 import newMomBasicsImage from '../assets/images/new-mom-basics.png'
@@ -7,33 +8,23 @@ import okayIcon from '../assets/icons/mood-okay.svg'
 import goodIcon from '../assets/icons/mood-good.svg'
 import greatIcon from '../assets/icons/mood-great.svg'
 
-export const user = {
+export const user: Mother = {
+  id: 'mother-001',
+  counselorId: 'counselor-001',
   firstName: 'Jan',
-  credits: 12,
-  unreadNotifications: 2,
+  familyName: 'Miller',
+  email: 'jan.miller@example.com',
+  location: 'Natrona Heights, PA 15065',
 }
 
-export const today = 'Wednesday, September 23'
+export const today = 'Thursday, October 1, 2026'
 
 export const moods = [
-  { id: 'rough', label: 'Rough', icon: roughIcon, color: 'var(--mood-rough)' },
-  { id: 'low', label: 'Low', icon: lowIcon, color: 'var(--mood-low)' },
-  { id: 'okay', label: 'Okay', icon: okayIcon, color: 'var(--mood-okay)' },
-  { id: 'good', label: 'Good', icon: goodIcon, color: 'var(--mood-good)' },
-  { id: 'great', label: 'Great', icon: greatIcon, color: 'var(--mood-great)' },
-]
-
-export type Goal = {
-  id: string
-  title: string
-  credits?: number
-  done: boolean
-}
-
-export const todaysGoals: Goal[] = [
-  { id: 'vitamin', title: 'Take prenatal vitamin', done: true },
-  { id: 'sleep-video', title: 'Watch: Newborn Sleep Basics', credits: 2, done: false },
-  { id: 'log-mood', title: "Log how you're feeling", done: false },
+  { id: 'rough', label: 'Rough', icon: roughIcon, color: 'bg-[var(--mood-rough)]' },
+  { id: 'low', label: 'Low', icon: lowIcon, color: 'bg-[var(--mood-low)]' },
+  { id: 'okay', label: 'Okay', icon: okayIcon, color: 'bg-[var(--mood-okay)]' },
+  { id: 'good', label: 'Good', icon: goodIcon, color: 'bg-[var(--mood-good)]' },
+  { id: 'great', label: 'Great', icon: greatIcon, color: 'bg-[var(--mood-great)]' },
 ]
 
 export const recommended = [
@@ -42,13 +33,13 @@ export const recommended = [
     title: 'Western PA Diaper Bank',
     detail: '2.3 mi  ·  Open until 5pm',
     image: diaperBankImage,
-    to: '/resources',
+    to: '/resources/diaper-bank',
   },
   {
     id: 'new-mom-basics',
-    title: 'New Mom Basics',
-    detail: '6 short videos  ·  +6',
+    title: 'Newborn Sleep Basics',
+    detail: '5 minute lesson  ·  +2 credits',
     image: newMomBasicsImage,
-    to: '/earn',
+    to: '/earn/sleep-video',
   },
 ]

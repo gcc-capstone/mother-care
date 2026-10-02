@@ -1,55 +1,68 @@
+import { Page } from '../components/Page'
+import { Link } from 'react-router-dom'
+import { useMotherState } from '../hooks/useMotherState'
 import { useState } from 'react'
-import './Resources.css'
 
 import pinIcon from '../assets/icons/location-pin.svg'
 import chevronIcon from '../assets/icons/chevron-down-small.svg'
 import searchIcon from '../assets/icons/search.svg'
 import filterIcon from '../assets/icons/filter.svg'
 import thumbsUpIcon from '../assets/icons/thumbs-up.svg'
-import { categories, location, resources, type Category } from '../data/resources'
+import { categories, resources, type Category } from '../data/resources'
 
-// Location, filter and "View" buttons are inert: the prototype covers the five tab screens only.
 export default function Resources() {
   const [query, setQuery] = useState('')
+  const { profile, setProfile } = useMotherState()
+  const [editingLocation, setEditingLocation] = useState(false)
+  const [locationDraft, setLocationDraft] = useState(profile.location)
+  const [showFilters, setShowFilters] = useState(false)
+  const [openOnly, setOpenOnly] = useState(false)
   const [category, setCategory] = useState<Category>('All')
 
   const q = query.trim().toLowerCase()
   const visible = resources.filter(
     (r) =>
+      (!openOnly || r.isOpen) &&
       (category === 'All' || r.categories.includes(category)) &&
       (q === '' || `${r.name} ${r.org} ${r.provides}`.toLowerCase().includes(q)),
   )
 
   return (
-    <main className="screen resources">
-      <h1 className="text-heading">Resources</h1>
+    <Page title="Resources">
 
-      <button className="location-chip">
+      <button onClick={() => setEditingLocation(v => !v)} aria-expanded={editingLocation} className="flex min-h-11 self-start items-center gap-1.5 rounded-full border border-[var(--border)] bg-white px-3 py-[7px] text-[13px] font-semibold text-[var(--ink)]">
         <img src={pinIcon} width={15} height={15} alt="" />
-        <span>{location}</span>
+        <span>{profile.location}</span>
         <img src={chevronIcon} width={14} height={14} alt="" />
       </button>
 
-      <div className="search-row">
-        <label className="search-box">
+      {editingLocation && <form className="flex flex-col gap-3 rounded-2xl bg-white p-4" onSubmit={e => { e.preventDefault(); if (!locationDraft.trim()) return; setProfile(prev => ({ ...prev, location: locationDraft.trim() })); setEditingLocation(false) }}>
+        <label className="flex flex-col gap-2">Your location<input required maxLength={100} className="rounded-xl border border-[var(--border)] p-3" value={locationDraft} onChange={e => setLocationDraft(e.target.value)} /></label>
+        <p className="text-xs text-[var(--muted)]">These sample resources are in the Allegheny Valley area.</p>
+        <button className="min-h-11 rounded-full bg-[var(--ink)] p-3 text-white">Save location</button><button type="button" className="min-h-11" onClick={() => setEditingLocation(false)}>Cancel</button>
+      </form>}
+      <div className="flex items-center gap-2.5">
+        <label className="flex min-w-0 flex-1 cursor-text items-center gap-2.5 rounded-full border border-[var(--border)] bg-white px-3.5 py-3 focus-within:border-[var(--ink)] [&>input]:min-w-0 [&>input]:flex-1 [&>input]:bg-transparent [&>input]:text-[15px]">
           <img src={searchIcon} width={18} height={18} alt="" />
           <input
             type="search"
+            aria-label="Search resources"
             placeholder="Search resources"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>
-        <button className="filter-button" aria-label="Filters">
+        <button className="flex size-[46px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)]" aria-label="Filters" aria-expanded={showFilters} onClick={() => setShowFilters(v => !v)}>
           <img src={filterIcon} width={20} height={20} alt="" />
         </button>
       </div>
 
-      <div className="category-chips">
+      {showFilters && <section className="flex flex-col gap-2 rounded-2xl bg-white p-4" aria-label="Resource filters"><label className="flex min-h-11 items-center gap-3"><input type="checkbox" checked={openOnly} onChange={e => setOpenOnly(e.target.checked)} className="size-5 accent-[var(--ink)]" />Open now only</label><button className="min-h-11 self-start font-semibold" onClick={() => { setQuery(''); setCategory('All'); setOpenOnly(false) }}>Reset filters</button></section>}
+      <div className="flex gap-2 overflow-x-auto pb-1">
         {categories.map((c) => (
           <button
             key={c}
-            className="category-chip"
+            className="min-h-11 shrink-0 rounded-full border border-[var(--border)] bg-white px-3.5 py-2 text-[13px] font-semibold aria-pressed:border-[var(--ink)] aria-pressed:bg-[var(--ink)] aria-pressed:text-white"
             aria-pressed={category === c}
             onClick={() => setCategory(c)}
           >
@@ -58,49 +71,49 @@ export default function Resources() {
         ))}
       </div>
 
-      <section className="section">
-        <h2 className="text-subhead">Recommended for you</h2>
+      <section className="flex flex-col gap-2.5">
+        <h2 className="text-lg font-semibold leading-snug">Recommended for you</h2>
         {visible.length === 0 ? (
-          <p className="text-caption resource-empty">No resources match. Try another search or category.</p>
+          <p className="text-[13px] leading-snug text-[var(--muted)] py-6 text-center">No resources match. Try another search or category.</p>
         ) : (
           visible.map((r) => (
-            <article key={r.id} className="resource-card">
-              <div className="resource-header">
+            <article key={r.id} className="flex flex-col gap-3 rounded-[20px] bg-white p-4">
+              <div className="flex items-center gap-3">
                 {r.logo ? (
-                  <div className="resource-logo">
+                  <div className="flex size-[58px] shrink-0 items-center justify-center rounded-[14px] border border-[var(--border)] bg-white p-1 [&>img]:size-[50px] [&>img]:object-contain">
                     <img src={r.logo} alt="" />
                   </div>
                 ) : (
-                  <div className="resource-logo resource-logo-initials">{r.initials}</div>
+                  <div className="flex size-[58px] shrink-0 items-center justify-center rounded-[14px] bg-[var(--sage-strip)] p-1 text-xl font-semibold text-[var(--ink)]">{r.initials}</div>
                 )}
-                <div className="resource-names">
-                  <h3 className="resource-name">{r.name}</h3>
-                  <p className="text-caption">{r.org}</p>
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <h3 className="text-[17px] font-semibold text-[var(--ink)]">{r.name}</h3>
+                  <p className="text-[13px] leading-snug text-[var(--muted)]">{r.org}</p>
                 </div>
               </div>
 
-              <div className="resource-meta">
-                <p className="resource-status">
-                  <span className={r.isOpen ? 'is-open' : 'is-varies'}>{r.status}</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="flex min-w-0 flex-1 flex-wrap gap-2 text-[13px] text-[var(--muted)]">
+                  <span className={r.isOpen ? 'font-semibold text-[var(--sage)]' : 'font-semibold'}>{r.status}</span>
                   <span>·</span>
                   <span>{r.distance}</span>
                 </p>
-                <span className={`resource-rating${r.rating === 'Very good' ? ' is-top' : ''}`}>
+                <span className={`flex shrink-0 items-center gap-[5px] rounded-full px-2.5 py-[5px] text-xs font-semibold ${r.rating === 'Very good' ? 'bg-[var(--sage-strip)] text-[var(--ink)]' : 'bg-[var(--mood-okay)]'}`}>
                   <img src={thumbsUpIcon} width={12} height={12} alt="" />
                   {r.rating}
                 </span>
               </div>
 
-              <div className="resource-details">
-                <p className="resource-provides">{r.provides}</p>
-                <p className="text-caption">{r.address}</p>
+              <div className="flex flex-col gap-1">
+                <p className="whitespace-pre-wrap text-[13px]">{r.provides}</p>
+                <p className="text-[13px] leading-snug text-[var(--muted)]">{r.address}</p>
               </div>
 
-              <button className="btn btn-primary resource-view">View</button>
+              <Link to={`/resources/${r.id}`} className="inline-flex min-h-11 items-center justify-center rounded-full font-semibold leading-snug disabled:cursor-not-allowed disabled:opacity-40 w-full bg-[var(--ink)] p-3 text-[15px] text-white">View</Link>
             </article>
           ))
         )}
       </section>
-    </main>
+    </Page>
   )
 }
