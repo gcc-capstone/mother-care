@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #20312e;
+  --color-muted: #5c6b64;
+  --color-brand: #1d3b34;
+  --color-accent: #2e7166;
+  --color-canvas: #f7f5ee;
+  --color-line: #e5eae7;
+  --color-sage: #edf6f2;
+  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+@layer base {
+  body {
+    @apply m-0 min-w-80 bg-canvas font-sans text-sm leading-relaxed text-ink antialiased;
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+  input,
+  textarea,
+  select {
+    accent-color: var(--color-accent);
+  }
+}

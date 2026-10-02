@@ -1,252 +1,388 @@
-import assetb356d from "../assets/b356d.svg"
-import assetaf6c9 from "../assets/af6c9.svg"
-import assetce264 from "../assets/ce264.svg"
-import asset8878d from "../assets/8878d.svg"
-import asset46af3 from "../assets/46af3.svg"
-import asset4e6f4 from "../assets/4e6f4.svg"
-import asset8d6a0 from "../assets/8d6a0.svg"
-import { useRef } from "react"
-import "./AdminGoals.css";
+import { useRef, useState } from 'react'
+import { useDemo } from '../hooks/demoContext'
+import { demoToday } from '../data/mockData'
+import {
+  Badge,
+  Banner,
+  Button,
+  Empty,
+  Field,
+  MotherPicker,
+  Page,
+  Panel,
+  Pagination,
+  Stats,
+} from '../components/ui'
+import ConfirmDialog from '../components/ConfirmDialog'
+import { inputClass, splitClass } from '../utils/uiClasses'
+import type { Goal } from '../types/domain'
 
-const metrics = [
-  ["DAYS ACTIVE", "148", "Since May 6, 2026"],
-  ["GOALS MET", "12", "80% completion rate"],
-  ["TASKS PENDING", "4", "1 due today"],
-  ["NEXT MILESTONE", "Oct 08", "Housing plan review"],
-]
-
-function FilterButton({ children }: { children: string }) {
+function GoalEditor({
+  motherId,
+  goal,
+  onSave,
+  onCancel,
+}: {
+  motherId: string
+  goal?: Goal
+  onSave: (goal: Goal) => void
+  onCancel: () => void
+}) {
+  const titleRef = useRef<HTMLInputElement>(null)
+  const beginGoal = () => {
+    titleRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    titleRef.current?.focus({ preventScroll: true })
+  }
   return (
-    <button className="filter" type="button">
-      {children}
-      <img src={assetb356d} alt="" />
-    </button>
+    <Panel title={goal ? 'Edit goal' : 'Create a goal'}>
+      <Button secondary onClick={beginGoal}>
+        {goal ? 'Edit title' : 'Create goal +'}
+      </Button>
+      <form
+        onReset={(e) =>
+          e.currentTarget
+            .querySelectorAll('textarea')
+            .forEach((field) => field.setCustomValidity(''))
+        }
+        className="space-y-4"
+        onSubmit={(e) => {
+          e.preventDefault()
+          const values = new FormData(e.currentTarget)
+          const title = String(values.get('title')).trim()
+          const description = String(values.get('description')).trim()
+          if (!title || !description) return
+          onSave({
+            id: goal?.id ?? crypto.randomUUID(),
+            motherId,
+            title,
+            description,
+            category: String(values.get('category')),
+            due: String(values.get('due')),
+            recurrence: String(values.get('recurrence')),
+            reminder: String(values.get('reminder')),
+            notes: String(values.get('notes')).trim(),
+            visible: values.has('visible'),
+            weeklyReview: values.has('weeklyReview'),
+            status: goal?.status ?? 'Active',
+          })
+          if (!goal) e.currentTarget.reset()
+        }}
+      >
+        <Field label="Goal title">
+          <input
+            ref={titleRef}
+            className={inputClass}
+            name="title"
+            required
+            maxLength={120}
+            pattern=".*\S.*"
+            defaultValue={goal?.title ?? ''}
+            placeholder="Prepare two interview-ready outfits"
+          />
+        </Field>
+        <Field label="Description">
+          <textarea
+            className={inputClass}
+            name="description"
+            onChange={(e) =>
+              e.currentTarget.setCustomValidity(
+                e.currentTarget.value.trim()
+                  ? ''
+                  : 'Enter a description or note before saving.',
+              )
+            }
+            required
+            maxLength={1000}
+            rows={3}
+            defaultValue={goal?.description ?? ''}
+            placeholder="Write supportive next steps for this mother."
+          />
+        </Field>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="Category">
+            <select
+              name="category"
+              className={inputClass}
+              defaultValue={goal?.category ?? 'Care continuity'}
+            >
+              {[
+                'Care continuity',
+                'Employment readiness',
+                'Housing',
+                'Prenatal care',
+                'Parenting support',
+              ].map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Target completion">
+            <input
+              className={inputClass}
+              name="due"
+              type="date"
+              required
+              defaultValue={goal?.due ?? '2026-10-08'}
+            />
+          </Field>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="Recurrence">
+            <select
+              name="recurrence"
+              className={inputClass}
+              defaultValue={goal?.recurrence ?? 'One time'}
+            >
+              <option>One time</option>
+              <option>Daily</option>
+              <option>Weekly</option>
+            </select>
+          </Field>
+          <Field label="Reminder">
+            <select
+              name="reminder"
+              className={inputClass}
+              defaultValue={goal?.reminder ?? '1 day before'}
+            >
+              <option>1 day before</option>
+              <option>2 hours before</option>
+              <option>None</option>
+            </select>
+          </Field>
+        </div>
+        <Field label="Counselor notes">
+          <textarea
+            className={inputClass}
+            name="notes"
+            rows={2}
+            maxLength={1000}
+            defaultValue={goal?.notes ?? ''}
+          />
+        </Field>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            name="visible"
+            defaultChecked={goal?.visible ?? true}
+          />
+          Mother-visible
+        </label>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            name="weeklyReview"
+            defaultChecked={goal?.weeklyReview ?? true}
+          />
+          Weekly review
+        </label>
+        <div className="flex flex-wrap gap-2">
+          <Button type="submit">{goal ? 'Save changes' : 'Assign goal'}</Button>
+          <Button
+            secondary
+            onClick={() => {
+              onCancel()
+              if (!goal) titleRef.current?.form?.reset()
+            }}
+          >
+            Cancel
+          </Button>
+        </div>
+      </form>
+    </Panel>
   )
 }
 
-export default function App() {
-  const titleRef = useRef<HTMLInputElement>(null)
-
-  const beginGoal = () => {
-    titleRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })
-    titleRef.current?.focus({ preventScroll: true })
-  }
-
+export default function AdminGoals() {
+  const { mothers, selectedId, goals, setGoals, setFollowUps } = useDemo()
+  const [search, setSearch] = useState('')
+  const [filter, setFilter] = useState('All')
+  const [page, setPage] = useState(0)
+  const [editing, setEditing] = useState<string | null>(null)
+  const [deleting, setDeleting] = useState<Goal | null>(null)
+  const [message, setMessage] = useState('')
+  const mother = mothers.find((m) => m.id === selectedId)
+  const caseGoals = goals.filter((g) => g.motherId === selectedId)
+  const active = caseGoals.filter((g) => g.status === 'Active')
+  const completed = caseGoals.length - active.length
+  const visible = caseGoals.filter(
+    (g) =>
+      g.title.toLowerCase().includes(search.toLowerCase()) &&
+      (filter === 'All' ||
+        (filter === 'Overdue'
+          ? g.status === 'Active' && g.due < demoToday
+          : g.status === filter)),
+  )
+  const currentPage = Math.min(
+    page,
+    Math.max(0, Math.ceil(visible.length / 5) - 1),
+  )
+  const editGoal = caseGoals.find((g) => g.id === editing)
   return (
-    <main className="workspace">
-      <header className="topbar">
-        <div className="secure-status">
-          <img src={assetaf6c9} alt="" />
-          <span>Secure Mother Care workspace</span>
-        </div>
-        <div className="account">
-          <div className="avatar">AR</div>
-          <div>
-            <strong>Alex Rivera</strong>
-            <span>Counselor</span>
+    <Page title={`Goals for ${mother?.name ?? 'selected mother'}`}>
+      <MotherPicker />
+      <Banner>
+        Use supportive language and respect the mother’s contact preferences.
+        Assignments are available for review in this workspace.
+      </Banner>
+      <Stats
+        items={[
+          { label: 'Active goals', value: active.length },
+          { label: 'Goals met', value: completed },
+          {
+            label: 'Overdue',
+            value: active.filter((g) => g.due < demoToday).length,
+          },
+          {
+            label: 'Completion rate',
+            value: `${caseGoals.length ? Math.round((completed / caseGoals.length) * 100) : 0}%`,
+          },
+        ]}
+      />
+      <div className={splitClass}>
+        <Panel title="Goals tracker">
+          <div className="flex flex-wrap gap-3">
+            <Field label="Search goals">
+              <input
+                className={inputClass}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                  setPage(0)
+                }}
+                placeholder="Search goals…"
+              />
+            </Field>
+            <Field label="Status">
+              <select
+                className={inputClass}
+                value={filter}
+                onChange={(e) => {
+                  setFilter(e.target.value)
+                  setPage(0)
+                }}
+              >
+                {['All', 'Active', 'Overdue', 'Completed'].map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </Field>
           </div>
-        </div>
-      </header>
-
-      <div className="page-content">
-        <section className="page-heading">
-          <div>
-            <p className="eyebrow">CARE CONTINUITY</p>
-            <h1>Goals for Jan Williams</h1>
-          </div>
-          <button className="primary-button" type="button" onClick={beginGoal}>
-            Create goal
-            <img src={assetce264} alt="" />
-          </button>
-        </section>
-
-        <aside className="security-banner">
-          <img src={asset8878d} alt="" />
-          <p>
-            Goals are written in supportive, mother-facing language. Reminders
-            respect Jan’s contact preferences and quiet hours.
-          </p>
-        </aside>
-
-        <section className="metrics" aria-label="Case summary">
-          {metrics.map(([label, value, detail]) => (
-            <article className="metric-card" key={label}>
-              <strong>{label}</strong>
-              <b>{value}</b>
-              <span>{detail}</span>
+          {visible.slice(currentPage * 5, currentPage * 5 + 5).map((g) => (
+            <article
+              key={g.id}
+              className="space-y-3 rounded-xl border border-line bg-canvas p-4"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <h3 className="font-bold">{g.title}</h3>
+                <Badge>
+                  {g.status === 'Active' && g.due < demoToday
+                    ? 'Overdue'
+                    : g.status}
+                </Badge>
+              </div>
+              <p>{g.description}</p>
+              <p className="text-xs text-muted">
+                Due {g.due} · {g.recurrence} ·{' '}
+                {g.visible ? 'Mother-visible' : 'Care team only'} ·{' '}
+                {g.weeklyReview ? 'Weekly review' : 'No weekly review'}
+              </p>
+              {g.notes && (
+                <p className="text-sm">
+                  <strong>Counselor notes:</strong> {g.notes}
+                </p>
+              )}
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  secondary
+                  onClick={() => {
+                    setEditing(g.id)
+                    setMessage('')
+                  }}
+                >
+                  Edit
+                </Button>
+                <Button
+                  secondary
+                  onClick={() => {
+                    setGoals((items) =>
+                      items.map((item) =>
+                        item.id === g.id
+                          ? {
+                              ...item,
+                              status:
+                                g.status === 'Active' ? 'Completed' : 'Active',
+                            }
+                          : item,
+                      ),
+                    )
+                    setMessage(
+                      g.status === 'Active'
+                        ? 'Goal completed.'
+                        : 'Goal reopened.',
+                    )
+                  }}
+                >
+                  {g.status === 'Active' ? 'Complete' : 'Reopen'}
+                </Button>
+                <Button secondary onClick={() => setDeleting(g)}>
+                  Delete
+                </Button>
+              </div>
             </article>
           ))}
-        </section>
-
-        <div className="dashboard-grid">
-          <section className="panel tracker-panel">
-            <div className="panel-body">
-              <div className="section-heading">
-                <h2>Active goals tracker</h2>
-                <p>4 active · 12 completed · 80% overall completion</p>
-              </div>
-
-              <div className="toolbar">
-                <label className="search">
-                  <img src={asset46af3} alt="" />
-                  <input
-                    aria-label="Search goals"
-                    placeholder="Search Jan’s goals…"
-                  />
-                </label>
-                <FilterButton>Active</FilterButton>
-                <FilterButton>Due soon</FilterButton>
-                <FilterButton>Completed</FilterButton>
-              </div>
-
-              <article className="goal-card goal-card--green">
-                <div className="goal-heading">
-                  <h3>Take Daily Prenatal Vitamin</h3>
-                  <span className="pill pill--green">ON TRACK</span>
-                </div>
-                <p>Daily at 8:00 AM · Mother-owned · Next reminder tomorrow</p>
-                <div className="progress">
-                  <div className="progress-track" />
-                  <strong>12-day streak</strong>
-                </div>
-                <div className="info-row">
-                  <span>Review cadence</span>
-                  <strong>Weekly with counselor</strong>
-                </div>
-              </article>
-
-              <article className="goal-card goal-card--cream">
-                <div className="goal-heading">
-                  <h3>Pick Up Interview Clothes</h3>
-                  <span className="pill pill--amber">DUE WEDNESDAY</span>
-                </div>
-                <p>
-                  Wednesday at 3:00 PM · Linked to The Sparrows Nest ·
-                  Counselor-supported
-                </p>
-                <div className="milestones">
-                  <span>✓ Referral sent</span>
-                  <span>✓ Visit planned</span>
-                  <span>Pickup</span>
-                </div>
-              </article>
-
-              <div className="completed-table">
-                <div className="table-head">
-                  COMPLETED GOAL <i>·</i> COMPLETED <i>·</i> OWNER <i>·</i>{" "}
-                  OUTCOME
-                </div>
-                <div className="table-row">
-                  <span>Attend prenatal appointment</span>
-                  <span>Sep 26</span>
-                  <span>Jan</span>
-                  <span>COMPLETED</span>
-                </div>
-                <div className="table-row">
-                  <span>Submit housing waitlist form</span>
-                  <span>Sep 20</span>
-                  <span>Jan + Alex</span>
-                  <span>COMPLETED</span>
-                </div>
-              </div>
-
-              <div className="pagination">
-                <span>2 active · 12 completed goals</span>
-                <button type="button">
-                  ‹ Previous&nbsp;&nbsp; 1&nbsp; 2&nbsp; 3&nbsp;&nbsp; Next ›
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <aside className="panel creation-panel">
-            <div className="goal-context">
-              <div className="identity">
-                <div className="section-heading">
-                  <h2>Create a goal</h2>
-                  <p>Jan Williams · active case</p>
-                </div>
-                <span className="pill pill--blue">MOTHER-VISIBLE</span>
-              </div>
-              <p>
-                Jan’s latest check-in requested practical support for interview
-                preparation and prenatal routines.
-              </p>
-            </div>
-
-            <form
-              className="goal-form"
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <label className="field">
-                <strong>Goal title</strong>
-                <input
-                  ref={titleRef}
-                  defaultValue="Prepare two interview-ready outfits"
-                />
-              </label>
-              <label className="field">
-                <strong>Description</strong>
-                <textarea defaultValue="Choose two comfortable outfits and set them aside before the first interview." />
-              </label>
-              <div className="field-row">
-                <label className="field">
-                  <strong>Category</strong>
-                  <input defaultValue="Employment readiness" />
-                </label>
-                <label className="field">
-                  <strong>Target completion</strong>
-                  <input defaultValue="Oct 7 · 3:00 PM" />
-                </label>
-              </div>
-              <div className="field-row">
-                <label className="field">
-                  <strong>Recurrence</strong>
-                  <input defaultValue="One time" />
-                </label>
-                <label className="field">
-                  <strong>Reminder</strong>
-                  <input defaultValue="1 day + 2 hours before" />
-                </label>
-              </div>
-              <label className="field">
-                <strong>Counselor notes</strong>
-                <textarea defaultValue="Offer help coordinating transportation if needed." />
-              </label>
-              <div className="settings">
-                <label className="choice">
-                  <input type="checkbox" defaultChecked />
-                  <img src={asset4e6f4} alt="" />
-                  <span>
-                    <strong>Visible to Jan</strong>
-                    <small>Client app</small>
-                  </span>
-                </label>
-                <label className="choice">
-                  <input type="checkbox" defaultChecked />
-                  <img src={asset4e6f4} alt="" />
-                  <span>
-                    <strong>Weekly review</strong>
-                    <small>Care cadence</small>
-                  </span>
-                </label>
-              </div>
-            </form>
-
-            <div className="dispatch">
-              <div className="sync-status">
-                <img src={asset8d6a0} alt="" />
-                <strong>⚡ Jan’s app connection is active</strong>
-              </div>
-              <button type="button">
-                <span>Assign &amp; Push Goal to Mother Client</span>
-                <span>↗</span>
-              </button>
-              <p>⚡ Syncs automatically to Mother Client App</p>
-            </div>
-          </aside>
-        </div>
+          {!visible.length && (
+            <Empty>
+              No goals match this view. Create a goal or change the filters.
+            </Empty>
+          )}
+          <Pagination
+            total={visible.length}
+            page={currentPage}
+            onChange={setPage}
+          />
+        </Panel>
+        {mother && (
+          <GoalEditor
+            key={`${selectedId}-${editGoal?.id ?? 'new'}`}
+            motherId={selectedId}
+            goal={editGoal}
+            onCancel={() => {
+              setEditing(null)
+              setMessage('Changes canceled.')
+            }}
+            onSave={(g) => {
+              setGoals((items) =>
+                editGoal
+                  ? items.map((item) => (item.id === g.id ? g : item))
+                  : [g, ...items],
+              )
+              setEditing(null)
+              setSearch('')
+              setFilter('All')
+              setPage(0)
+              setMessage(editGoal ? 'Goal updated.' : 'Goal assigned.')
+            }}
+          />
+        )}
       </div>
-    </main>
+      <p role="status" className="text-accent">
+        {message}
+      </p>
+      {deleting && (
+        <ConfirmDialog
+          title={`Delete “${deleting.title}”?`}
+          onCancel={() => setDeleting(null)}
+          onConfirm={() => {
+            setGoals((items) => items.filter((g) => g.id !== deleting.id))
+            setFollowUps((items) =>
+              items.filter((f) => f.goalId !== deleting.id),
+            )
+            setDeleting(null)
+            setEditing(null)
+            setMessage('Goal deleted.')
+          }}
+        />
+      )}
+    </Page>
   )
 }

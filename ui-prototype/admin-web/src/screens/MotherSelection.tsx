@@ -1,293 +1,358 @@
-import imgStatus from "../assets/af6c9.svg";
-import imgPlus from "../assets/ce264.svg";
-import imgShieldCheck from "../assets/8878d.svg";
-import imgSearch from "../assets/46af3.svg";
-import imgChevronDown from "../assets/b356d.svg";
-import imgShieldCheck1 from "../assets/8878d.svg";
-import imgStatus1 from "../assets/8d6a0.svg";
+import CaseActivity from '../components/CaseActivity'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useDemo } from '../hooks/demoContext'
+import { counselors } from '../data/mockData'
+import {
+  Badge,
+  Banner,
+  Button,
+  CaseLinks,
+  Empty,
+  Field,
+  Page,
+  Panel,
+  Pagination,
+  Stats,
+} from '../components/ui'
+import { inputClass, splitClass, tableClass } from '../utils/uiClasses'
+import type { Mother } from '../types/domain'
 
-export default function Workspace() {
+export default function MotherSelection() {
+  const { mothers, setMothers, goals, followUps, selectedId, setSelectedId } =
+    useDemo()
+  const { motherId } = useParams()
+  const navigate = useNavigate()
+  const [search, setSearch] = useState('')
+  const [status, setStatus] = useState('All')
+  const [county, setCounty] = useState('All')
+  const [sort, setSort] = useState('Name')
+  const [page, setPage] = useState(0)
+  const [intake, setIntake] = useState(false)
+  const [message, setMessage] = useState('')
+  const mother = mothers.find((m) => m.id === (motherId ?? selectedId))
+  useEffect(() => {
+    if (motherId && mothers.some((m) => m.id === motherId))
+      setSelectedId(motherId)
+  }, [motherId, mothers, setSelectedId])
+  const filtered = mothers
+    .filter(
+      (m) =>
+        `${m.name} ${m.id}`.toLowerCase().includes(search.toLowerCase()) &&
+        (status === 'All' || m.status === status) &&
+        (county === 'All' || m.county === county),
+    )
+    .sort((a, b) =>
+      sort === 'Name'
+        ? a.name.localeCompare(b.name)
+        : a.appointment.localeCompare(b.appointment),
+    )
+  const currentPage = Math.min(
+    page,
+    Math.max(0, Math.ceil(filtered.length / 5) - 1),
+  )
+  const selectMother = (id: string) => {
+    setSelectedId(id)
+    navigate(`/admin/mothers/${id}`)
+    setIntake(false)
+    setMessage('')
+  }
+  const updateMother = (changes: Partial<Mother>) => {
+    if (!mother) return
+    setMothers((items) =>
+      items.map((m) => (m.id === mother.id ? { ...m, ...changes } : m)),
+    )
+    setMessage('Case updated.')
+  }
   return (
-    <div className="content-stretch flex flex-col items-start relative size-full" data-node-id="1:27" data-name="Workspace">
-      <div className="bg-white border-[#e5eae7] border-b border-solid content-stretch flex h-[64px] items-center justify-between overflow-clip px-[32px] relative shrink-0 w-full" data-node-id="1:28" data-name="Role-aware top bar">
-        <div className="content-stretch flex gap-[8px] items-center overflow-clip relative shrink-0" data-node-id="1:29" data-name="Secure status">
-          <div className="relative shrink-0 size-[8px]" data-node-id="1:30" data-name="Status">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStatus} />
+    <Page
+      title="Mothers"
+      action={
+        <Button
+          onClick={() => {
+            setIntake(true)
+            setMessage('')
+          }}
+        >
+          Start quick intake +
+        </Button>
+      }
+    >
+      <Banner>
+        Select a mother to review her case and plan supportive next steps.
+      </Banner>
+      <Stats
+        items={[
+          { label: 'Mothers', value: mothers.length },
+          {
+            label: 'Active goals',
+            value: goals.filter((g) => g.status === 'Active').length,
+          },
+          {
+            label: 'Open follow-ups',
+            value: followUps.filter((f) => f.status !== 'Completed').length,
+          },
+          {
+            label: 'New intakes',
+            value: mothers.filter((m) => m.status === 'New').length,
+          },
+        ]}
+      />
+      <div className={splitClass}>
+        <Panel title="Case directory">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Field label="Search mothers">
+              <input
+                className={inputClass}
+                placeholder="Name or case ID"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                  setPage(0)
+                }}
+              />
+            </Field>
+            <Field label="Case status">
+              <select
+                className={inputClass}
+                value={status}
+                onChange={(e) => {
+                  setStatus(e.target.value)
+                  setPage(0)
+                }}
+              >
+                {['All', 'Stable', 'Watch', 'High', 'New'].map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </Field>
+            <Field label="County">
+              <select
+                className={inputClass}
+                value={county}
+                onChange={(e) => {
+                  setCounty(e.target.value)
+                  setPage(0)
+                }}
+              >
+                {['All', ...new Set(mothers.map((m) => m.county))].map((c) => (
+                  <option key={c}>{c}</option>
+                ))}
+              </select>
+            </Field>
+            <Field label="Sort by">
+              <select
+                className={inputClass}
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+              >
+                <option>Name</option>
+                <option>Next appointment</option>
+              </select>
+            </Field>
           </div>
-          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#5c6b64] text-[11px] whitespace-nowrap" data-node-id="1:31">
-            Secure Counselor workspace
-          </p>
-        </div>
-        <div className="content-stretch flex gap-[9px] items-center overflow-clip relative shrink-0" data-node-id="1:32" data-name="Account">
-          <div className="bg-[#dcece6] content-stretch flex items-center justify-center overflow-clip relative rounded-[999px] shrink-0 size-[34px]" data-node-id="1:33" data-name="Avatar">
-            <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#2e7166] text-[10px] whitespace-nowrap" data-node-id="1:34">
-              AR
+          <div className="overflow-x-auto">
+            <table className={`${tableClass} min-w-[600px]`}>
+              <caption className="sr-only">Mother case directory</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Mother</th>
+                  <th scope="col">County</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Active goals</th>
+                  <th scope="col">Counselor</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered
+                  .slice(currentPage * 5, currentPage * 5 + 5)
+                  .map((m) => (
+                    <tr
+                      key={m.id}
+                      className={
+                        m.id === mother?.id ? 'bg-sage' : 'hover:bg-canvas'
+                      }
+                    >
+                      <td>
+                        <button
+                          className="text-left font-semibold text-accent underline"
+                          onClick={() => selectMother(m.id)}
+                        >
+                          {m.name}
+                        </button>
+                        <p className="text-xs text-muted">{m.id}</p>
+                      </td>
+                      <td>{m.county}</td>
+                      <td>
+                        <Badge>{m.status}</Badge>
+                      </td>
+                      <td>
+                        {
+                          goals.filter(
+                            (g) => g.motherId === m.id && g.status === 'Active',
+                          ).length
+                        }
+                      </td>
+                      <td>{m.counselor}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+          {!filtered.length && <Empty>No mothers match these filters.</Empty>}
+          <Pagination
+            total={filtered.length}
+            page={currentPage}
+            onChange={setPage}
+          />
+        </Panel>
+        {intake ? (
+          <Panel title="Quick intake">
+            <form
+              className="space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault()
+                const form = new FormData(e.currentTarget)
+                const name = String(form.get('name')).trim()
+                if (!name) return
+                const record: Mother = {
+                  id: `MC-${crypto.randomUUID().slice(0, 8)}`,
+                  name,
+                  county: String(form.get('county')),
+                  status: 'New',
+                  counselor: String(form.get('counselor')),
+                  contact: String(form.get('contact')),
+                  needs: String(form.get('needs')).trim()
+                    ? [String(form.get('needs')).trim()]
+                    : [],
+                  appointment: '',
+                }
+                setMothers((items) => [...items, record])
+                selectMother(record.id)
+                setMessage('Intake created. Review the case below.')
+              }}
+            >
+              <Field label="Full name">
+                <input
+                  autoFocus
+                  className={inputClass}
+                  name="name"
+                  required
+                  maxLength={100}
+                  pattern=".*\S.*"
+                />
+              </Field>
+              <Field label="County">
+                <select name="county" className={inputClass}>
+                  {['Allegheny', 'Westmoreland', 'Butler', 'Beaver'].map(
+                    (c) => (
+                      <option key={c}>{c}</option>
+                    ),
+                  )}
+                </select>
+              </Field>
+              <Field label="Assigned counselor">
+                <select name="counselor" className={inputClass}>
+                  {counselors.map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
+              </Field>
+              <Field label="Preferred contact">
+                <select name="contact" className={inputClass}>
+                  <option>Mother Client App</option>
+                  <option>Phone</option>
+                </select>
+              </Field>
+              <Field label="Immediate support need (optional)">
+                <input name="needs" className={inputClass} maxLength={200} />
+              </Field>
+              <div className="flex gap-2">
+                <Button type="submit">Create intake</Button>
+                <Button secondary onClick={() => setIntake(false)}>
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </Panel>
+        ) : mother ? (
+          <Panel title={mother.name}>
+            <p className="text-muted">
+              {mother.id} · {mother.county}
             </p>
-          </div>
-          <div className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[0] not-italic relative shrink-0 text-[#20312e] text-[0px] whitespace-nowrap" data-node-id="1:35">
-            <p className="leading-[1.35] mb-0 text-[10px]">Alex Rivera</p>
-            <p className="font-['Inter:Medium'] font-medium leading-[1.35] text-[#5c6b64] text-[9px]">Counselor</p>
-          </div>
-        </div>
+            <Badge>{mother.status}</Badge>
+            <Field label="Assigned counselor">
+              <select
+                className={inputClass}
+                value={mother.counselor}
+                onChange={(e) => updateMother({ counselor: e.target.value })}
+              >
+                {counselors.map((c) => (
+                  <option key={c}>{c}</option>
+                ))}
+              </select>
+            </Field>
+            <Field label="Case status">
+              <select
+                className={inputClass}
+                value={mother.status}
+                onChange={(e) =>
+                  updateMother({ status: e.target.value as Mother['status'] })
+                }
+              >
+                {['Stable', 'Watch', 'High', 'New'].map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </Field>
+            <p>
+              <strong>Preferred contact:</strong> {mother.contact}
+            </p>
+            <div>
+              <h3 className="mb-2 font-semibold">Immediate needs</h3>
+              <div className="flex flex-wrap gap-2">
+                {mother.needs.length ? (
+                  mother.needs.map((n) => <Badge key={n}>{n}</Badge>)
+                ) : (
+                  <p className="text-muted">No needs recorded yet.</p>
+                )}
+              </div>
+            </div>
+            <div className="rounded-lg bg-canvas p-3">
+              <h3 className="font-semibold">Next appointment</h3>
+              <p>
+                {mother.appointment
+                  ? new Date(mother.appointment).toLocaleString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      hour: 'numeric',
+                      minute: '2-digit',
+                    })
+                  : 'No appointment scheduled'}
+              </p>
+              <p className="text-xs text-muted">Goals & resource review</p>
+            </div>
+            <CaseLinks />
+            <CaseActivity motherId={mother.id} />
+            <Link
+              className="block text-accent underline"
+              to="/admin/motherselection"
+            >
+              Back to directory
+            </Link>
+          </Panel>
+        ) : (
+          <Panel title="Case not found">
+            <Empty>This case is unavailable.</Empty>
+            <Link className="text-accent underline" to="/admin/motherselection">
+              Back to directory
+            </Link>
+          </Panel>
+        )}
       </div>
-      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px overflow-clip pb-[28px] pt-[24px] px-[32px] relative w-full" data-node-id="1:36" data-name="Page content">
-        <div className="content-stretch flex items-end justify-between overflow-clip relative shrink-0 w-full" data-node-id="1:37" data-name="Page heading">
-          <div className="[word-break:break-word] flex-[1_0_0] font-['Lora:Bold'] font-bold leading-[0] min-w-px relative text-[#20312e] text-[0px]" data-node-id="1:38">
-            <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[1.12] mb-0 not-italic text-[#2e7166] text-[10px]">CARE CONTINUITY</p>
-            <p className="leading-[1.12] text-[28px]">Mothers</p>
-          </div>
-          <div className="bg-[#1d3b34] border border-[rgba(0,0,0,0)] border-solid content-stretch flex gap-[8px] h-[38px] items-center overflow-clip px-[14px] relative rounded-[10px] shrink-0" data-node-id="1:39" data-name="Button">
-            <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[11px] text-white whitespace-nowrap" data-node-id="1:40">
-              Start quick intake
-            </p>
-            <div className="relative shrink-0 size-[13px]" data-node-id="1:41" data-name="plus">
-              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPlus} />
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#f3eedf] content-stretch flex gap-[10px] items-center min-h-[42px] overflow-clip px-[13px] py-[10px] relative rounded-[10px] shrink-0 w-full" data-node-id="1:43" data-name="Security context banner">
-          <div className="relative shrink-0 size-[16px]" data-node-id="1:44" data-name="shield-check">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgShieldCheck} />
-          </div>
-          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[1.4] min-w-px not-italic relative text-[#20312e] text-[10px]" data-node-id="1:46">
-            Search returns only records assigned to your role and program. Selecting a mother securely fetches her current case context.
-          </p>
-        </div>
-        <div className="[word-break:break-word] content-stretch flex gap-[12px] items-start leading-[normal] relative shrink-0 w-full" data-node-id="1:47" data-name="Summary metrics">
-          <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[4px] h-[96px] items-start min-w-px overflow-clip p-[14px] relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]" data-node-id="1:48" data-name="Metric">
-            <p className="font-['Inter:Extra_Bold'] font-extrabold not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:49">
-              DUE TODAY
-            </p>
-            <p className="font-['Lora:Bold'] font-bold relative shrink-0 text-[#20312e] text-[24px] w-full" data-node-id="1:50">
-              6
-            </p>
-            <p className="font-['Inter:Regular'] font-normal not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:51">
-              Across active caseload
-            </p>
-          </div>
-          <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[4px] h-[96px] items-start min-w-px overflow-clip p-[14px] relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]" data-node-id="1:52" data-name="Metric">
-            <p className="font-['Inter:Extra_Bold'] font-extrabold not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:53">
-              OVERDUE
-            </p>
-            <p className="font-['Lora:Bold'] font-bold relative shrink-0 text-[#20312e] text-[24px] w-full" data-node-id="1:54">
-              3
-            </p>
-            <p className="font-['Inter:Regular'] font-normal not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:55">
-              Oldest is 2 days late
-            </p>
-          </div>
-          <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[4px] h-[96px] items-start min-w-px overflow-clip p-[14px] relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]" data-node-id="1:56" data-name="Metric">
-            <p className="font-['Inter:Extra_Bold'] font-extrabold not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:57">
-              AWAITING MOTHER
-            </p>
-            <p className="font-['Lora:Bold'] font-bold relative shrink-0 text-[#20312e] text-[24px] w-full" data-node-id="1:58">
-              8
-            </p>
-            <p className="font-['Inter:Regular'] font-normal not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:59">
-              No pressure language
-            </p>
-          </div>
-          <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[4px] h-[96px] items-start min-w-px overflow-clip p-[14px] relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]" data-node-id="1:60" data-name="Metric">
-            <p className="font-['Inter:Extra_Bold'] font-extrabold not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:61">
-              COMPLETED
-            </p>
-            <p className="font-['Lora:Bold'] font-bold relative shrink-0 text-[#20312e] text-[24px] w-full" data-node-id="1:62">
-              42
-            </p>
-            <p className="font-['Inter:Regular'] font-normal not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:63">
-              This month
-            </p>
-          </div>
-        </div>
-        <div className="content-stretch flex gap-[16px] h-[780px] items-start relative shrink-0 w-full" data-node-id="1:64" data-name="Unified workspace">
-          <div className="content-stretch flex h-full items-start relative shrink-0 w-[734px]" data-node-id="1:65" data-name="Primary workspace">
-            <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col h-[780px] items-start min-w-px overflow-clip relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]" data-node-id="1:66" data-name="Case list">
-              <div className="content-stretch flex flex-[1_0_0] flex-col gap-[14px] items-start min-h-px overflow-clip p-[18px] relative w-full" data-node-id="1:67" data-name="Panel body">
-                <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start not-italic overflow-clip relative shrink-0 w-full" data-node-id="1:68" data-name="Section heading">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full" data-node-id="1:69">
-                    Case directory
-                  </p>
-                  <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full" data-node-id="1:70">
-                    28 assigned mothers · 5 shown
-                  </p>
-                </div>
-                <div className="content-stretch flex gap-[8px] items-center overflow-clip relative shrink-0 w-full" data-node-id="1:71" data-name="Table toolbar">
-                  <div className="bg-[#f7f5ee] border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] gap-[8px] h-[36px] items-center min-w-px overflow-clip px-[11px] relative rounded-[8px]" data-node-id="1:72" data-name="Search">
-                    <div className="relative shrink-0 size-[13px]" data-node-id="1:73" data-name="search">
-                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSearch} />
-                    </div>
-                    <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#87938e] text-[11px]" data-node-id="1:75">
-                      Search mother name or case ID…
-                    </p>
-                  </div>
-                  <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex gap-[7px] h-[36px] items-center overflow-clip px-[10px] relative rounded-[8px] shrink-0" data-node-id="1:76" data-name="Filter">
-                    <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#20312e] text-[10px] whitespace-nowrap" data-node-id="1:77">
-                      Risk / status
-                    </p>
-                    <div className="relative shrink-0 size-[12px]" data-node-id="1:78" data-name="chevron-down">
-                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronDown} />
-                    </div>
-                  </div>
-                  <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex gap-[7px] h-[36px] items-center overflow-clip px-[10px] relative rounded-[8px] shrink-0" data-node-id="1:80" data-name="Filter">
-                    <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#20312e] text-[10px] whitespace-nowrap" data-node-id="1:81">
-                      County
-                    </p>
-                    <div className="relative shrink-0 size-[12px]" data-node-id="1:82" data-name="chevron-down">
-                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronDown} />
-                    </div>
-                  </div>
-                </div>
-                <div className="[word-break:break-word] border border-[#e5eae7] border-solid content-stretch flex flex-col items-start leading-[0] not-italic overflow-clip relative rounded-[10px] shrink-0 w-full" data-node-id="1:84" data-name="Data table">
-                  <div className="flex flex-col font-['Inter:Extra_Bold'] font-extrabold h-[34px] justify-center relative shrink-0 text-[#5c6b64] text-[9px] w-full" data-node-id="1:85">
-                    <p className="leading-[normal] whitespace-pre-wrap">{`MOTHER   ·   COUNTY   ·   STATUS   ·   NEXT APPOINTMENT   ·   OUTSTANDING   ·   COUNSELOR`}</p>
-                  </div>
-                  <div className="font-['Inter:Regular'] font-normal relative shrink-0 text-[#20312e] text-[10px] w-full whitespace-pre-wrap" data-node-id="1:86">
-                    <p className="leading-[3.9] mb-0">{`● Jan Williams   ·   Allegheny   ·   STABLE   ·   Oct 3 · 2 PM   ·   2 goals · 1 form   ·   Alex Rivera`}</p>
-                    <p className="leading-[3.9] mb-0">{`   Maria Diaz   ·   Allegheny   ·   WATCH   ·   Today · 11 AM   ·   1 goal   ·   Alex Rivera`}</p>
-                    <p className="leading-[3.9] mb-0">{`   Nia Simmons   ·   Westmoreland   ·   HIGH   ·   Oct 4 · 9 AM   ·   3 needs · 2 forms   ·   Dina Brooks`}</p>
-                    <p className="leading-[3.9] mb-0">{`   Keisha Reed   ·   Butler   ·   STABLE   ·   Oct 8 · 1 PM   ·   1 form   ·   Sam Lee`}</p>
-                    <p className="leading-[3.9]">{`   Amina Khan   ·   Allegheny   ·   NEW   ·   Oct 2 · 3 PM   ·   Intake pending   ·   Alex Rivera`}</p>
-                  </div>
-                </div>
-                <div className="bg-[#eaf2f6] content-stretch flex gap-[8px] items-center overflow-clip p-[10px] relative rounded-[8px] shrink-0 w-full" data-node-id="1:87" data-name="Selection cue">
-                  <div className="relative shrink-0 size-[14px]" data-node-id="1:88" data-name="shield-check">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgShieldCheck1} />
-                  </div>
-                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#20312e] text-[10px]" data-node-id="1:90">
-                    Jan Williams selected · privacy-aware preview loaded without sensitive counseling notes.
-                  </p>
-                  <div className="bg-[#e4f4ea] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0" data-node-id="1:91" data-name="Status tag">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#287653] text-[9px] whitespace-nowrap" data-node-id="1:92">
-                      SECURE
-                    </p>
-                  </div>
-                </div>
-                <div className="[word-break:break-word] content-stretch flex items-center justify-between leading-[normal] not-italic overflow-clip relative shrink-0 text-[10px] w-full" data-node-id="1:93" data-name="Pagination">
-                  <p className="font-['Inter:Regular'] font-normal relative shrink-0 text-[#5c6b64] whitespace-nowrap" data-node-id="1:94">
-                    1–5 of 28 assigned mothers
-                  </p>
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold relative shrink-0 text-[#2e7166] whitespace-pre" data-node-id="1:95">{`‹ Previous   1  2  3   Next ›`}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="content-stretch flex flex-[1_0_0] h-full items-start min-w-px relative" data-node-id="1:96" data-name="Action and sync hub">
-            <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col h-[780px] items-start min-w-px overflow-clip relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]" data-node-id="1:97" data-name="Quick intake and selection panel">
-              <div className="bg-white border-[#e5eae7] border-b border-solid content-stretch flex flex-col gap-[12px] items-start p-[18px] relative shrink-0 w-full" data-node-id="1:98" data-name="Selected mother preview">
-                <div className="content-stretch flex gap-[10px] items-center overflow-clip relative shrink-0 w-full" data-node-id="1:99" data-name="Identity">
-                  <div className="bg-[#dcece6] content-stretch flex items-center justify-center overflow-clip relative rounded-[999px] shrink-0 size-[42px]" data-node-id="1:100" data-name="Avatar">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#2e7166] text-[11px] whitespace-nowrap" data-node-id="1:101">
-                      JW
-                    </p>
-                  </div>
-                  <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start min-w-px not-italic overflow-clip relative" data-node-id="1:102" data-name="Section heading">
-                    <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full" data-node-id="1:103">
-                      Jan Williams
-                    </p>
-                    <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full" data-node-id="1:104">
-                      Case MC-2048 · Allegheny County
-                    </p>
-                  </div>
-                  <div className="bg-[#e4f4ea] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0" data-node-id="1:105" data-name="Status tag">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#287653] text-[9px] whitespace-nowrap" data-node-id="1:106">
-                      STABLE
-                    </p>
-                  </div>
-                </div>
-                <div className="[word-break:break-word] content-stretch flex font-['Inter:Bold'] font-bold items-center justify-between leading-[normal] not-italic overflow-clip relative shrink-0 text-[10px] w-full whitespace-nowrap" data-node-id="1:107" data-name="Information row">
-                  <p className="relative shrink-0 text-[#5c6b64]" data-node-id="1:108">
-                    Assigned counselor
-                  </p>
-                  <p className="relative shrink-0 text-[#20312e]" data-node-id="1:109">
-                    Alex Rivera
-                  </p>
-                </div>
-                <div className="[word-break:break-word] content-stretch flex font-['Inter:Bold'] font-bold items-center justify-between leading-[normal] not-italic overflow-clip relative shrink-0 text-[10px] w-full whitespace-nowrap" data-node-id="1:110" data-name="Information row">
-                  <p className="relative shrink-0 text-[#5c6b64]" data-node-id="1:111">
-                    Preferred contact
-                  </p>
-                  <p className="relative shrink-0 text-[#20312e]" data-node-id="1:112">
-                    Mother Client App
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white border-[#e5eae7] border-b border-solid content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-h-px p-[18px] relative w-full" data-node-id="1:113" data-name="Immediate context">
-                <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start not-italic overflow-clip relative shrink-0 w-full" data-node-id="1:114" data-name="Section heading">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full" data-node-id="1:115">
-                    Immediate needs
-                  </p>
-                  <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full" data-node-id="1:116">
-                    Privacy-limited selection preview
-                  </p>
-                </div>
-                <div className="content-stretch flex gap-[6px] items-start overflow-clip relative shrink-0 w-full" data-node-id="1:117" data-name="Need tags">
-                  <div className="bg-[#fff3d9] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0" data-node-id="1:118" data-name="Status tag">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#9b621b] text-[9px] whitespace-nowrap" data-node-id="1:119">
-                      HOUSING
-                    </p>
-                  </div>
-                  <div className="bg-[#eaf2f6] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0" data-node-id="1:120" data-name="Status tag">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#2e7166] text-[9px] whitespace-nowrap" data-node-id="1:121">
-                      INTERVIEW CLOTHING
-                    </p>
-                  </div>
-                  <div className="bg-[#e4f4ea] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0" data-node-id="1:122" data-name="Status tag">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#287653] text-[9px] whitespace-nowrap" data-node-id="1:123">
-                      PRENATAL CARE
-                    </p>
-                  </div>
-                </div>
-                <div className="[word-break:break-word] bg-[#f7f5ee] content-stretch flex flex-col gap-[5px] items-start leading-[normal] not-italic overflow-clip p-[12px] relative rounded-[10px] shrink-0 w-full whitespace-nowrap" data-node-id="1:124" data-name="Next appointment">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold relative shrink-0 text-[#5c6b64] text-[9px]" data-node-id="1:125">
-                    NEXT APPOINTMENT
-                  </p>
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold relative shrink-0 text-[#20312e] text-[11px]" data-node-id="1:126">
-                    Saturday, Oct 3 · 2:00 PM
-                  </p>
-                  <p className="font-['Inter:Regular'] font-normal relative shrink-0 text-[#5c6b64] text-[10px]" data-node-id="1:127">{`Goals & resource review · Video`}</p>
-                </div>
-                <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start not-italic overflow-clip relative shrink-0 w-full" data-node-id="1:128" data-name="Section heading">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full" data-node-id="1:129">
-                    Recent activity
-                  </p>
-                  <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full" data-node-id="1:130">
-                    18 min ago · Standard Check-in submitted{"\n"}Yesterday · Referral feedback received{"\n"}Sep 29 · Daily prenatal vitamin completed
-                  </p>
-                </div>
-                <div className="bg-[#edf6f2] content-stretch flex gap-[8px] items-center overflow-clip p-[11px] relative rounded-[8px] shrink-0 w-full" data-node-id="1:131" data-name="Fetch status">
-                  <div className="relative shrink-0 size-[8px]" data-node-id="1:132" data-name="Status">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStatus} />
-                  </div>
-                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#20312e] text-[10px]" data-node-id="1:133">
-                    Specific record MC-2048 will be fetched securely with role-based details.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-[#122c27] content-stretch flex flex-col gap-[12px] items-start overflow-clip p-[18px] relative shrink-0 w-full" data-node-id="1:134" data-name="System dispatch and sync">
-                <div className="content-stretch flex gap-[8px] items-center overflow-clip relative shrink-0 w-full" data-node-id="1:135" data-name="Sync status">
-                  <div className="relative shrink-0 size-[8px]" data-node-id="1:136" data-name="Status">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStatus1} />
-                  </div>
-                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] min-w-px not-italic relative text-[#d8eee7] text-[10px]" data-node-id="1:137">
-                    ⚡ Secure record ready to load
-                  </p>
-                </div>
-                <div className="[word-break:break-word] bg-white content-stretch flex font-['Inter:Extra_Bold'] font-extrabold h-[42px] items-center justify-between leading-[normal] not-italic overflow-clip px-[14px] relative rounded-[10px] shrink-0 text-[#1d3b34] w-full" data-node-id="1:138" data-name="Dispatch action">
-                  <p className="flex-[1_0_0] min-w-px relative text-[11px]" data-node-id="1:139">
-                    Select Mother
-                  </p>
-                  <p className="relative shrink-0 text-[13px] whitespace-nowrap" data-node-id="1:140">
-                    ↗
-                  </p>
-                </div>
-                <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#9fc6bc] text-[9px] w-full" data-node-id="1:141">
-                  ⚡ Loads Jan Williams' specific case details and current client state
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+      <p role="status" className="text-accent">
+        {message}
+      </p>
+    </Page>
+  )
 }

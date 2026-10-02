@@ -1,53 +1,69 @@
-import { NavLink } from 'react-router-dom'
-import imgIndicator from "../assets/8ee66.svg";
+import { Link, useLocation } from 'react-router-dom'
+import imgIndicator from '../assets/8ee66.svg'
+import { useDemo } from '../hooks/demoContext'
 
 export default function PersistentNavigation() {
+  const { pathname } = useLocation()
+  const { followUps, role } = useDemo()
+  const open = followUps.filter((f) => f.status !== 'Completed').length
   return (
-    <div className="bg-[#1d3b34] content-stretch flex flex-col gap-[20px] items-start pb-[24px] pt-[28px] px-[20px] relative min-h-screen w-[220px] shrink-0">
-      <div className="content-stretch flex gap-[11px] items-center overflow-clip relative shrink-0 w-full">
-        <div className="bg-[#dcece6] content-stretch flex items-center justify-center overflow-clip relative rounded-[13px] shrink-0 size-[42px]">
-          <p className="[word-break:break-word] font-['Lora:Bold'] font-bold leading-[normal] relative shrink-0 text-[#1d3b34] text-[21px] whitespace-nowrap">
-            mc
+    <aside className="flex shrink-0 flex-col gap-5 bg-brand p-4 text-white md:sticky md:top-0 md:h-dvh md:overflow-y-auto md:w-52 lg:w-60 lg:p-5">
+      <div className="flex items-center gap-3">
+        <div className="grid size-11 place-items-center rounded-xl bg-[#dcece6] font-serif text-xl font-bold text-brand">
+          mc
+        </div>
+        <div>
+          <p className="font-serif text-xl font-bold">Mother Care</p>
+          <p className="text-[10px] tracking-wider text-[#b9cec8]">
+            FAMILY LIFE NETWORK
           </p>
         </div>
-        <div className="[word-break:break-word] flex-[1_0_0] font-['Lora:Bold'] font-bold leading-[0] min-w-px relative text-[0px] text-white">
-          <p className="leading-[1.08] mb-0 text-[20px]">Mother Care</p>
-          <p className="font-['Inter:Bold'] leading-[1.08] not-italic text-[#b9cec8] text-[8px]">FAMILY LIFE NETWORK</p>
-        </div>
       </div>
-      <div className="content-stretch flex flex-col gap-[6px] items-start overflow-clip relative shrink-0 w-full">
+      <nav
+        aria-label="Main navigation"
+        className="flex flex-wrap gap-1 md:flex-col"
+      >
         {[
-          ['Dashboard', '/admin/performance'],
+          ['Dashboard', '/admin/dashboard'],
           ['Mothers', '/admin/motherselection'],
+          ['Appointments', '/admin/appointments'],
           ['Goals', '/admin/admingoals'],
-          ['Follow-ups · 4', '/admin/followup'],
+          [`Follow-ups · ${open}`, '/admin/followup'],
+          ['Forms', '/admin/forms'],
           ['Resources', '/admin/reccomendresources'],
-        ].map(([label, path]) => (
-          <NavLink
-            key={path}
-            to={path}
-            className={({ isActive }) =>
-              `content-stretch flex gap-[9px] h-[40px] items-center overflow-clip px-[12px] relative rounded-[10px] shrink-0 w-full ${isActive ? 'bg-[#2d5b52] text-white' : 'text-[#c7dad5]'}`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                {isActive && <img alt="" className="size-[8px] shrink-0" src={imgIndicator} />}
-                <span className="font-extrabold text-[11px]">{label}</span>
-              </>
-            )}
-          </NavLink>
-        ))}
-      </div>
-      <div className="flex-[1_0_0] min-h-px relative w-full" />
-      <div className="[word-break:break-word] bg-[#122c27] content-stretch flex flex-col gap-[6px] items-start not-italic overflow-clip p-[13px] relative rounded-[10px] shrink-0 w-full">
-        <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#f5fbf8] text-[10px] w-full">
-          🔒 Privacy protected
+          ['Meeting notes', '/admin/meetings'],
+          ...(role === 'Administrator'
+            ? [
+                ['Form builder', '/admin/form-builder'],
+                ['Resource catalog', '/admin/resource-catalog'],
+                ['Analytics', '/admin/performance'],
+                ['Care groups', '/admin/groups'],
+              ]
+            : []),
+        ].map(([label, path]) => {
+          const active =
+            pathname === path ||
+            (label === 'Mothers' && pathname.startsWith('/admin/mothers/'))
+          return (
+            <Link
+              key={path}
+              to={path}
+              aria-current={active ? 'page' : undefined}
+              className={`flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold transition ${active ? 'bg-[#2d5b52] text-white' : 'text-[#c7dad5] hover:bg-[#2d5b52]'}`}
+            >
+              {active && <img alt="" className="size-2" src={imgIndicator} />}
+              <span>{label}</span>
+            </Link>
+          )
+        })}
+      </nav>
+      <div className="mt-auto hidden rounded-lg bg-[#122c27] p-3 md:block">
+        <p className="font-semibold">Demo workspace</p>
+        <p className="mt-1 text-xs text-[#b9cec8]">
+          Demo date: Oct 1, 2026. Fictional records. Changes last for this
+          session.
         </p>
-        <p className="font-['Inter:Regular'] font-normal leading-[1.45] relative shrink-0 text-[#9cbab2] text-[9px] w-full">
-          Role-based access. Sensitive activity is logged.
-        </p>
       </div>
-    </div>
-  );
+    </aside>
+  )
 }

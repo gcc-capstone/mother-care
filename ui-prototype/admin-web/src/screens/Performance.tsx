@@ -1,260 +1,293 @@
-import imgStatus from "../assets/af6c9.svg";
-import imgPlus from "../assets/ce264.svg";
-import imgShieldCheck from "../assets/8878d.svg";
-import imgInfo from "../assets/30180.svg";
-import imgSelector from "../assets/4e6f4.svg";
-import imgSelector1 from "../assets/56fc8.svg";
-import imgStatus1 from "../assets/8d6a0.svg";
-import "./Performance.css";
+import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useDemo } from '../hooks/demoContext'
+import { counselors, demoToday, engagement } from '../data/mockData'
+import {
+  Banner,
+  Button,
+  Empty,
+  Field,
+  Page,
+  Panel,
+  Stats,
+} from '../components/ui'
+import { inputClass, splitClass, tableClass } from '../utils/uiClasses'
+import { downloadReport } from '../utils/downloadReport'
 
-
-export default function App() {
+export default function Performance() {
+  const { mothers, goals, followUps, exports, setExports } = useDemo()
+  const [county, setCounty] = useState('All')
+  const [start, setStart] = useState('2026-09-01')
+  const [end, setEnd] = useState('2026-10-31')
+  const [format, setFormat] = useState<'CSV' | 'PDF'>('CSV')
+  const [message, setMessage] = useState('')
+  const startRef = useRef<HTMLInputElement>(null)
+  const cases = mothers.filter((m) => county === 'All' || m.county === county)
+  const caseIds = new Set(cases.map((m) => m.id))
+  const caseGoals = goals.filter(
+    (g) => caseIds.has(g.motherId) && g.due >= start && g.due <= end,
+  )
+  const reviews = followUps.filter(
+    (f) => caseIds.has(f.motherId) && f.due >= start && f.due <= end,
+  )
+  const completed = caseGoals.filter((g) => g.status === 'Completed').length
+  const overdue = caseGoals.filter(
+    (g) => g.status === 'Active' && g.due < demoToday,
+  ).length
+  const successful = reviews.filter(
+    (f) =>
+      f.status === 'Completed' &&
+      (f.outcome === 'Successful' || f.outcome === 'Partially successful'),
+  ).length
   return (
-    <div className="performance">
-      <div className="bg-white border-[#e5eae7] border-b border-solid content-stretch flex h-[64px] items-center justify-between overflow-clip px-[32px] relative shrink-0 w-full">
-        <div className="content-stretch flex gap-[8px] items-center overflow-clip relative shrink-0">
-          <div className="relative shrink-0 size-[8px]">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStatus} />
-          </div>
-          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#5c6b64] text-[11px] whitespace-nowrap">
-            Secure Mother Care workspace
-          </p>
-        </div>
-        <div className="content-stretch flex gap-[9px] items-center overflow-clip relative shrink-0">
-          <div className="bg-[#dcece6] content-stretch flex items-center justify-center overflow-clip relative rounded-[999px] shrink-0 size-[34px]">
-            <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#2e7166] text-[10px] whitespace-nowrap">
-              MS
+    <Page
+      title="Program performance"
+      action={
+        <Button
+          onClick={() => {
+            startRef.current?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            })
+            startRef.current?.focus({ preventScroll: true })
+          }}
+        >
+          Generate report
+        </Button>
+      }
+    >
+      <Banner>
+        Reports summarize the selected caseload and exclude names and counseling
+        notes.
+      </Banner>
+      <Stats
+        items={[
+          { label: 'Mothers', value: cases.length },
+          { label: 'Overdue goals', value: overdue },
+          {
+            label: 'Open reviews',
+            value: reviews.filter((f) => f.status !== 'Completed').length,
+          },
+          {
+            label: 'Completed goals',
+            value: completed,
+            detail: `Due between ${start} and ${end}`,
+          },
+        ]}
+      />
+      <div className={splitClass}>
+        <div className="space-y-5">
+          <Panel title="System engagement trend">
+            <p className="text-sm text-muted">
+              Illustrative program activity · September 2026 · sample check-in
+              counts
             </p>
-          </div>
-          <div className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[0] not-italic relative shrink-0 text-[#20312e] text-[0px] whitespace-nowrap">
-            <p className="leading-[1.35] mb-0 text-[10px]">Morgan Shaw</p>
-            <p className="font-['Inter:Medium'] font-medium leading-[1.35] text-[#5c6b64] text-[9px]">Admin</p>
-          </div>
+            <div
+              role="img"
+              aria-label={`Illustrative weekly engagement counts: ${engagement.join(', ')}`}
+              className="grid h-44 grid-cols-8 items-end gap-3 rounded-lg bg-canvas px-4 pt-4"
+            >
+              {engagement.map((value, index) => (
+                <div key={index} className="flex h-full flex-col justify-end">
+                  <span className="text-center text-xs text-muted">
+                    {value}
+                  </span>
+                  <div
+                    className={`rounded-t ${index === engagement.length - 1 ? 'bg-accent' : 'bg-[#dcece6]'}`}
+                    style={{ height: `${value}%` }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <Link
+                className="font-semibold text-accent underline"
+                to="/admin/motherselection"
+              >
+                View mothers
+              </Link>
+              <Link
+                className="font-semibold text-accent underline"
+                to="/admin/admingoals"
+              >
+                Manage goals
+              </Link>
+              <Link
+                className="font-semibold text-accent underline"
+                to="/admin/followup"
+              >
+                Review outcomes
+              </Link>
+            </div>
+          </Panel>
+          <Panel title="Counselor activity">
+            <p className="text-muted">Selected county and date range</p>
+            <div className="overflow-x-auto">
+              <table className={`${tableClass} min-w-[450px]`}>
+                <caption className="sr-only">
+                  Counselor caseload summary
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Counselor</th>
+                    <th scope="col">Mothers</th>
+                    <th scope="col">Goals</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">Open reviews</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {counselors.map((c) => {
+                    const ids = new Set(
+                      cases.filter((m) => m.counselor === c).map((m) => m.id),
+                    )
+                    const assigned = caseGoals.filter((g) =>
+                      ids.has(g.motherId),
+                    )
+                    return (
+                      <tr key={c}>
+                        <td className="font-semibold">{c}</td>
+                        <td>{ids.size}</td>
+                        <td>{assigned.length}</td>
+                        <td>
+                          {
+                            assigned.filter((g) => g.status === 'Completed')
+                              .length
+                          }
+                        </td>
+                        <td>
+                          {
+                            reviews.filter(
+                              (f) =>
+                                ids.has(f.motherId) && f.status !== 'Completed',
+                            ).length
+                          }
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </Panel>
         </div>
-      </div>
-      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px overflow-clip pb-[28px] pt-[24px] px-[32px] relative w-full">
-        <div className="content-stretch flex items-end justify-between overflow-clip relative shrink-0 w-full">
-          <div className="[word-break:break-word] flex-[1_0_0] font-['Lora:Bold'] font-bold leading-[0] min-w-px relative text-[#20312e] text-[0px]">
-            <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[1.12] mb-0 not-italic text-[#2e7166] text-[10px]">ADMIN WORKSPACE</p>
-            <p className="leading-[1.12] text-[28px]">Program performance</p>
-          </div>
-          <div className="bg-[#1d3b34] border border-[rgba(0,0,0,0)] border-solid content-stretch flex gap-[8px] h-[38px] items-center overflow-clip px-[14px] relative rounded-[10px] shrink-0">
-            <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[11px] text-white whitespace-nowrap">
-              Generate report
+        <Panel title="Report generation & export">
+          <form
+            className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault()
+              if (start > end) {
+                setMessage('Start date must be on or before end date.')
+                return
+              }
+              downloadReport(format, 'MotherCare - Caseload summary', [
+                ['Report period', `${start} to ${end}`],
+                ['County', county],
+                ['Mothers', cases.length],
+                ['Goals', caseGoals.length],
+                ['Completed goals', completed],
+                ['Overdue goals', overdue],
+                [
+                  'Open reviews',
+                  reviews.filter((f) => f.status !== 'Completed').length,
+                ],
+                ['Successful outcomes', successful],
+              ])
+              setExports((items) => [
+                {
+                  id: crypto.randomUUID(),
+                  title: 'Caseload summary',
+                  date: new Date().toISOString(),
+                  county,
+                  period: `${start} to ${end}`,
+                  format,
+                },
+                ...items,
+              ])
+              setMessage(`${format} report downloaded.`)
+            }}
+          >
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Field label="Start date">
+                <input
+                  ref={startRef}
+                  className={inputClass}
+                  type="date"
+                  required
+                  value={start}
+                  onChange={(e) => setStart(e.target.value)}
+                />
+              </Field>
+              <Field label="End date">
+                <input
+                  className={inputClass}
+                  type="date"
+                  required
+                  min={start}
+                  value={end}
+                  onChange={(e) => setEnd(e.target.value)}
+                />
+              </Field>
+            </div>
+            <Field label="County">
+              <select
+                className={inputClass}
+                value={county}
+                onChange={(e) => setCounty(e.target.value)}
+              >
+                {['All', ...new Set(mothers.map((m) => m.county))].map((c) => (
+                  <option key={c}>{c}</option>
+                ))}
+              </select>
+            </Field>
+            <fieldset>
+              <legend className="mb-2 font-semibold">Report format</legend>
+              <div className="flex gap-4">
+                {(['CSV', 'PDF'] as const).map((f) => (
+                  <label key={f} className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="format"
+                      checked={format === f}
+                      onChange={() => setFormat(f)}
+                    />
+                    {f}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <div className="rounded-lg bg-canvas p-3">
+              <p className="font-semibold">Included summary</p>
+              <p>
+                {cases.length} mothers · {caseGoals.length} goals ·{' '}
+                {reviews.length} follow-ups
+              </p>
+            </div>
+            <Button type="submit">Download {format} report ↗</Button>
+            <p role="status" className="text-accent">
+              {message}
             </p>
-            <div className="relative shrink-0 size-[13px]">
-              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPlus} />
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#f3eedf] content-stretch flex gap-[10px] items-center min-h-[42px] overflow-clip px-[13px] py-[10px] relative rounded-[10px] shrink-0 w-full">
-          <div className="relative shrink-0 size-[16px]">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgShieldCheck} />
-          </div>
-          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[1.4] min-w-px not-italic relative text-[#20312e] text-[10px]">
-            Organization-wide analytics use de-identified aggregates by default. Exports inherit your admin permissions and are logged.
-          </p>
-        </div>
-        <div className="[word-break:break-word] content-stretch flex gap-[12px] items-start leading-[normal] relative shrink-0 w-full">
-          {[
-            { label: "DUE TODAY", value: "18", sub: "Program tasks and reviews" },
-            { label: "OVERDUE", value: "7", sub: "Across 4 counties" },
-            { label: "AWAITING MOTHER", value: "31", sub: "Open confirmations" },
-            { label: "COMPLETED", value: "486", sub: "+12.4% vs last month" },
-          ].map((m) => (
-            <div key={m.label} className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[4px] h-[96px] items-start min-w-px overflow-clip p-[14px] relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]">
-              <p className="font-['Inter:Extra_Bold'] font-extrabold not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full">{m.label}</p>
-              <p className="font-['Lora:Bold'] font-bold relative shrink-0 text-[#20312e] text-[24px] w-full">{m.value}</p>
-              <p className="font-['Inter:Regular'] font-normal not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full">{m.sub}</p>
-            </div>
-          ))}
-        </div>
-        <div className="content-stretch flex gap-[16px] h-[780px] items-start relative shrink-0 w-full">
-          <div className="content-stretch flex h-full items-start relative shrink-0 w-[734px]">
-            <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col h-[780px] items-start min-w-px overflow-clip relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]">
-              <div className="content-stretch flex flex-[1_0_0] flex-col gap-[14px] items-start min-h-px overflow-clip p-[18px] relative w-full">
-                <div className="content-stretch flex items-center justify-between overflow-clip relative shrink-0 w-full">
-                  <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start min-w-px not-italic overflow-clip relative">
-                    <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full">
-                      System engagement trend
-                    </p>
-                    <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full">
-                      Oct 1–31 · compared with prior 30 days
-                    </p>
-                  </div>
-                  <div className="bg-[#e4f4ea] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#287653] text-[9px] whitespace-nowrap">
-                      +12.4%
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-[#f7f5ee] content-stretch flex gap-[14px] h-[120px] items-end overflow-clip pt-[10px] px-[8px] relative rounded-[10px] shrink-0 w-full">
-                  {[42, 58, 47, 72, 64, 86, 78].map((h, i) => (
-                    <div key={i} className="bg-[#dcece6] flex-[1_0_0] min-w-px relative rounded-tl-[4px] rounded-tr-[4px]" style={{ height: h }} />
-                  ))}
-                  <div className="bg-[#2e7166] flex-[1_0_0] h-[94px] min-w-px relative rounded-tl-[4px] rounded-tr-[4px]" />
-                </div>
-                <div className="content-stretch flex gap-[10px] items-start overflow-clip relative shrink-0 w-full">
-                  {[
-                    { label: "FORM COMPLETION", value: "84%", delta: "+6.2%" },
-                    { label: "REFERRAL OUTCOMES", value: "71%", delta: "+3.8%" },
-                    { label: "MOTHER ACTIVATION", value: "92%", delta: "+1.4%" },
-                  ].map((m) => (
-                    <div key={m.label} className="bg-[#f7f5ee] content-stretch flex flex-[1_0_0] flex-col gap-[5px] items-start min-w-px overflow-clip p-[12px] relative rounded-[10px]">
-                      <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-full">{m.label}</p>
-                      <div className="content-stretch flex items-start justify-between overflow-clip relative shrink-0 w-full">
-                        <p className="[word-break:break-word] font-['Lora:Bold'] font-bold leading-[normal] relative shrink-0 text-[#20312e] text-[20px] whitespace-nowrap">{m.value}</p>
-                        <div className="bg-[#e4f4ea] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0">
-                          <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#287653] text-[9px] whitespace-nowrap">{m.delta}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start not-italic overflow-clip relative shrink-0 w-full">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full">
-                    Counselor activity
-                  </p>
-                  <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full">
-                    Time comparison: current 30 days vs previous 30 days
-                  </p>
-                </div>
-                <div className="[word-break:break-word] border border-[#e5eae7] border-solid content-stretch flex flex-col items-start leading-[0] not-italic overflow-clip relative rounded-[10px] shrink-0 w-full">
-                  <div className="flex flex-col font-['Inter:Extra_Bold'] font-extrabold h-[34px] justify-center relative shrink-0 text-[#5c6b64] text-[9px] w-full">
-                    <p className="leading-[normal] whitespace-pre-wrap px-[12px]">{`COUNSELOR   ·   MOTHERS   ·   ACTIONS   ·   OUTCOMES   ·   CHANGE`}</p>
-                  </div>
-                  <div className="font-['Inter:Regular'] font-normal relative shrink-0 text-[#20312e] text-[10px] w-full whitespace-pre-wrap">
-                    <p className="leading-[3.9] mb-0">{`   Alex Rivera   ·   28   ·   146   ·   89%   ·   +8%`}</p>
-                    <p className="leading-[3.9] mb-0">{`   Dina Brooks   ·   24   ·   132   ·   86%   ·   +5%`}</p>
-                    <p className="leading-[3.9]">{`   Sam Lee   ·   21   ·   118   ·   82%   ·   −2%`}</p>
-                  </div>
-                </div>
-                <div className="bg-[#eaf2f6] content-stretch flex gap-[8px] items-start overflow-clip p-[10px] relative rounded-[8px] shrink-0 w-full">
-                  <div className="relative shrink-0 size-[14px]">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInfo} />
-                  </div>
-                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[1.45] min-w-px not-italic relative text-[#5c6b64] text-[9px]">
-                    Activation = first secure client session. Outcome rate = confirmed successful or partially successful closures.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="content-stretch flex flex-[1_0_0] h-full items-start min-w-px relative">
-            <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] flex-col h-[780px] items-start min-w-px overflow-clip relative rounded-[16px] shadow-[0px_6px_18px_0px_rgba(22,52,46,0.07)]">
-              <div className="bg-white border-[#e5eae7] border-b border-solid content-stretch flex flex-col gap-[12px] items-start p-[18px] relative shrink-0 w-full">
-                <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start not-italic overflow-clip relative shrink-0 w-full">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full">{`Report Generation & Export Hub`}</p>
-                  <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full">
-                    Build a permission-aware program report.
-                  </p>
-                </div>
-                <div className="[word-break:break-word] content-stretch flex font-['Inter:Bold'] font-bold items-center justify-between leading-[normal] not-italic overflow-clip relative shrink-0 text-[10px] w-full whitespace-nowrap">
-                  <p className="relative shrink-0 text-[#5c6b64]">Prepared for</p>
-                  <p className="relative shrink-0 text-[#20312e]">Morgan Shaw · Admin</p>
-                </div>
-                <div className="content-stretch flex items-center justify-between overflow-clip relative shrink-0 w-full">
-                  <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#5c6b64] text-[10px] whitespace-nowrap">
-                    Data freshness
-                  </p>
-                  <div className="bg-[#e4f4ea] content-stretch flex items-start overflow-clip px-[8px] py-[4px] relative rounded-[999px] shrink-0">
-                    <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#287653] text-[9px] whitespace-nowrap">
-                      Live · 2 min ago
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white border-[#e5eae7] border-b border-solid content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-h-px p-[18px] relative w-full">
-                <div className="content-stretch flex flex-col gap-[6px] items-start overflow-clip relative shrink-0 w-full">
-                  <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#20312e] text-[10px] w-full">
-                    Date range
-                  </p>
-                  <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex items-start min-h-[36px] overflow-clip px-[11px] py-[9px] relative rounded-[8px] shrink-0 w-full">
-                    <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[1.45] min-w-px not-italic relative text-[#20312e] text-[11px]">
-                      October 1–31, 2026
-                    </p>
-                  </div>
-                </div>
-                <div className="content-stretch flex gap-[10px] items-start overflow-clip relative shrink-0 w-full">
-                  {[
-                    { label: "Program", value: "All Mother Care programs" },
-                    { label: "County", value: "Allegheny + 3" },
-                  ].map((f) => (
-                    <div key={f.label} className="content-stretch flex flex-[1_0_0] flex-col gap-[6px] items-start min-w-px overflow-clip relative">
-                      <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#20312e] text-[10px] w-full">{f.label}</p>
-                      <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex items-start min-h-[36px] overflow-clip px-[11px] py-[9px] relative rounded-[8px] shrink-0 w-full">
-                        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[1.45] min-w-px not-italic relative text-[#20312e] text-[11px]">{f.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <p className="[word-break:break-word] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] not-italic relative shrink-0 text-[#20312e] text-[10px] whitespace-nowrap">
-                  Report format
+          </form>
+          <h3 className="font-bold">Export history</h3>
+          {exports.length ? (
+            exports.map((record) => (
+              <div key={record.id} className="rounded-lg bg-canvas p-3 text-sm">
+                <strong>
+                  {record.title} · {record.format}
+                </strong>
+                <p>
+                  {record.period} · {record.county}
                 </p>
-                <div className="content-stretch flex gap-[8px] items-start overflow-clip relative shrink-0 w-full">
-                  <div className="bg-[#edf6f2] border border-[#2e7166] border-solid content-stretch flex flex-[1_0_0] gap-[9px] items-center min-w-px overflow-clip p-[10px] relative rounded-[8px]">
-                    <div className="relative shrink-0 size-[14px]">
-                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSelector} />
-                    </div>
-                    <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-start leading-[normal] min-w-px not-italic overflow-clip relative">
-                      <p className="font-['Inter:Bold'] font-bold relative shrink-0 text-[#20312e] text-[10px] w-full">CSV</p>
-                      <p className="font-['Inter:Regular'] font-normal relative shrink-0 text-[#5c6b64] text-[9px] w-full">Raw analysis</p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-[#e5eae7] border-solid content-stretch flex flex-[1_0_0] gap-[9px] items-center min-w-px overflow-clip p-[10px] relative rounded-[8px]">
-                    <div className="relative shrink-0 size-[14px]">
-                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSelector1} />
-                    </div>
-                    <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-start leading-[normal] min-w-px not-italic overflow-clip relative">
-                      <p className="font-['Inter:Bold'] font-bold relative shrink-0 text-[#20312e] text-[10px] w-full">PDF</p>
-                      <p className="font-['Inter:Regular'] font-normal relative shrink-0 text-[#5c6b64] text-[9px] w-full">Board-ready</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="[word-break:break-word] bg-[#f7f5ee] content-stretch flex flex-col gap-[7px] items-start leading-[normal] not-italic overflow-clip p-[12px] relative rounded-[10px] shrink-0 text-[10px] w-full whitespace-nowrap">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold relative shrink-0 text-[#20312e]">Included summary</p>
-                  {[
-                    { k: "Mothers", v: "342 de-identified" },
-                    { k: "Counselors", v: "18 active" },
-                    { k: "Measures", v: "12 KPIs" },
-                  ].map((r) => (
-                    <div key={r.k} className="content-stretch flex font-['Inter:Bold'] font-bold items-center justify-between overflow-clip relative shrink-0 w-full">
-                      <p className="relative shrink-0 text-[#5c6b64]">{r.k}</p>
-                      <p className="relative shrink-0 text-[#20312e]">{r.v}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[1.45] min-w-full not-italic relative shrink-0 text-[#5c6b64] text-[9px] w-[min-content]">{`Sensitive notes and direct identifiers are excluded. This export will be recorded in Audit & settings.`}</p>
-                <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start not-italic overflow-clip relative shrink-0 w-full">
-                  <p className="font-['Inter:Extra_Bold'] font-extrabold leading-[normal] relative shrink-0 text-[#20312e] text-[15px] w-full">
-                    Export history
-                  </p>
-                  <p className="font-['Inter:Regular'] font-normal leading-[1.4] relative shrink-0 text-[#5c6b64] text-[10px] w-full">
-                    {"Sep 30 · Monthly impact · PDF · Morgan Shaw\nSep 15 · Referral outcomes · CSV · Priya Nair"}
-                  </p>
-                </div>
-              </div>
-              <div className="bg-[#122c27] content-stretch flex flex-col gap-[12px] items-start overflow-clip p-[18px] relative shrink-0 w-full">
-                <div className="content-stretch flex gap-[8px] items-center overflow-clip relative shrink-0 w-full">
-                  <div className="relative shrink-0 size-[8px]">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStatus1} />
-                  </div>
-                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Extra_Bold'] font-extrabold leading-[normal] min-w-px not-italic relative text-[#d8eee7] text-[10px]">
-                    ⚡ Report validation passed
-                  </p>
-                </div>
-                <div className="[word-break:break-word] bg-white content-stretch flex font-['Inter:Extra_Bold'] font-extrabold h-[42px] items-center justify-between leading-[normal] not-italic overflow-clip px-[14px] relative rounded-[10px] shrink-0 text-[#1d3b34] w-full">
-                  <p className="flex-[1_0_0] min-w-px relative text-[11px]">Download CSV / PDF Report</p>
-                  <p className="relative shrink-0 text-[13px] whitespace-nowrap">↗</p>
-                </div>
-                <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#9fc6bc] text-[9px] w-full">
-                  ⚡ Export is permission checked and added to the audit log
+                <p className="text-xs text-muted">
+                  {new Date(record.date).toLocaleString()} · Morgan Shaw
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
+            ))
+          ) : (
+            <Empty>No reports exported in this session.</Empty>
+          )}
+        </Panel>
       </div>
-    </div>
-  );
+    </Page>
+  )
 }
