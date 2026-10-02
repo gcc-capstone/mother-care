@@ -1,5 +1,5 @@
 import { counselors, mockCounselors } from '../data/mockData'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
 import type { Resource, CareForm } from '../types/domain'
@@ -20,10 +20,21 @@ export function ResourceCatalog() {
   const [search, setSearch] = useState('')
   const [message, setMessage] = useState('')
   const [deleting, setDeleting] = useState<string | null>(null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const [draftVersion, setDraftVersion] = useState(0)
+  const results = resources.filter((r) =>
+    `${r.name} ${r.county} ${r.service}`.toLowerCase().includes(search.toLowerCase()),
+  )
   return (
     <Page
       title="Resource catalog"
-      action={<Button onClick={() => setEditing(null)}>New resource</Button>}
+      action={<Button onClick={() => {
+        setEditing(null)
+        setDraftVersion(v => v + 1)
+        setDeleting(null)
+        setMessage('')
+        formRef.current?.scrollIntoView({ block: 'center' })
+      }}>New resource</Button>}
     >
       <div className={splitClass}>
         <Panel title="Manage community services">
@@ -34,13 +45,7 @@ export function ResourceCatalog() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </Field>
-          {resources
-            .filter((r) =>
-              `${r.name} ${r.county} ${r.service}`
-                .toLowerCase()
-                .includes(search.toLowerCase()),
-            )
-            .map((r) => (
+          {results.map((r) => (
               <article
                 key={r.id}
                 className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-canvas p-3"
@@ -91,13 +96,14 @@ export function ResourceCatalog() {
                 )}
               </article>
             ))}
-          {!resources.length && (
-            <Empty>No resources. Add a community service to begin.</Empty>
+          {!results.length && (
+            <Empty>{resources.length ? 'No resources match your search.' : 'No resources. Add a community service to begin.'}</Empty>
           )}
         </Panel>
         <Panel title={editing ? 'Edit resource' : 'Add resource'}>
           <form
-            key={editing?.id ?? 'new'}
+            ref={formRef}
+            key={editing?.id ?? `new-${draftVersion}`}
             className="space-y-3"
             onSubmit={(e) => {
               e.preventDefault()
@@ -123,6 +129,7 @@ export function ResourceCatalog() {
                   : [r, ...rs],
               )
               setEditing(null)
+              setSearch('')
               e.currentTarget.reset()
               setMessage('Resource saved and available in recommendations.')
             }}

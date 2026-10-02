@@ -4,27 +4,27 @@ import { initialGoals } from './goals'
 import { initialNotifications } from './notifications'
 
 export const counselors: Counselor[] = [
-  { id: 'counselor-001', name: 'Carol Bennett' },
-  { id: 'counselor-002', name: 'Alex Rivera' },
-  { id: 'counselor-003', name: 'Dina Brooks' },
-  { id: 'counselor-004', name: 'Sam Lee' },
+  { id: 'counselor-004', name: 'Carol Bennett' },
+  { id: 'counselor-001', name: 'Alex Rivera' },
+  { id: 'counselor-002', name: 'Dina Brooks' },
+  { id: 'counselor-003', name: 'Sam Lee' },
 ]
 
 // Fixed demo context: October 1, 2026. Each record owns its session state.
 export const motherDemos: MotherDemo[] = [
   { profile: user, goals: initialGoals, mood: null, notifications: initialNotifications, completedOpportunities: [], reservations: [], redemptions: [], formResponses: {}, openingCredits: 12, openingEarned: 4, streakDays: 5 },
   ...([
-    ['mother-002', 'Jan', 'Williams', 'counselor-002', 18, 4, 'good'],
-    ['mother-003', 'Maria', 'Diaz', 'counselor-002', 8, 2, 'okay'],
-    ['mother-004', 'Nia', 'Simmons', 'counselor-003', 6, 1, 'low'],
-    ['mother-005', 'Keisha', 'Reed', 'counselor-004', 30, 6, 'great'],
-    ['mother-006', 'Amina', 'Khan', 'counselor-002', 0, 0, null],
+    ['MC-2048', 'Jan', 'Williams', 'counselor-001', 18, 4, 'good'],
+    ['MC-2049', 'Maria', 'Diaz', 'counselor-001', 8, 2, 'okay'],
+    ['MC-2050', 'Nia', 'Simmons', 'counselor-002', 6, 1, 'low'],
+    ['MC-2051', 'Keisha', 'Reed', 'counselor-003', 30, 6, 'great'],
+    ['MC-2052', 'Amina', 'Khan', 'counselor-001', 0, 0, null],
   ] as const).map(([id, firstName, familyName, counselorId, openingCredits, streakDays, mood], index): MotherDemo => {
     const counselor = counselors.find(c => c.id === counselorId)!
     const completedOpportunities = index === 3 ? ['sleep-video', 'budgeting'] : []
     const name = `${firstName} ${familyName}`
     return {
-      profile: { id, firstName, familyName, counselorId, email: `${firstName.toLowerCase()}.${familyName.toLowerCase()}@example.com`, location: 'Natrona Heights, PA 15065' },
+      profile: { id, firstName, familyName, counselorId, email: `${firstName.toLowerCase()}.${familyName.toLowerCase()}@example.com`, location: id === 'MC-2050' ? 'Greensburg, PA 15601' : id === 'MC-2051' ? 'Butler, PA 16001' : 'Natrona Heights, PA 15065' },
       goals: [
         { id: 'log-mood', title: "Log how you're feeling", source: `From ${counselor.name}`, when: 'today', done: mood !== null },
         { id: 'sleep-video', title: 'Watch: Newborn Sleep Basics', source: `From ${counselor.name}`, when: 'today', done: completedOpportunities.includes('sleep-video'), credits: 2 },

@@ -1,5 +1,6 @@
 import { Page } from '../components/Page'
 import { useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 
 import checkCircleIcon from '../assets/icons/check-circle.svg'
 import chevronIcon from '../assets/icons/chevron-down.svg'
@@ -11,13 +12,13 @@ function GoalList({ goals, onToggle }: { goals: Goal[]; onToggle: (id: string) =
   return (
     <ul className="m-0 list-none overflow-hidden rounded-[20px] bg-white p-0 [&>li+li]:border-t [&>li+li]:border-[var(--border)]">
       {goals.map((g) => (
-        <li key={g.id}>
-          <label className="group flex min-h-14 cursor-pointer items-center gap-3 px-4 py-3.5">
+        <li key={g.id} className="flex items-center">
+          <label className="group flex min-h-14 min-w-0 flex-1 cursor-pointer items-center gap-3 px-4 py-3.5">
             <input
               type="checkbox"
               className="size-[22px] shrink-0 cursor-pointer accent-[var(--ink)]"
               checked={g.done}
-                  disabled={Boolean(g.credits && g.done)}
+              disabled={Boolean(g.credits && g.done)}
               onChange={() => onToggle(g.id)}
             />
             <span className="flex min-w-0 flex-1 flex-col gap-px">
@@ -27,6 +28,7 @@ function GoalList({ goals, onToggle }: { goals: Goal[]; onToggle: (id: string) =
               </span>
             </span>
           </label>
+          <Link to={`/goals/${g.id}`} aria-label={`Details for ${g.title}`} className="flex min-h-11 shrink-0 items-center px-3 text-sm font-semibold text-[var(--ink)] underline">Details</Link>
         </li>
       ))}
     </ul>
@@ -80,7 +82,7 @@ export default function Goals() {
           aria-label="Today’s goal progress"
           aria-valuenow={todayDone}
           aria-valuemin={0}
-          aria-valuemax={todayGoals.length}
+          aria-valuemax={todayGoals.length || 1}
         >
           <div className="h-full rounded-full bg-[var(--sage)] transition-transform motion-reduce:transition-none" style={{ transform: `translateX(${progress - 100}%)` }} />
         </div>

@@ -10,7 +10,7 @@ import greatIcon from '../assets/icons/mood-great.svg'
 
 export const user: Mother = {
   id: 'mother-001',
-  counselorId: 'counselor-001',
+  counselorId: 'counselor-004',
   firstName: 'Jan',
   familyName: 'Miller',
   email: 'jan.miller@example.com',

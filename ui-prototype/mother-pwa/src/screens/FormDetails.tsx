@@ -11,7 +11,7 @@ export default function FormDetails() {
 }
 function FormContent({ id }: { id: string | undefined }) {
   const form = [intakeForm, ...assignedForms, ...otherForms].find(f => f.id === id)
-  const { profile, counselorName, formResponses, setFormResponses } = useMotherState()
+  const { profile, counselorName, formResponses, setFormResponses, setGoals } = useMotherState()
   const saved = form ? formResponses[form.id] : undefined
   const [name, setName] = useState(saved?.name ?? `${profile.firstName} ${profile.familyName}`)
   const [notes, setNotes] = useState(saved?.notes ?? '')
@@ -23,6 +23,7 @@ function FormContent({ id }: { id: string | undefined }) {
     if (!form) return
     if (!name.trim() || !notes.trim()) { setError('Please enter your name and a little information about your family.'); return }
     setFormResponses(prev => ({ ...prev, [form.id]: { name: name.trim(), notes: notes.trim() } }))
+    if (form.id === 'monthly-check-in') setGoals(prev => prev.map(g => g.id === 'family-check-in' ? { ...g, done: true } : g))
     setError(''); setSubmitted(true)
   }
   return <Page title={form.title} back="/forms">

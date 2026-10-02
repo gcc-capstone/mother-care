@@ -30,7 +30,7 @@ npm run dev:admin   # http://localhost:5174
 `npm run dev` also starts the mother app. Mother routes are `/`, `/forms`,
 `/resources`, `/earn`, and `/goals`. Admin routes retain `/admin/performance`,
 `/admin/motherselection`, `/admin/admingoals`, `/admin/reccomendresources`, and
-`/admin/followup`. The admin root redirects to `/admin/performance`.
+`/admin/followup`. The admin root redirects to `/admin/dashboard`.
 
 ## Build and lint
 

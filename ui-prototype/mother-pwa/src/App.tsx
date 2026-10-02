@@ -11,6 +11,7 @@ import Earn from './screens/Earn'
 import OpportunityDetails from './screens/OpportunityDetails'
 import Store from './screens/Store'
 import Goals from './screens/Goals'
+import GoalDetails from './screens/GoalDetails'
 import Profile from './screens/Profile'
 import Notifications from './screens/Notifications'
 
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/store" element={<Store />} />
         <Route path="/store/:id" element={<Store />} />
         <Route path="/goals" element={<Goals />} />
+        <Route path="/goals/:id" element={<GoalDetails />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="*" element={<Page title="Page not found"><p>Choose a tab below or return home.</p><ActionLink to="/">Go home</ActionLink></Page>} />

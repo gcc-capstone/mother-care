@@ -118,7 +118,7 @@ export const mockGoals: Goal[] = [
     id: 'goal-002',
     motherId: 'MC-2048',
     title: 'Pick Up Interview Clothes',
-    description: 'Visit The Sparrows Nest for comfortable interview clothing.',
+    description: 'Visit The Sparrow\'s Nest for comfortable interview clothing.',
     due: '2026-09-25',
     status: 'Completed',
   },
@@ -171,7 +171,7 @@ export const mockGoals: Goal[] = [
 export const mockResources: Resource[] = [
   {
     id: 'resource-001',
-    name: 'The Sparrows Nest',
+    name: 'The Sparrow\'s Nest',
     service: 'Clothing',
     county: 'Allegheny',
     mode: 'Physical',
@@ -234,7 +234,7 @@ export const mockFollowUps: FollowUp[] = [
   {
     id: 'followup-001',
     motherId: 'MC-2048',
-    title: 'The Sparrows Nest',
+    title: 'The Sparrow\'s Nest',
     type: 'Referral',
     shared: true,
     due: '2026-09-30',

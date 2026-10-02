@@ -30,10 +30,10 @@ export default function Resources() {
   return (
     <Page title="Resources">
 
-      <button onClick={() => setEditingLocation(v => !v)} aria-expanded={editingLocation} className="flex min-h-11 self-start items-center gap-1.5 rounded-full border border-[var(--border)] bg-white px-3 py-[7px] text-[13px] font-semibold text-[var(--ink)]">
-        <img src={pinIcon} width={15} height={15} alt="" />
-        <span>{profile.location}</span>
-        <img src={chevronIcon} width={14} height={14} alt="" />
+      <button onClick={() => { setLocationDraft(profile.location); setEditingLocation(v => !v) }} aria-expanded={editingLocation} className="flex min-h-11 max-w-full self-start items-center gap-1.5 rounded-full border border-[var(--border)] bg-white px-3 py-[7px] text-left text-[13px] font-semibold text-[var(--ink)]">
+        <img className="shrink-0" src={pinIcon} width={15} height={15} alt="" />
+        <span className="min-w-0">{profile.location}</span>
+        <img className="shrink-0" src={chevronIcon} width={14} height={14} alt="" />
       </button>
 
       {editingLocation && <form className="flex flex-col gap-3 rounded-2xl bg-white p-4" onSubmit={e => { e.preventDefault(); if (!locationDraft.trim()) return; setProfile(prev => ({ ...prev, location: locationDraft.trim() })); setEditingLocation(false) }}>

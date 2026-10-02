@@ -54,6 +54,7 @@ export function CareDashboard() {
       />
       <div className={splitClass}>
         <Panel title="Review queue">
+          {!followUps.some(f => f.status !== 'Completed') && <Empty>No open follow-ups.</Empty>}
           {followUps
             .filter((f) => f.status !== 'Completed')
             .sort((a, b) => a.due.localeCompare(b.due))
@@ -61,7 +62,7 @@ export function CareDashboard() {
             .map((f) => (
               <div key={f.id} className="border-b border-line py-3">
                 <Link
-                  to="/admin/followup"
+                  to={`/admin/followup?record=${f.id}`}
                   className="font-semibold text-accent underline"
                 >
                   {f.title}
@@ -77,6 +78,7 @@ export function CareDashboard() {
           </Link>
         </Panel>
         <Panel title="Care workflows">
+          {!mothers.length && <Empty>No mothers assigned yet.</Empty>}
           <div className="space-y-2">
             {mothers.map((m) => (
               <Link
@@ -115,6 +117,7 @@ export function Appointments() {
       <MotherPicker />
       <div className={splitClass}>
         <Panel title="Upcoming appointments">
+          {!mothers.some(m => m.appointment) && <Empty>No appointments scheduled.</Empty>}
           {[...mothers]
             .filter((m) => m.appointment)
             .sort((a, b) => a.appointment.localeCompare(b.appointment))

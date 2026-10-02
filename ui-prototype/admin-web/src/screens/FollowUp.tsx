@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useDemo } from '../hooks/demoContext'
 import { demoToday } from '../data/mockData'
 import {
@@ -168,7 +169,9 @@ export default function FollowUp() {
   const [filter, setFilter] = useState('All')
   const [motherFilter, setMotherFilter] = useState('All')
   const [page, setPage] = useState(0)
-  const [recordId, setRecordId] = useState(followUps[0]?.id ?? '')
+  const [params, setParams] = useSearchParams()
+  const recordId = params.get('record') ?? followUps[0]?.id ?? ''
+  const setRecordId = (id: string) => setParams({ record: id })
   const [creating, setCreating] = useState(false)
   const [message, setMessage] = useState('')
   const filtered = followUps

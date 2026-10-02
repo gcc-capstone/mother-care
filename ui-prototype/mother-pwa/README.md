@@ -27,7 +27,8 @@ expects deployment at the origin root, separately from Admin Web.
   mothers shown in the admin roster. Each keeps separate edits, forms, goals, mood,
   notifications, lesson progress, reservations, and credits until reload.
 - Home: select a mood, complete a goal, open recommendations, or edit your profile.
-- Goals: complete/undo goals, expand completed goals, and add your own weekly goal.
+- Goals: open goal details, complete/undo goals, expand completed goals, and add
+  your own weekly goal. Details link to related lessons, groups, and check-in forms.
 - Forms: fill out intake, check-in, or childcare forms; submit and review responses.
 - Resources: search, select a category, filter open resources, edit your sample
   location, and open resource details. The resource inventory stays local to the

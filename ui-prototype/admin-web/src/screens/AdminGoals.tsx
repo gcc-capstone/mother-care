@@ -351,6 +351,9 @@ export default function AdminGoals() {
               setMessage('Changes canceled.')
             }}
             onSave={(g) => {
+              if (editGoal) setFollowUps(items => items.map(f =>
+                f.type === 'Goal' && f.goalId === g.id ? { ...f, title: g.title } : f,
+              ))
               setGoals((items) =>
                 editGoal
                   ? items.map((item) => (item.id === g.id ? g : item))

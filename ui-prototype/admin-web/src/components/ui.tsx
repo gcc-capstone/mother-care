@@ -43,7 +43,7 @@ export function Page({
   children: ReactNode
 }) {
   return (
-    <div className="mx-auto max-w-[1600px] space-y-5 p-4 lg:p-8">
+    <div className="mx-auto min-w-0 max-w-[1600px] space-y-5 wrap-anywhere p-4 lg:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-xs font-bold tracking-widest text-accent">

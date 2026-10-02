@@ -78,9 +78,10 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        {!goals.length && <p className="rounded-2xl bg-white p-4 text-sm">No goals for today. Visit Goals to add your own.</p>}
       </section>
 
-      <Link to="/earn" className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-[var(--sage-strip)] p-4">
+      <Link to="/store" className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-[var(--sage-strip)] p-4">
         <div className="flex flex-col gap-0.5">
           <p className="text-lg font-semibold leading-snug">{credits} credits</p>
           <p className="text-[13px] leading-snug text-[var(--muted)]">{credits >= 12 ? 'Enough for a pack of diapers' : 'Keep earning toward baby essentials'}</p>
