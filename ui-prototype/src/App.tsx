@@ -9,6 +9,8 @@ import AdminGoals from './screens/AdminGoals'
 import Performance from './screens/Performance'
 import PersistentNavigation from './screens/PersistantNavigation'
 import ReccomendedResources from './screens/ReccomendResources'
+import MotherSelection from './screens/MotherSelection'
+import FollowUp from './screens/FollowUp'
 
 function MobileLayout() {
   return (
@@ -35,6 +37,8 @@ function AdminLayout() {
         <Route path="/admingoals" element={<AdminGoals />} />
         <Route path="/performance" element={<Performance />} />
         <Route path="/reccomendresources" element={<ReccomendedResources />} />
+        <Route path="/motherselection" element={<MotherSelection />} />
+        <Route path="/followup" element={<FollowUp />} />
       </Routes>
       </main>
       </div>

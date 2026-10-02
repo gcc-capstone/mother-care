@@ -1,4 +1,4 @@
-const assetPathPrefix = "/assets";
+const assetPathPrefix = "../assets";
 const imgStatus = `${assetPathPrefix}/af6c9.svg`;
 const imgPlus = `${assetPathPrefix}/ce264.svg`;
 const imgShieldCheck = `${assetPathPrefix}/8878d.svg`;
