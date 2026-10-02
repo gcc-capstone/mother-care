@@ -6,6 +6,8 @@ import Resources from './screens/Resources'
 import Earn from './screens/Earn'
 import Goals from './screens/Goals'
 import AdminGoals from './screens/AdminGoals'
+import Performance from './screens/Performance'
+import PersistentNavigation from './screens/PersistantNavigation'
 
 function MobileLayout() {
   return (
@@ -25,17 +27,23 @@ function MobileLayout() {
 
 function AdminLayout() {
   return (
-    <div className="admin-app">
+    <div className="admin-app flex min-h-screen items-stretch">
+      <PersistentNavigation className="h-full"/>
+      <main className="flex-1">
       <Routes>
         <Route path="/admingoals" element={<AdminGoals />} />
+        <Route path="/performance" element={<Performance />} />
       </Routes>
-    </div>
+      </main>
+      </div>
+
   );
 }
 
 function App() {
   return (
     <BrowserRouter>
+    
       <Routes>
         <Route path="/*" element={<MobileLayout />} />
         <Route path="/admin/*" element={<AdminLayout />} />
