@@ -38,6 +38,7 @@ export default function PersistentNavigation() {
                 ['Resource catalog', '/admin/resource-catalog'],
                 ['Analytics', '/admin/performance'],
                 ['Care groups', '/admin/groups'],
+                ['Counselors', '/admin/counselors'],
               ]
             : []),
         ].map(([label, path]) => {

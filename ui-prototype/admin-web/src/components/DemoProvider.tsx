@@ -15,6 +15,7 @@ import {
 } from '../data/mockData'
 export default function DemoProvider({ children }: { children: ReactNode }) {
   const [groups, setGroups] = useState(mockGroups)
+  const [counselorId, setCounselorId] = useState('counselor-001')
   const [role, setRole] = useState<DemoRole>('Administrator')
   const [resources, setResources] = useState(mockResources)
   const [forms, setForms] = useState(mockForms)
@@ -30,6 +31,8 @@ export default function DemoProvider({ children }: { children: ReactNode }) {
       value={{
         groups,
         setGroups,
+        counselorId,
+        setCounselorId,
         role,
         setRole,
         resources,

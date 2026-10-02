@@ -146,7 +146,14 @@ export default function Performance() {
                     )
                     return (
                       <tr key={c}>
-                        <td className="font-semibold">{c}</td>
+                        <td className="font-semibold">
+                          <Link
+                            className="text-accent underline"
+                            to="/admin/counselors"
+                          >
+                            {c}
+                          </Link>
+                        </td>
                         <td>{ids.size}</td>
                         <td>{assigned.length}</td>
                         <td>

@@ -14,6 +14,7 @@ npm run dev        # http://localhost:5174
 npm run typecheck  # strict TypeScript checking
 npm run build     # TypeScript + production Vite build
 npm run lint
+npm run check:data # validate coverage, relationships, IDs, and dates
 ```
 
 ## Connected workflows
@@ -69,3 +70,25 @@ external application requests. All changes are confined to Admin Web.
 
 Additional Chromium checks passed for both role menus, new workflow state propagation,
 form version snapshots, groups, and layouts at 1440, 1024, and 390 pixels.
+
+## Populated demonstration records
+
+The local dataset includes 9 fictional mothers, 3 counselors (3 cases each),
+34 goals, 12 community resources, 32 reviews/referrals, 28 form assignments,
+19 meetings, and 5 care groups. Every mother has active and completed goals,
+open and completed referrals, assigned and completed forms, meeting history,
+an upcoming appointment, and a care group. Dates use the fixed October 1, 2026
+demo context. Draft forms, waitlisted resources, and overdue work are included.
+
+Admins can open Counselors in the sidebar and click through each caseload.
+In counselor mode, the Demo counselor selector chooses Alex, Dina, or Sam;
+the dashboard shows that profile's caseload and meeting notes record the chosen
+author. Session changes still use React state and reset on reload.
+
+`npm run check:data` verifies each mother's data coverage, each counselor's
+caseload, stable unique IDs, valid relationships, form versions, and dates.
+
+Browser verification covered every mother’s profile, case activity, goals, forms,
+referrals, and meeting history; goal/form completion actions; all counselor
+caseload links, profile selection, and meeting authors; populated layouts at
+1440, 1024, and 390 pixels. No runtime errors or external requests were detected.

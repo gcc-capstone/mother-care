@@ -1,3 +1,4 @@
+import { mockCounselors } from '../data/mockData'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDemo } from '../hooks/demoContext'
@@ -15,7 +16,22 @@ import {
 import { inputClass, splitClass } from '../utils/uiClasses'
 
 export function CareDashboard() {
-  const { mothers, followUps, assignments, role } = useDemo()
+  const {
+    mothers: allMothers,
+    followUps: allFollowUps,
+    assignments: allAssignments,
+    role,
+    counselorId,
+  } = useDemo()
+  const profile =
+    mockCounselors.find((c) => c.id === counselorId) ?? mockCounselors[0]
+  const mothers =
+    role === 'Administrator'
+      ? allMothers
+      : allMothers.filter((m) => m.counselor === profile.name)
+  const ids = new Set(mothers.map((m) => m.id))
+  const followUps = allFollowUps.filter((f) => ids.has(f.motherId))
+  const assignments = allAssignments.filter((a) => ids.has(a.motherId))
   return (
     <Page title="Care dashboard">
       <p className="text-muted">{role} workspace · October 1, 2026</p>
@@ -40,6 +56,8 @@ export function CareDashboard() {
         <Panel title="Review queue">
           {followUps
             .filter((f) => f.status !== 'Completed')
+            .sort((a, b) => a.due.localeCompare(b.due))
+            .slice(0, 6)
             .map((f) => (
               <div key={f.id} className="border-b border-line py-3">
                 <Link
@@ -54,8 +72,22 @@ export function CareDashboard() {
                 <Badge>{f.status}</Badge>
               </div>
             ))}
+          <Link className="block text-accent underline" to="/admin/followup">
+            View all follow-ups
+          </Link>
         </Panel>
         <Panel title="Care workflows">
+          <div className="space-y-2">
+            {mothers.map((m) => (
+              <Link
+                key={m.id}
+                to={`/admin/mothers/${m.id}`}
+                className="block rounded-lg bg-canvas p-3 text-accent underline"
+              >
+                {m.name} · {m.status}
+              </Link>
+            ))}
+          </div>
           <CaseLinks />
           <Link className="block text-accent underline" to="/admin/forms">
             Assign a form
@@ -253,7 +285,8 @@ export function Forms() {
   )
 }
 export function Meetings() {
-  const { meetings, setMeetings, selectedId, role, setFollowUps } = useDemo()
+  const { meetings, setMeetings, selectedId, role, counselorId, setFollowUps } =
+    useDemo()
   const [message, setMessage] = useState('')
   const [search, setSearch] = useState('')
   return (
@@ -298,8 +331,18 @@ export function Meetings() {
                 </p>
               </article>
             ))}
-          {!meetings.some((m) => m.motherId === selectedId) && (
-            <Empty>No meetings logged.</Empty>
+          {!meetings.some(
+            (m) =>
+              m.motherId === selectedId &&
+              `${m.summary} ${m.type}`
+                .toLowerCase()
+                .includes(search.toLowerCase()),
+          ) && (
+            <Empty>
+              {search
+                ? 'No meetings match your search.'
+                : 'No meetings logged.'}
+            </Empty>
           )}
         </Panel>
         <Panel title="Log a meeting">
@@ -321,7 +364,10 @@ export function Meetings() {
                   summary,
                   internalNotes: String(d.get('notes')).trim(),
                   author:
-                    role === 'Administrator' ? 'Morgan Shaw' : 'Alex Rivera',
+                    role === 'Administrator'
+                      ? 'Morgan Shaw'
+                      : (mockCounselors.find((c) => c.id === counselorId)
+                          ?.name ?? 'Alex Rivera'),
                   followUp: due,
                 },
                 ...ms,

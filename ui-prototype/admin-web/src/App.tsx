@@ -10,6 +10,7 @@ import {
   ResourceCatalog,
   FormBuilder,
   CareGroups,
+  CounselorDirectory,
 } from './screens/AdminTools'
 import AdminGoals from './screens/AdminGoals'
 import Performance from './screens/Performance'
@@ -34,6 +35,14 @@ export default function App() {
               element={<Navigate to="/admin/dashboard" replace />}
             />
             <Route path="/admin/admingoals" element={<AdminGoals />} />
+            <Route
+              path="/admin/counselors"
+              element={
+                <AdminOnly>
+                  <CounselorDirectory />
+                </AdminOnly>
+              }
+            />
             <Route path="/admin/dashboard" element={<CareDashboard />} />
             <Route path="/admin/appointments" element={<Appointments />} />
             <Route path="/admin/forms" element={<Forms />} />

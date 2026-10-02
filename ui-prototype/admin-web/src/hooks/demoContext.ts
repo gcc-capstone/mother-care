@@ -18,6 +18,8 @@ export interface DemoState {
       { id: string; name: string; counselor: string; motherIds: string[] }[]
     >
   >
+  counselorId: string
+  setCounselorId: Dispatch<SetStateAction<string>>
   role: DemoRole
   setRole: Dispatch<SetStateAction<DemoRole>>
   resources: Resource[]

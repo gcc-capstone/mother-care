@@ -1,5 +1,6 @@
+import { counselors, mockCounselors } from '../data/mockData'
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
 import type { Resource, CareForm } from '../types/domain'
 import { useDemo } from '../hooks/demoContext'
@@ -440,7 +441,7 @@ export function CareGroups() {
                   )
                 }
               >
-                {['Alex Rivera', 'Dina Brooks', 'Sam Lee'].map((c) => (
+                {counselors.map((c) => (
                   <option key={c}>{c}</option>
                 ))}
               </select>
@@ -489,6 +490,64 @@ export function CareGroups() {
             <p role="status">{message}</p>
           </Panel>
         )}
+      </div>
+    </Page>
+  )
+}
+
+export function CounselorDirectory() {
+  const { mothers, goals, followUps, meetings } = useDemo()
+  return (
+    <Page title="Counselor caseloads">
+      <div className="grid gap-5 xl:grid-cols-3">
+        {mockCounselors.map((c) => {
+          const cases = mothers.filter((m) => m.counselor === c.name)
+          const ids = new Set(cases.map((m) => m.id))
+          return (
+            <Panel key={c.id} title={c.name}>
+              <p className="text-muted">{c.focus}</p>
+              <p>{c.counties.join(' · ')}</p>
+              <Badge>{cases.length} mothers</Badge>
+              <p>
+                {
+                  goals.filter(
+                    (g) => ids.has(g.motherId) && g.status === 'Active',
+                  ).length
+                }{' '}
+                active goals ·{' '}
+                {
+                  followUps.filter(
+                    (f) => ids.has(f.motherId) && f.status !== 'Completed',
+                  ).length
+                }{' '}
+                open reviews
+              </p>
+              <p>
+                {meetings.filter((m) => ids.has(m.motherId)).length} meetings
+                logged
+              </p>
+              {cases.map((m) => (
+                <Link
+                  key={m.id}
+                  to={`/admin/mothers/${m.id}`}
+                  className="block rounded-lg bg-canvas p-3 font-semibold text-accent underline"
+                >
+                  {m.name}
+                  <span className="block font-normal text-muted">
+                    {m.status} · Next appointment{' '}
+                    {m.appointment.replace('T', ' at ')}
+                  </span>
+                </Link>
+              ))}
+              {!cases.length && (
+                <Empty>
+                  No assigned mothers. Assign a counselor in Mothers or Care
+                  groups.
+                </Empty>
+              )}
+            </Panel>
+          )
+        })}
       </div>
     </Page>
   )

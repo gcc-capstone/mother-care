@@ -86,3 +86,16 @@ export interface Meeting {
   author: string
   followUp: string
 }
+
+export interface Counselor {
+  id: string
+  name: string
+  focus: string
+  counties: string[]
+}
+export interface CareGroup {
+  id: string
+  name: string
+  counselor: string
+  motherIds: string[]
+}
