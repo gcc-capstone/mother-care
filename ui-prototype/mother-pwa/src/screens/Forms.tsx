@@ -1,46 +1,24 @@
-import './Forms.css'
+import { Link } from 'react-router-dom'
 import { assignedForms, intakeForm, otherForms, type FormItem } from '../data/forms'
+import { Page } from '../components/Page'
+import { useMotherState } from '../hooks/useMotherState'
 
-// "Fill out form" buttons are inert: the prototype covers the five tab screens only.
-function FormCard({ form, variant }: { form: FormItem; variant: 'assigned' | 'other' }) {
-  return (
-    <article className={`form-card form-card-${variant}`}>
-      <h3 className="form-title">{form.title}</h3>
-      <p className="form-desc">{form.description}</p>
-      <p className="form-meta">{form.meta}</p>
-      <button className="btn btn-outline">Fill out form</button>
-    </article>
-  )
+function FormCard({ form, intake = false }: { form: FormItem; intake?: boolean }) {
+  const { formResponses } = useMotherState()
+  const complete = Boolean(formResponses[form.id])
+  return <article className={`flex flex-col items-start gap-3 rounded-3xl p-[18px] ${intake ? 'border border-[var(--sage)] bg-[var(--sage-strip)]' : 'bg-white'}`}>
+    {intake && <span className="rounded-full bg-[var(--ink)] px-2.5 py-1 text-[11px] font-semibold text-white">START HERE</span>}
+    <h2 className="text-[17px] font-semibold text-[var(--ink)]">{form.title}</h2>
+    <p className="text-sm">{form.description}</p>
+    <p className="text-[13px] text-[var(--muted)]">{complete ? '✓ Submitted' : form.meta}</p>
+    <Link to={`/forms/${form.id}`} className={`inline-flex min-h-11 items-center justify-center rounded-full px-[18px] py-2.5 text-sm font-semibold ${intake ? 'w-full bg-[var(--ink)] text-white' : 'border border-[var(--ink)] text-[var(--ink)]'}`}>{complete ? 'Review form' : 'Fill out form'}</Link>
+  </article>
 }
-
 export default function Forms() {
-  return (
-    <main className="screen forms">
-      <header className="screen-head">
-        <h1 className="text-heading">Forms</h1>
-        <p className="text-caption">Fill these out to start building your profile</p>
-      </header>
-
-      <section className="intake-card">
-        <span className="intake-badge">START HERE</span>
-        <h2 className="intake-title">{intakeForm.title}</h2>
-        <p className="form-desc">{intakeForm.description}</p>
-        <button className="btn btn-primary">Fill out form</button>
-      </section>
-
-      <section className="section">
-        <h2 className="text-subhead">Assigned to you</h2>
-        {assignedForms.map((f) => (
-          <FormCard key={f.id} form={f} variant="assigned" />
-        ))}
-      </section>
-
-      <section className="section">
-        <h2 className="text-subhead">Other forms</h2>
-        {otherForms.map((f) => (
-          <FormCard key={f.id} form={f} variant="other" />
-        ))}
-      </section>
-    </main>
-  )
+  return <Page title="Forms">
+    <p className="text-[13px] text-[var(--muted)]">Fill these out to start building your profile</p>
+    <FormCard form={intakeForm} intake />
+    <section className="flex flex-col gap-2.5"><h2 className="text-lg font-semibold">Assigned to you</h2>{assignedForms.map(f => <FormCard key={f.id} form={f} />)}</section>
+    <section className="flex flex-col gap-2.5"><h2 className="text-lg font-semibold">Other forms</h2>{otherForms.map(f => <FormCard key={f.id} form={f} />)}</section>
+  </Page>
 }
