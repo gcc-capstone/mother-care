@@ -12,6 +12,8 @@ export interface FormItem {
   title: string
   description: string
   meta: string
+  prefill?: boolean
+  questions?: { key: string; label: string; type?: 'text' | 'date'; required?: boolean }[]
 }
 export type Category = 'All' | 'Food' | 'Diapers' | 'Clothing' | 'Childcare'
 export interface Resource {
@@ -23,7 +25,6 @@ export interface Resource {
   status: string
   isOpen: boolean
   distance: string
-  rating: 'Very good' | 'Good'
   provides: string
   categories: Category[]
   address: string
@@ -51,16 +52,29 @@ export interface Mother {
   familyName: string
   email: string
   location: string
+  phone?: string
+  preferredContact?: string
+  language?: string
+  householdSize?: string
+  childrenAges?: string
+  dueDate?: string
+  housing?: string
+  transportation?: string
+  supportNeeds?: string[]
+  contactNotes?: string
 }
 export interface Notification {
   id: string
   title: string
   message: string
   to: string
+  priority?: 'high' | 'standard'
 }
 export interface FormResponse {
   name: string
   notes: string
+  fields?: Record<string, string>
+  submittedAt?: string
 }
 
 export interface Counselor { id: string; name: string }
@@ -76,4 +90,21 @@ export interface MotherDemo {
   openingCredits: number
   openingEarned: number
   streakDays: number
+}
+
+export interface ResourceReview {
+  id: string
+  motherId: string
+  motherName: string
+  resourceId: string
+  resourceName: string
+  outcome: 'Received support' | 'Some support' | 'Could not access' | 'Not visited yet'
+  rating: string
+  comments: string
+  needsFollowUp: boolean
+  submittedAt: string
+}
+export interface ResourceRecommendation {
+  resourceId: string
+  note: string
 }

@@ -54,3 +54,24 @@ npm run preview:admin   # http://localhost:4174
 
 Deploy the two `dist/` directories independently. Configure each static host to
 serve its `index.html` for client-side routes, including direct links to admin pages.
+
+## Mother experience updates
+
+- Opening the app with pending notifications shows a full screen care update page.
+  Continue keeps updates in the notification list; dismissing clears them for the session.
+- Resource details accept private outcomes, helpfulness, comments, and follow-up
+  requests. Mothers can edit their own feedback; the directory does not show reviews.
+  Feedback stays in browser local storage and can be downloaded as JSON.
+- In the admin app, **Recommend a resource → Private resource feedback** imports
+  that JSON, filters feedback, and marks it reviewed. Updated feedback becomes unread
+  again. Admin imports and review statuses stay in that app's browser local storage.
+  These independent apps have no automatic syncing, authentication, or access enforcement.
+- Resources include sample counselor recommendations and up to five recent views
+  and searches per demo mother. Search history records after a short pause or submission.
+- Seven forms include intake, monthly check-in, support planning, childcare, baby
+  supplies, transportation, and contact updates. Profile details are editable before
+  submission; form edits do not change the profile.
+- Profile fields cover contact preferences, language, household size, children’s
+  ages, optional due date, housing, transportation, and support needs. Additional
+  household fields are optional. Profile, form, and recent activity changes use
+  session state and reset on reload, as do the original demo interactions.

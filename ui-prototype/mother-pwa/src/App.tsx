@@ -14,9 +14,10 @@ import Goals from './screens/Goals'
 import GoalDetails from './screens/GoalDetails'
 import Profile from './screens/Profile'
 import Notifications from './screens/Notifications'
+import OpeningNotifications from './components/OpeningNotifications'
 
 export default function App() {
-  return <MotherStateProvider><BrowserRouter><ScrollToTop />
+  return <MotherStateProvider><BrowserRouter><ScrollToTop /><OpeningNotifications>
     <div className="mx-auto flex min-h-dvh max-w-[430px] flex-col bg-[var(--bg)]">
       <a href="#main-content" className="sr-only z-20 bg-white p-3 focus:not-sr-only">Skip to content</a>
       <Routes>
@@ -37,5 +38,5 @@ export default function App() {
       </Routes>
       <NavBar />
     </div>
-  </BrowserRouter></MotherStateProvider>
+  </OpeningNotifications></BrowserRouter></MotherStateProvider>
 }

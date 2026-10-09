@@ -38,7 +38,7 @@ export const motherDemos: MotherDemo[] = [
         ...(index === 3 ? { 'monthly-check-in': { name, notes: 'Our routines are going well. I would like to review childcare options at my next visit.' } } : {}),
       },
       notifications: index === 3 ? [] : [
-        { id: `${id}-check-in`, title: index === 4 ? 'Welcome to MotherCare' : 'Your family check-in is ready', message: index === 4 ? 'Start with your family intake form so your counselor can learn about your needs.' : `${counselor.name} would like to hear how your family is doing.`, to: index === 4 ? '/forms/family-intake' : '/forms/monthly-check-in' },
+        { id: `${id}-check-in`, priority: 'high', title: index === 4 ? 'Welcome to MotherCare' : 'Your family check-in is ready', message: index === 4 ? 'Start with your family intake form so your counselor can learn about your needs.' : `${counselor.name} would like to hear how your family is doing.`, to: index === 4 ? '/forms/family-intake' : '/forms/monthly-check-in' },
         { id: `${id}-lesson`, title: 'Newborn Sleep Basics', message: 'A short lesson is available to help you plan a calm bedtime routine.', to: '/earn/sleep-video' },
       ],
       openingCredits, openingEarned: index === 3 ? 6 : 0, streakDays,
