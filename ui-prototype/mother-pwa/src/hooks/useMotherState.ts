@@ -1,7 +1,15 @@
 import { createContext, useContext } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
-import type { FormResponse, Goal, Mother, Notification } from '../types'
+import type { FormResponse, Goal, Mother, Notification, ResourceReview, ResourceRecommendation } from '../types'
 export interface MotherState {
+  feedbackStorageError: boolean
+  resourceReviews: ResourceReview[]
+  setResourceReviews: Dispatch<SetStateAction<ResourceReview[]>>
+  recommendations: ResourceRecommendation[]
+  recentlyViewed: string[]
+  recentSearches: string[]
+  recordResourceView: (id: string) => void
+  recordSearch: (query: string) => void
   activeMotherId: string; selectMother: (id: string) => void
   counselorName: string; streakDays: number
   goals: Goal[]; setGoals: Dispatch<SetStateAction<Goal[]>>

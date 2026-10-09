@@ -1,3 +1,4 @@
+import PrivateResourceReviews from '../components/PrivateResourceReviews'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDemo } from '../hooks/demoContext'
@@ -64,6 +65,7 @@ export default function RecommendedResources() {
       }
     >
       <MotherPicker />
+      <PrivateResourceReviews />
       <Banner>
         Review community services and availability with the mother before making
         a referral.

@@ -15,6 +15,9 @@ export const user: Mother = {
   familyName: 'Miller',
   email: 'jan.miller@example.com',
   location: 'Natrona Heights, PA 15065',
+  phone: '412-555-0104', preferredContact: 'Email', language: 'English',
+  householdSize: '2', childrenAges: '6 months', housing: 'Renting',
+  transportation: 'Public transit', supportNeeds: ['Diapers', 'Childcare'],
 }
 
 export const today = 'Thursday, October 1, 2026'
