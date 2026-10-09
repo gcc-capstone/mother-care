@@ -34,8 +34,6 @@ export default function PersistentNavigation() {
           ['Meeting notes', '/admin/meetings'],
           ...(role === 'Administrator'
             ? [
-                ['Form builder', '/admin/form-builder'],
-                ['Resource catalog', '/admin/resource-catalog'],
                 ['Analytics', '/admin/performance'],
                 ['Care groups', '/admin/groups'],
                 ['Counselors', '/admin/counselors'],
@@ -44,7 +42,9 @@ export default function PersistentNavigation() {
         ].map(([label, path]) => {
           const active =
             pathname === path ||
-            (label === 'Mothers' && pathname.startsWith('/admin/mothers/'))
+            (label === 'Mothers' && pathname.startsWith('/admin/mothers/')) ||
+            (label === 'Forms' && pathname.startsWith('/admin/form-builder')) ||
+            (label === 'Resources' && pathname === '/admin/resource-catalog')
           return (
             <Link
               key={path}

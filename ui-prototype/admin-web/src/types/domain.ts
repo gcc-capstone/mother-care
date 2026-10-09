@@ -3,6 +3,8 @@ export interface Mother {
   name: string
   county: string
   status: 'Stable' | 'Watch' | 'High' | 'New'
+  mood?: 'rough' | 'low' | 'okay' | 'good' | 'great' | null
+  moodLoggedAt?: string
   counselor: string
   contact: string
   needs: string[]
@@ -30,6 +32,7 @@ export interface Resource {
   mode: 'Physical' | 'Digital'
   hours: string
   availability: 'Available' | 'Waitlist'
+  followUpDays?: number
   address: string
 }
 export type Outcome = 'Successful' | 'Partially successful' | 'Could not access'
@@ -66,6 +69,7 @@ export interface CareForm {
   version: number
   published: boolean
   questions: string[]
+  questionDefaults?: QuestionDefault[]
 }
 export interface FormAssignment {
   id: string
@@ -73,6 +77,8 @@ export interface FormAssignment {
   title: string
   version: number
   questions: string[]
+  responses?: string[]
+  questionDefaults?: QuestionDefault[]
   due: string
   status: 'Assigned' | 'Completed'
 }
@@ -98,4 +104,9 @@ export interface CareGroup {
   name: string
   counselor: string
   motherIds: string[]
+}
+
+export interface QuestionDefault {
+  source: '' | 'name' | 'county' | 'contact' | 'needs' | 'custom'
+  value: string
 }

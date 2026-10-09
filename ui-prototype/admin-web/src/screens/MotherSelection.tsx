@@ -1,3 +1,5 @@
+import MoodBadge from '../components/MoodBadge'
+import { moodOptions } from '../data/moods'
 import CaseActivity from '../components/CaseActivity'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -39,7 +41,7 @@ export default function MotherSelection() {
     .filter(
       (m) =>
         `${m.name} ${m.id}`.toLowerCase().includes(search.toLowerCase()) &&
-        (status === 'All' || m.status === status) &&
+        (status === 'All' || (m.mood ?? 'none') === status) &&
         (county === 'All' || m.county === county),
     )
     .sort((a, b) =>
@@ -93,8 +95,8 @@ export default function MotherSelection() {
             value: followUps.filter((f) => f.status !== 'Completed').length,
           },
           {
-            label: 'New intakes',
-            value: mothers.filter((m) => m.status === 'New').length,
+            label: 'Awaiting mood check-in',
+            value: mothers.filter((m) => !m.mood).length,
           },
         ]}
       />
@@ -112,7 +114,7 @@ export default function MotherSelection() {
                 }}
               />
             </Field>
-            <Field label="Case status">
+            <Field label="Latest mood">
               <select
                 className={inputClass}
                 value={status}
@@ -121,9 +123,7 @@ export default function MotherSelection() {
                   setPage(0)
                 }}
               >
-                {['All', 'Stable', 'Watch', 'High', 'New'].map((s) => (
-                  <option key={s}>{s}</option>
-                ))}
+                <option value="All">All moods</option>{moodOptions.map(m => <option key={m.id} value={m.id}>{m.label}</option>)}<option value="none">No check-in yet</option>
               </select>
             </Field>
             <Field label="County">
@@ -158,7 +158,6 @@ export default function MotherSelection() {
                 <tr>
                   <th scope="col">Mother</th>
                   <th scope="col">County</th>
-                  <th scope="col">Status</th>
                   <th scope="col">Active goals</th>
                   <th scope="col">Counselor</th>
                 </tr>
@@ -174,18 +173,18 @@ export default function MotherSelection() {
                       }
                     >
                       <td>
+                        <div className="flex items-center justify-between gap-3">
                         <button
                           className="text-left font-semibold text-accent underline"
                           onClick={() => selectMother(m.id)}
                         >
                           {m.name}
                         </button>
+                        <span className="shrink-0"><MoodBadge mother={m} /></span>
+                        </div>
                         <p className="text-xs text-muted">{m.id}</p>
                       </td>
                       <td>{m.county}</td>
-                      <td>
-                        <Badge>{m.status}</Badge>
-                      </td>
                       <td>
                         {
                           goals.filter(
@@ -276,11 +275,11 @@ export default function MotherSelection() {
             </form>
           </Panel>
         ) : mother ? (
-          <Panel title={mother.name}>
+          <Panel title={<span className="flex items-center justify-between gap-3"><span className="min-w-0">{mother.name}</span><span className="shrink-0"><MoodBadge mother={mother} /></span></span>}>
             <p className="text-muted">
               {mother.id} · {mother.county}
             </p>
-            <Badge>{mother.status}</Badge>
+            {mother.mood && <p className="text-xs text-muted">Mother-reported{mother.moodLoggedAt && ` · ${new Date(mother.moodLoggedAt).toLocaleDateString()}`}</p>}
             <Field label="Assigned counselor">
               <select
                 className={inputClass}
@@ -292,19 +291,7 @@ export default function MotherSelection() {
                 ))}
               </select>
             </Field>
-            <Field label="Case status">
-              <select
-                className={inputClass}
-                value={mother.status}
-                onChange={(e) =>
-                  updateMother({ status: e.target.value as Mother['status'] })
-                }
-              >
-                {['Stable', 'Watch', 'High', 'New'].map((s) => (
-                  <option key={s}>{s}</option>
-                ))}
-              </select>
-            </Field>
+
             <p>
               <strong>Preferred contact:</strong> {mother.contact}
             </p>

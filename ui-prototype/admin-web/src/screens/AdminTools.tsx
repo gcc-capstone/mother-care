@@ -1,8 +1,10 @@
+import MoodBadge from '../components/MoodBadge'
+import WorkspaceTabs from '../components/WorkspaceTabs'
 import { counselors, mockCounselors } from '../data/mockData'
 import { useRef, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
-import type { Resource, CareForm } from '../types/domain'
+import type { Resource } from '../types/domain'
 import { useDemo } from '../hooks/demoContext'
 import { Badge, Button, Empty, Field, Page, Panel } from '../components/ui'
 import { inputClass, splitClass } from '../utils/uiClasses'
@@ -36,6 +38,7 @@ export function ResourceCatalog() {
         formRef.current?.scrollIntoView({ block: 'center' })
       }}>New resource</Button>}
     >
+      <WorkspaceTabs section="resources" />
       <div className={splitClass}>
         <Panel title="Manage community services">
           <Field label="Search catalog">
@@ -55,9 +58,10 @@ export function ResourceCatalog() {
                   <p>
                     {r.service} · {r.county}
                   </p>
-                  <Badge>{r.availability}</Badge>
+                  <Badge>{r.availability}</Badge><p className="mt-1 text-sm text-muted">Follow up after {r.followUpDays ?? 7} days</p>
                 </div>
                 <div className="flex gap-2">
+                  <Link className="inline-flex min-h-10 items-center rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white" to={`/admin/reccomendresources?resource=${r.id}`}>Recommend</Link>
                   <Button
                     secondary
                     onClick={() => {
@@ -117,6 +121,7 @@ export function ResourceCatalog() {
                 county: text('county'),
                 address: text('address'),
                 hours: text('hours'),
+                followUpDays: Number(d.get('followUpDays')),
                 mode: d.get('mode') === 'Digital' ? 'Digital' : 'Physical',
                 availability:
                   d.get('availability') === 'Waitlist'
@@ -146,6 +151,10 @@ export function ResourceCatalog() {
                 </Field>
               ),
             )}
+            <Field label="Default follow-up duration (days)">
+              <input type="number" name="followUpDays" min={1} max={365} step={1} required className={inputClass} defaultValue={editing?.followUpDays ?? 7} />
+            </Field>
+            <p className="text-sm text-muted">New recommendations automatically schedule a follow-up this many days later. Staff can adjust the date for each mother.</p>
             <Field label="Delivery">
               <select
                 name="mode"
@@ -179,211 +188,7 @@ export function ResourceCatalog() {
     </Page>
   )
 }
-export function FormBuilder() {
-  const { forms, setForms } = useDemo()
-  const [selected, setSelected] = useState(forms[0]?.id ?? '')
-  const form = forms.find((f) => f.id === selected)
-  const [message, setMessage] = useState('')
-  const [deleting, setDeleting] = useState(false)
-  function update(change: Partial<CareForm>) {
-    setForms((fs) =>
-      fs.map((f) =>
-        f.id === selected ? { ...f, ...change, published: false } : f,
-      ),
-    )
-  }
-  return (
-    <Page
-      title="Form builder"
-      action={
-        <Button
-          onClick={() => {
-            const id = crypto.randomUUID()
-            setForms((fs) => [
-              ...fs,
-              {
-                id,
-                title: 'New check-in form',
-                version: 0,
-                published: false,
-                questions: [],
-              },
-            ])
-            setSelected(id)
-            setDeleting(false)
-          }}
-        >
-          New form
-        </Button>
-      }
-    >
-      <div className={splitClass}>
-        <Panel title="Form templates">
-          {forms.map((f) => (
-            <div
-              key={f.id}
-              className="flex flex-wrap justify-between gap-2 border-b border-line py-3"
-            >
-              <button
-                className="text-accent underline font-semibold"
-                onClick={() => {
-                  setSelected(f.id)
-                  setDeleting(false)
-                }}
-              >
-                {f.title}
-              </button>
-              <Badge>{f.published ? `Published v${f.version}` : 'Draft'}</Badge>
-            </div>
-          ))}
-          {!forms.length && <Empty>No forms. Create a template.</Empty>}
-        </Panel>
-        {form && (
-          <Panel title="Edit template">
-            <Field label="Form title">
-              <input
-                className={inputClass}
-                value={form.title}
-                onChange={(e) => update({ title: e.target.value })}
-              />
-            </Field>
-            {form.questions.map((q, i) => (
-              <div key={i} className="flex gap-2 items-end">
-                <div className="flex-1">
-                  <Field label={`Question ${i + 1}`}>
-                    <input
-                      className={inputClass}
-                      value={q}
-                      onChange={(e) =>
-                        update({
-                          questions: form.questions.map((item, index) =>
-                            index === i ? e.target.value : item,
-                          ),
-                        })
-                      }
-                    />
-                  </Field>
-                </div>
-                <Button
-                  secondary
-                  aria-label={`Remove question ${i + 1}`}
-                  onClick={() =>
-                    update({
-                      questions: form.questions.filter(
-                        (_, index) => index !== i,
-                      ),
-                    })
-                  }
-                >
-                  Remove
-                </Button>
-                <Button
-                  secondary
-                  disabled={i === 0}
-                  aria-label={`Move question ${i + 1} up`}
-                  onClick={() => {
-                    const questions = [...form.questions]
-                    ;[questions[i - 1], questions[i]] = [
-                      questions[i],
-                      questions[i - 1],
-                    ]
-                    update({ questions })
-                  }}
-                >
-                  ↑
-                </Button>
-              </div>
-            ))}
-            <Button
-              secondary
-              onClick={() => update({ questions: [...form.questions, ''] })}
-            >
-              Add question
-            </Button>
-            <details className="rounded-lg bg-canvas p-4">
-              <summary className="cursor-pointer font-semibold">
-                Mother form preview
-              </summary>
-              <div className="space-y-3 pt-3">
-                {form.questions.map((q, i) => (
-                  <Field key={i} label={q || `Untitled question ${i + 1}`}>
-                    <input
-                      className={inputClass}
-                      placeholder="Mother response"
-                    />
-                  </Field>
-                ))}
-              </div>
-            </details>
-            <div className="flex flex-wrap gap-2">
-              <Button
-                disabled={
-                  !form.title.trim() ||
-                  !form.questions.length ||
-                  form.questions.some((q) => !q.trim()) ||
-                  form.published
-                }
-                onClick={() => {
-                  setForms((fs) =>
-                    fs.map((f) =>
-                      f.id === selected
-                        ? {
-                            ...f,
-                            title: f.title.trim(),
-                            questions: f.questions.map((q) => q.trim()),
-                            version: f.version + 1,
-                            published: true,
-                          }
-                        : f,
-                    ),
-                  )
-                  setMessage(
-                    'New version published. Available under Forms for assignment.',
-                  )
-                }}
-              >
-                Publish version
-              </Button>
-              <Button
-                secondary
-                onClick={() => setMessage('Draft saved for this session.')}
-              >
-                Save draft
-              </Button>
-              <Button secondary onClick={() => setDeleting(true)}>
-                Delete template
-              </Button>
-            </div>
-            {deleting && (
-              <div className="space-y-2">
-                <p>
-                  Delete this template? Existing assignments will be preserved.
-                </p>
-                <Button
-                  onClick={() => {
-                    setForms((fs) => fs.filter((f) => f.id !== selected))
-                    setSelected(forms.find((f) => f.id !== selected)?.id ?? '')
-                    setDeleting(false)
-                  }}
-                >
-                  Confirm deletion
-                </Button>
-                <Button secondary onClick={() => setDeleting(false)}>
-                  Cancel
-                </Button>
-              </div>
-            )}
-            <p className="text-xs text-muted">
-              Editing a published template creates a draft. Existing assignments
-              retain their original questions.
-            </p>
-          </Panel>
-        )}
-      </div>
-      <p role="status">{message}</p>
-    </Page>
-  )
-}
+export { FormLibrary as FormBuilder } from './FormBuilder'
 export function CareGroups() {
   const { mothers, setMothers, groups, setGroups } = useDemo()
   const [selected, setSelected] = useState('')
@@ -539,9 +344,9 @@ export function CounselorDirectory() {
                   to={`/admin/mothers/${m.id}`}
                   className="block rounded-lg bg-canvas p-3 font-semibold text-accent underline"
                 >
-                  {m.name}
-                  <span className="block font-normal text-muted">
-                    {m.status} · Next appointment{' '}
+                  <span className="flex items-center justify-between gap-3"><span className="min-w-0">{m.name}</span><span className="shrink-0"><MoodBadge mother={m} /></span></span>
+                  <span className="mt-2 block font-normal text-muted">
+                    Next appointment{' '}
                     {m.appointment.replace('T', ' at ')}
                   </span>
                 </Link>

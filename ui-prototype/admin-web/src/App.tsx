@@ -1,3 +1,4 @@
+import { FormEditor } from './screens/FormBuilder'
 import { BrowserRouter, Navigate, Route, Routes, Link } from 'react-router-dom'
 import {
   CareDashboard,
@@ -55,6 +56,7 @@ export default function App() {
                 </AdminOnly>
               }
             />
+            <Route path="/admin/form-builder/:id" element={<AdminOnly><FormEditor /></AdminOnly>} />
             <Route
               path="/admin/resource-catalog"
               element={

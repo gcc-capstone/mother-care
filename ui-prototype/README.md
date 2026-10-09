@@ -57,8 +57,9 @@ serve its `index.html` for client-side routes, including direct links to admin p
 
 ## Mother experience updates
 
-- Opening the app with pending notifications shows a full screen care update page.
-  Continue keeps updates in the notification list; dismissing clears them for the session.
+- The homepage shows an updates island directly below the mood check-in
+  whenever notifications are pending. Each update links to details and can be
+  dismissed individually or together. The island disappears when no updates remain.
 - Resource details accept private outcomes, helpfulness, comments, and follow-up
   requests. Mothers can edit their own feedback; the directory does not show reviews.
   Feedback stays in browser local storage and can be downloaded as JSON.
@@ -75,3 +76,23 @@ serve its `index.html` for client-side routes, including direct links to admin p
   ages, optional due date, housing, transportation, and support needs. Additional
   household fields are optional. Profile, form, and recent activity changes use
   session state and reset on reload, as do the original demo interactions.
+
+## Admin workflow updates
+
+- Care dashboard, mother directory, case details, and counselor caseloads show
+  mother-reported mood faces. The sample moods match overlapping mother demo records;
+  a missing check-in is shown explicitly. Moods do not sync between apps.
+- The sidebar has one **Forms** entry (Assignments / Previous forms) and one
+  **Resources** entry (Recommend to a mother / Resource catalog). Catalog management
+  and form editing remain available to the administrator demo role.
+- **New form** opens a full page editor at `/admin/form-builder/new`.
+  Previous forms support editing, copying, and deletion. Each question can use a
+  profile field or custom text as a pre-populated response. The preview uses the
+  selected mother. Assignments preserve the published question text, pre-population
+  settings, and resolved responses when the source form is later changed.
+- Recommendations guide staff through choosing a mother, selecting a resource,
+  and reviewing the message and follow-up date. Catalog entries also link directly
+  into the recommendation flow.
+- New and edited resources include a default follow-up duration of 1–365 days.
+  New recommendations calculate an editable follow-up date from the fixed demo
+  date (October 1, 2026). Existing referral dates remain part of their saved history.
