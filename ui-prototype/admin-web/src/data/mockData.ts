@@ -330,6 +330,7 @@ export const mockForms: CareForm[] = [
   {
     id: 'intake',
     title: 'New mother intake',
+    questionDefaults: [{ source: 'needs', value: '' }, { source: 'contact', value: '' }],
     version: 1,
     published: true,
     questions: [
@@ -833,3 +834,11 @@ mockGroups.push(
     motherIds: ['MC-2051'],
   },
 )
+
+// Sample mother-reported moods, matching the mother demo where records overlap.
+const reportedMoods: Mother['mood'][] = ['good', 'okay', 'low', 'great', null, 'rough', 'good', 'low', 'okay']
+mockMothers.forEach((mother, index) => {
+  mother.mood = reportedMoods[index] ?? null
+  if (mother.mood) mother.moodLoggedAt = '2026-10-01T09:00:00'
+})
+mockResources.forEach(resource => { resource.followUpDays = resource.service === 'Housing' ? 3 : resource.availability === 'Waitlist' ? 14 : 7 })

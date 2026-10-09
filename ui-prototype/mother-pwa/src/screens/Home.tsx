@@ -1,3 +1,4 @@
+import HomeUpdates from '../components/HomeUpdates'
 import { Page } from '../components/Page'
 import { useMotherState } from '../hooks/useMotherState'
 import { Link } from 'react-router-dom'
@@ -35,6 +36,7 @@ export default function Home() {
         <Link to="/profile" aria-label="Edit profile"><img className="shrink-0" src={avatarIcon} width={44} height={44} alt="" /></Link>
       </header>
 
+
       <section className="overflow-hidden rounded-2xl bg-white flex flex-col gap-3.5 p-4">
         <h2 className="text-lg font-semibold leading-snug">How are you feeling today?</h2>
         <div className="flex justify-between gap-1" role="group" aria-label="Mood">
@@ -53,6 +55,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <HomeUpdates />
 
       <section className="flex flex-col gap-2.5">
         <div className="flex flex-wrap items-center justify-between gap-2">

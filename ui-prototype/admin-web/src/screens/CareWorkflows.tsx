@@ -1,3 +1,6 @@
+import MoodBadge from '../components/MoodBadge'
+import WorkspaceTabs from '../components/WorkspaceTabs'
+import { resolveDefault } from '../utils/formDefaults'
 import { mockCounselors } from '../data/mockData'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -84,9 +87,9 @@ export function CareDashboard() {
               <Link
                 key={m.id}
                 to={`/admin/mothers/${m.id}`}
-                className="block rounded-lg bg-canvas p-3 text-accent underline"
+                className="flex items-center justify-between gap-3 rounded-lg bg-canvas p-3 text-accent"
               >
-                {m.name} · {m.status}
+                <span className="min-w-0 underline">{m.name}</span><span className="shrink-0"><MoodBadge mother={m} /></span>
               </Link>
             ))}
           </div>
@@ -173,10 +176,11 @@ export function Appointments() {
   )
 }
 export function Forms() {
-  const { forms, assignments, setAssignments, selectedId, mothers } = useDemo()
+  const { forms, assignments, setAssignments, selectedId, mothers, role } = useDemo()
   const [message, setMessage] = useState('')
   return (
-    <Page title="Form assignments">
+    <Page title="Forms" action={role === 'Administrator' ? <Link to="/admin/form-builder/new" className="inline-flex min-h-10 items-center rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white">New form +</Link> : undefined}>
+      <WorkspaceTabs section="forms" />
       <MotherPicker />
       <div className={splitClass}>
         <Panel title="Assign a published form">
@@ -194,17 +198,19 @@ export function Forms() {
                   title: f.title,
                   version: f.version,
                   questions: [...f.questions],
+                  questionDefaults: structuredClone(f.questionDefaults ?? []),
+                  responses: f.questions.map((_, i) => resolveDefault(f.questionDefaults?.[i], mothers.find(m => m.id === selectedId))),
                   due: String(d.get('due')),
                   status: 'Assigned',
                 },
                 ...as,
               ])
               setMessage(
-                `${f.title} assigned. The assigned version is preserved when the template changes.`,
+                `${f.title} assigned. The assigned version is preserved when the form changes.`,
               )
             }}
           >
-            <Field label="Form template">
+            <Field label="Published form">
               <select className={inputClass} name="form" required>
                 {forms
                   .filter((f) => f.published)
@@ -251,7 +257,7 @@ export function Forms() {
                   </summary>
                   <ol className="list-decimal pl-5">
                     {a.questions.map((q, i) => (
-                      <li key={i}>{q}</li>
+                      <li key={i}>{q}{a.responses?.[i] && <p className="text-sm text-accent">Pre-populated response: {a.responses[i]} (editable by mother)</p>}</li>
                     ))}
                   </ol>
                 </details>
