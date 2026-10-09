@@ -52,4 +52,18 @@ Questions for them:
 - What is the process of a new mother getting put in a system? Download app and in-take form instantly populate profile?
 - Clarify the admin vs volunteer access and roles
 
+## 10/9 UI Version 1 
+- **Random Edits:**
+    - Resource Review needs to be a little cleaner. "How did it go?" at the top maybe, a little less text throughout the screen.
+    - Set/Edit the DEFAULT followup time per resource and maybe per mother
+- **Cognitive Walkthrough Representative Tasks:**
+    - Assign a resource to a mother as a counselor - **Carl**
+    - Resource feedback from the Mother Side ("Did you go?" notification often, then if you went then you give feedback) - **Ryan**
+    - Form Creation from Admin Side - **Christian**
+    - Mother Daily Encouragement - **Jacqueline**
+    - Filling out a Form from mother side - **Josh**
+- **User Feedback Questions for EVERYONE reviewing it:**
+    - How would you rate usability in general? What improvements?
+    - **Task:** Find a Resource for a Diaper Bank
+    - **Potential 2nd Task:** You have an appointment coming up, find the form you need to fill out. (Which Button do they click? Home or Forms?)
 
