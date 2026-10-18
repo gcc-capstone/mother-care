@@ -2,6 +2,9 @@ import { motherDemos } from '../data/mothers'
 import { useState, type FormEvent } from 'react'
 import { useMotherState } from '../hooks/useMotherState'
 import { ActionLink, Page, PrimaryButton } from '../components/Page'
+import ProfileChangesDialog from '../components/ProfileChangesDialog'
+import { getProfileChanges } from '../utils/profileChanges'
+import type { Mother } from '../types'
 
 const supportOptions = ['Food', 'Diapers', 'Clothing', 'Childcare', 'Housing & utilities', 'Transportation', 'Parenting support']
 const inputClass = 'min-h-11 rounded-xl border border-[var(--border)] bg-white p-3 font-normal'
@@ -14,15 +17,24 @@ function ProfileContent() {
   const [draft, setDraft] = useState(profile)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState('')
+  const [pendingProfile, setPendingProfile] = useState<Mother | null>(null)
+  const [keptOriginal, setKeptOriginal] = useState(false)
   function update(key: keyof typeof profile, value: string | string[]) {
-    setSaved(false); setDraft(prev => ({ ...prev, [key]: value }))
+    setSaved(false); setKeptOriginal(false); setDraft(prev => ({ ...prev, [key]: value }))
   }
   function submit(e: FormEvent) {
     e.preventDefault()
     if (![draft.firstName, draft.familyName, draft.email, draft.location].every(value => value.trim())) { setError('Please enter your name, email, and location.'); return }
-    setProfile({ ...draft, firstName: draft.firstName.trim(), familyName: draft.familyName.trim(), email: draft.email.trim(), location: draft.location.trim() }); setSaved(true); setError('')
+    const next = { ...draft, firstName: draft.firstName.trim(), familyName: draft.familyName.trim(), email: draft.email.trim(), location: draft.location.trim() }
+    setError(''); setSaved(false); setKeptOriginal(false)
+    if (getProfileChanges(profile, next).length) { setPendingProfile(next); return }
+    setSaved(true)
   }
   return <Page title="Your profile" back="/">
+    {pendingProfile && <ProfileChangesDialog changes={getProfileChanges(profile, pendingProfile)}
+      onDismiss={() => setPendingProfile(null)}
+      onDecline={() => { setDraft(profile); setPendingProfile(null); setKeptOriginal(true) }}
+      onSave={() => { setProfile(pendingProfile); setDraft(pendingProfile); setPendingProfile(null); setSaved(true) }} />}
     <label className="flex flex-col gap-2 font-medium">Demo mother<select className={inputClass} value={activeMotherId} onChange={e => selectMother(e.target.value)}>{motherDemos.map(d => <option key={d.profile.id} value={d.profile.id}>{d.profile.firstName} {d.profile.familyName}</option>)}</select></label>
     <p>Your counselor: {counselorName}</p>
     <p className="text-sm text-[var(--muted)]">Help your counselor understand your family. Household and support details are optional and can be used to fill in your forms.</p>
@@ -40,7 +52,7 @@ function ProfileContent() {
         <label className="flex flex-col gap-2 font-medium">Transportation<select className={inputClass} value={draft.transportation ?? ''} onChange={e => update('transportation', e.target.value)}><option value="">Choose (optional)</option>{['Own vehicle', 'Public transit', 'Rides from family or friends', 'Need transportation support', 'Prefer not to say'].map(v => <option key={v}>{v}</option>)}</select></label>
       </fieldset>
       <fieldset className="flex flex-col gap-2 rounded-3xl bg-white p-5"><legend className="float-left mb-3 text-lg font-semibold text-[var(--ink)]">What would help right now?</legend>{supportOptions.map(need => <label key={need} className="flex min-h-11 items-center gap-3"><input type="checkbox" className="size-5 accent-[var(--ink)]" checked={draft.supportNeeds?.includes(need) ?? false} onChange={e => update('supportNeeds', e.target.checked ? [...(draft.supportNeeds ?? []), need] : (draft.supportNeeds ?? []).filter(n => n !== need))} />{need}</label>)}</fieldset>
-      {error && <p role="alert">{error}</p>}{saved && <p role="status">✓ Your profile is updated. New forms will use these details.</p>}<PrimaryButton type="submit">Save changes</PrimaryButton><ActionLink to="/">Cancel</ActionLink>
+      {error && <p role="alert">{error}</p>}{keptOriginal && <p role="status">Your original profile details have been kept.</p>}{saved && <p role="status">✓ Your profile is updated. New forms will use these details.</p>}<PrimaryButton type="submit">Save changes</PrimaryButton><ActionLink to="/">Cancel</ActionLink>
     </form>
   </Page>
 }

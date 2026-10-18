@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom'
 import { assignedForms, intakeForm, otherForms } from '../data/forms'
 import { Page, ActionLink, MissingRecord, PrimaryButton } from '../components/Page'
 import { useMotherState } from '../hooks/useMotherState'
+import ProfileChangesDialog from '../components/ProfileChangesDialog'
+import { getFormProfileUpdates, getProfileChanges } from '../utils/profileChanges'
+import type { Mother } from '../types'
 
 const inputClass = 'min-h-11 rounded-xl border border-[var(--border)] bg-white p-3 font-normal'
 const profileFields = [
@@ -19,7 +22,7 @@ export default function FormDetails() {
 }
 function FormContent({ id }: { id: string | undefined }) {
   const form = [intakeForm, ...assignedForms, ...otherForms].find(f => f.id === id)
-  const { profile, counselorName, formResponses, setFormResponses, setGoals } = useMotherState()
+  const { profile, setProfile, counselorName, formResponses, setFormResponses, setGoals } = useMotherState()
   const saved = form ? formResponses[form.id] : undefined
   const [name, setName] = useState(saved?.name ?? `${profile.firstName} ${profile.familyName}`)
   const [notes, setNotes] = useState(saved?.notes ?? '')
@@ -30,21 +33,36 @@ function FormContent({ id }: { id: string | undefined }) {
   } : {}), ...saved?.fields }))
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
+  const [pendingUpdates, setPendingUpdates] = useState<Partial<Mother> | null>(null)
+  const [profileUpdated, setProfileUpdated] = useState(false)
   if (!form) return <MissingRecord back="/forms" />
   function update(key: string, value: string) { setFields(prev => ({ ...prev, [key]: value })) }
   function submit(e: FormEvent) {
     e.preventDefault()
     if (!form) return
     if (!name.trim() || form.questions?.some(q => q.required && !fields[q.key]?.trim())) { setError('Please complete your name and the required questions.'); return }
+    setError('')
+    const updates = getFormProfileUpdates(profile, name, fields, !!form.prefill)
+    if (getProfileChanges(profile, updates).length) { setPendingUpdates(updates); return }
+    saveResponse(false)
+  }
+  function saveResponse(updateProfile: boolean) {
+    if (!form) return
+    if (updateProfile && pendingUpdates) {
+      setProfile(prev => ({ ...prev, ...pendingUpdates }))
+    }
+    setProfileUpdated(updateProfile)
+    setPendingUpdates(null)
     setFormResponses(prev => ({ ...prev, [form.id]: { name: name.trim(), notes: notes.trim(), fields: Object.fromEntries(Object.entries(fields).map(([key, value]) => [key, value.trim()])), submittedAt: new Date().toISOString() } }))
     if (form.id === 'monthly-check-in') setGoals(prev => prev.map(g => g.id === 'family-check-in' ? { ...g, done: true } : g))
     setError(''); setSubmitted(true)
   }
   return <Page title={form.title} back="/forms">
     <p>{form.description}</p>
-    {submitted ? <section className="flex flex-col gap-4 rounded-3xl bg-white p-5" role="status"><h2 className="text-lg font-semibold">Thank you, your form is saved</h2><p>Your response is ready for your next visit with {counselorName}.</p><ActionLink to="/forms">Back to forms</ActionLink><button className="min-h-11 font-semibold" onClick={() => setSubmitted(false)}>Edit response</button></section> :
+    {pendingUpdates && <ProfileChangesDialog changes={getProfileChanges(profile, pendingUpdates)} fromForm onDecline={() => saveResponse(false)} onSave={() => saveResponse(true)} onDismiss={() => setPendingUpdates(null)} />}
+    {submitted ? <section className="flex flex-col gap-4 rounded-3xl bg-white p-5" role="status"><h2 className="text-lg font-semibold">Thank you, your form is saved</h2><p>Your response is ready for your next visit with {counselorName}.</p><p>{profileUpdated ? 'Your profile is updated. New forms will use these details.' : 'Your profile details have been kept.'}</p><ActionLink to="/forms">Back to forms</ActionLink><button className="min-h-11 font-semibold" onClick={() => setSubmitted(false)}>Edit response</button></section> :
       <form onSubmit={submit} className="flex flex-col gap-4 rounded-3xl bg-white p-5">
-        {form.prefill && <div className="rounded-2xl bg-[var(--sage-strip)] p-4 text-sm"><p className="font-semibold">A head start from your profile</p><p>Review and edit these details before submitting. Changes apply to this form.</p></div>}
+        {form.prefill && <div className="rounded-2xl bg-[var(--sage-strip)] p-4 text-sm"><p className="font-semibold">A head start from your profile</p><p>Review and edit these details before submitting. If anything has changed, we’ll ask whether you’d like to update your profile too.</p></div>}
         <label className="flex flex-col gap-2 font-medium">Your name (required)<input required maxLength={100} value={name} onChange={e => setName(e.target.value)} className={inputClass} /></label>
         {form.prefill && <>
           {profileFields.map(field => <label key={field.key} className="flex flex-col gap-2 font-medium">{field.label}<input type={field.type} min={field.type === 'number' ? 1 : undefined} max={field.type === 'number' ? 30 : undefined} step={field.type === 'number' ? 1 : undefined} maxLength={150} value={fields[field.key] ?? ''} onChange={e => update(field.key, e.target.value)} className={inputClass} /></label>)}
