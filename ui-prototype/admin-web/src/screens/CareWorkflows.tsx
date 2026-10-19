@@ -230,7 +230,7 @@ export function Forms() {
                 defaultValue="2026-10-02"
               />
             </Field>
-            <Button type="submit" disabled={!forms.some((f) => f.published)}>
+            <Button data-usability-id="form-assign" type="submit" disabled={!forms.some((f) => f.published)}>
               Assign form
             </Button>
           </form>

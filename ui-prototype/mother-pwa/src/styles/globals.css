@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../../../shared/usability";
 
 /* Application palette retained from the existing MotherCare design. */
 @layer base {

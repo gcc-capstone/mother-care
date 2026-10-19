@@ -14,7 +14,7 @@ export default function OpportunityDetails() {
     <p className="text-sm text-[var(--muted)]">{opportunity.detail} · +{opportunity.credits} credits</p>
     <article className="flex flex-col gap-4 rounded-3xl bg-white p-5"><h2 className="text-lg font-semibold">{group ? 'Your next group' : 'Learning guide'}</h2><p className="leading-relaxed">{opportunity.content.replaceAll('Carol', counselorName)}</p>
       {done && <p role="status" className="font-semibold text-[var(--ink)]">{group ? '✓ Your place is reserved for October 6.' : `✓ Completed. Your ${opportunity.credits} credits are included in your balance.`}</p>}
-      <PrimaryButton disabled={done} onClick={() => group ? reserve(opportunity.id) : completeOpportunity(opportunity.id)}>{done ? group ? 'Reserved' : 'Completed' : opportunity.action}</PrimaryButton>
+      <PrimaryButton usabilityId="activity-complete" disabled={done} onClick={() => group ? reserve(opportunity.id) : completeOpportunity(opportunity.id)}>{done ? group ? 'Reserved' : 'Completed' : opportunity.action}</PrimaryButton>
       <ActionLink to="/goals">View your goals</ActionLink>
     </article>
   </Page>

@@ -35,7 +35,7 @@ function GoalEditor({
   }
   return (
     <Panel title={goal ? 'Edit goal' : 'Create a goal'}>
-      <Button secondary onClick={beginGoal}>
+      <Button data-usability-id="goal-new" secondary onClick={beginGoal}>
         {goal ? 'Edit title' : 'Create goal +'}
       </Button>
       <form
@@ -176,7 +176,7 @@ function GoalEditor({
           Weekly review
         </label>
         <div className="flex flex-wrap gap-2">
-          <Button type="submit">{goal ? 'Save changes' : 'Assign goal'}</Button>
+          <Button data-usability-id="goal-save" type="submit">{goal ? 'Save changes' : 'Assign goal'}</Button>
           <Button
             secondary
             onClick={() => {

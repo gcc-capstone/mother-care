@@ -52,3 +52,7 @@ and production service worker support installation and offline navigation after
 an initial online visit. The worker only caches the built shell and local static
 assets. It is disabled in development. Reloading offline still resets React
 session data. Serve production output over HTTPS or localhost.
+
+## Usability testing
+
+From `ui-prototype/`, run `npm run dev:usability:mother` and open http://localhost:5173. Confirm consent in the observer panel, start an anonymous session and select a timed task. See the [cross-application testing guide](../docs/usability-testing-guide.md) for exports, combined reporting and privacy/timing details. Recording is disabled in ordinary development and all builds.

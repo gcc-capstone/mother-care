@@ -42,7 +42,7 @@ export default function RecommendedResources() {
     <div className="grid items-start gap-5 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,1fr)]">
       <Panel title="2. Find a resource">
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Search resources"><input className={inputClass} type="search" placeholder="Name, service, county…" value={search} onChange={e => { setSearch(e.target.value); setPage(0) }} /></Field>
+          <Field label="Search resources"><input data-usability-id="resource-search" className={inputClass} type="search" placeholder="Name, service, county…" value={search} onChange={e => { setSearch(e.target.value); setPage(0) }} /></Field>
           <Field label="Service type"><select className={inputClass} value={service} onChange={e => { setService(e.target.value); setPage(0) }}>{['All', ...new Set(resources.map(r => r.service))].map(s => <option key={s}>{s}</option>)}</select></Field>
           <Field label="Availability"><select className={inputClass} value={availability} onChange={e => { setAvailability(e.target.value); setPage(0) }}><option>All</option><option>Available</option><option>Waitlist</option></select></Field>
           <Field label="County"><select className={inputClass} value={county} onChange={e => { setCounty(e.target.value); setPage(0) }}>{['All', ...new Set(resources.map(r => r.county))].map(s => <option key={s}>{s}</option>)}</select></Field>
@@ -52,7 +52,7 @@ export default function RecommendedResources() {
         {results.slice(currentPage * 5, currentPage * 5 + 5).map(r => <article key={r.id} className={`space-y-3 rounded-xl border p-4 ${resource?.id === r.id ? 'border-accent bg-sage' : 'border-line bg-canvas'}`}>
           <div className="flex flex-wrap justify-between gap-2"><h3 className="font-bold">{r.name}</h3><Badge>{r.availability}</Badge></div>
           <p className="text-sm">{r.service} · {r.county} · {r.mode}</p><p className="text-sm text-muted">{r.address}<br />{r.hours}</p><p className="text-xs text-muted">Default follow-up: {r.followUpDays ?? 7} days</p>
-          <Button disabled={!mother} onClick={() => choose(r.id)}>{resource?.id === r.id ? 'Selected · Review recommendation' : `Recommend ${r.name}`}</Button>
+          <Button data-usability-id="resource-recommend" disabled={!mother} onClick={() => choose(r.id)}>{resource?.id === r.id ? 'Selected · Review recommendation' : `Recommend ${r.name}`}</Button>
         </article>)}
         {!results.length && <Empty>No resources match these filters.</Empty>}<Pagination page={currentPage} total={results.length} onChange={setPage} />
       </Panel>
@@ -90,6 +90,6 @@ function RecommendationForm({ resource, onSaved, onCancel }: { resource: Resourc
     <p className="text-xs text-muted">Filled in using this resource’s {resource.followUpDays ?? 7}-day follow-up duration from the demo date (Oct 1). You can change it for this recommendation.</p>
     <label className="flex items-center gap-2"><input type="checkbox" name="visible" defaultChecked />Share recommendation with mother</label>
     {error && <p role="alert" className="text-red-800">{error}</p>}
-    <div className="flex flex-wrap gap-2"><Button type="submit">Recommend to {mother.name.split(' ')[0]}</Button><Button secondary onClick={onCancel}>Cancel</Button></div>
+    <div className="flex flex-wrap gap-2"><Button data-usability-id="recommendation-save" type="submit">Recommend to {mother.name.split(' ')[0]}</Button><Button secondary onClick={onCancel}>Cancel</Button></div>
   </form>
 }

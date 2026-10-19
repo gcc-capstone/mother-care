@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { FormEditor } from './screens/FormBuilder'
 import { BrowserRouter, Navigate, Route, Routes, Link } from 'react-router-dom'
 import {
@@ -21,9 +22,13 @@ import FollowUp from './screens/FollowUp'
 import DemoProvider from './components/DemoProvider'
 import AdminLayout from './layouts/AdminLayout'
 
+// The dynamic import is removed entirely from production bundles.
+const UsabilityTesting = __USABILITY_TESTING__ ? lazy(() => import('../../shared/usability/UsabilityTesting.tsx')) : null
+
 export default function App() {
   return (
     <BrowserRouter>
+      {UsabilityTesting && <Suspense fallback={null}><UsabilityTesting application="admin-web" /></Suspense>}
       <DemoProvider>
         <Routes>
           <Route element={<AdminLayout />}>

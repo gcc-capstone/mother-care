@@ -14,8 +14,15 @@
     "build": "npm run build --workspaces",
     "build:admin": "npm run build --workspace admin-web",
     "build:mother": "npm run build --workspace mother-pwa",
-    "lint": "npm run lint --workspaces",
+    "lint": "npm run lint --workspaces && npm run lint:usability",
     "preview:admin": "npm run preview --workspace admin-web",
-    "preview:mother": "npm run preview --workspace mother-pwa"
+    "preview:mother": "npm run preview --workspace mother-pwa",
+    "dev:usability:mother": "VITE_ENABLE_USABILITY_TESTING=true npm run dev:mother",
+    "dev:usability:admin": "VITE_ENABLE_USABILITY_TESTING=true npm run dev:admin",
+    "test:usability": "node --test shared/usability/tests/*.test.ts",
+    "lint:usability": "eslint shared/usability",
+    "test": "npm run test:usability && npm run test --workspace mother-pwa",
+    "test:usability:production": "node shared/usability/tests/production-check.mjs",
+    "test:usability:browser": "node shared/usability/tests/browser-check.mjs"
   }
 }

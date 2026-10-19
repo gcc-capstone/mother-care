@@ -33,6 +33,7 @@ export default function AdminLayout() {
             <label className="text-xs text-muted">
               Demo role
               <select
+                data-usability-id="demo-role"
                 aria-label="Demo role"
                 className="ml-2 rounded-lg border border-line p-2 text-ink"
                 value={role}

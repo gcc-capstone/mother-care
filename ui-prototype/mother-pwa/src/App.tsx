@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import { ActionLink, Page, ScrollToTop } from './components/Page'
@@ -15,8 +16,13 @@ import GoalDetails from './screens/GoalDetails'
 import Profile from './screens/Profile'
 import Notifications from './screens/Notifications'
 
+// The dynamic import is removed entirely from production bundles.
+const UsabilityTesting = __USABILITY_TESTING__ ? lazy(() => import('../../shared/usability/UsabilityTesting.tsx')) : null
+
 export default function App() {
-  return <MotherStateProvider><BrowserRouter><ScrollToTop />
+  return <MotherStateProvider><BrowserRouter>
+    {UsabilityTesting && <Suspense fallback={null}><UsabilityTesting application="mother-pwa" /></Suspense>}
+    <ScrollToTop />
     <div className="mx-auto flex min-h-dvh max-w-[430px] flex-col bg-[var(--bg)]">
       <a href="#main-content" className="sr-only z-20 bg-white p-3 focus:not-sr-only">Skip to content</a>
       <Routes>
