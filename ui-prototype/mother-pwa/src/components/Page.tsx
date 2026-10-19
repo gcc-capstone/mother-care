@@ -19,8 +19,8 @@ export function Page({ title, back, children }: { title?: string; back?: string;
 export function ActionLink({ to, children }: { to: string; children: ReactNode }) {
   return <Link to={to} className="inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--ink)] px-4 py-2 text-sm font-semibold text-[var(--ink)]">{children}</Link>
 }
-export function PrimaryButton({ children, onClick, disabled = false, type = 'button' }: { children: ReactNode; onClick?: () => void; disabled?: boolean; type?: 'button' | 'submit' }) {
-  return <button type={type} onClick={onClick} disabled={disabled} className="min-h-11 w-full rounded-full bg-[var(--ink)] px-4 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">{children}</button>
+export function PrimaryButton({ children, onClick, disabled = false, type = 'button', usabilityId }: { children: ReactNode; onClick?: () => void; disabled?: boolean; type?: 'button' | 'submit'; usabilityId?: string }) {
+  return <button data-usability-id={usabilityId ?? (type === 'submit' ? 'form-submit' : undefined)} type={type} onClick={onClick} disabled={disabled} className="min-h-11 w-full rounded-full bg-[var(--ink)] px-4 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">{children}</button>
 }
 export function MissingRecord({ back }: { back: string }) {
   return <Page title="Item unavailable" back={back}><p>We couldn’t find that item. Return to the list to choose another.</p></Page>

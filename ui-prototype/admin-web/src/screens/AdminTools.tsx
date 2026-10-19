@@ -63,6 +63,7 @@ export function ResourceCatalog() {
                 <div className="flex gap-2">
                   <Link className="inline-flex min-h-10 items-center rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white" to={`/admin/reccomendresources?resource=${r.id}`}>Recommend</Link>
                   <Button
+                    data-usability-id="resource-edit"
                     secondary
                     onClick={() => {
                       setEditing(r)
@@ -176,7 +177,7 @@ export function ResourceCatalog() {
               </select>
             </Field>
             <div className="flex gap-2">
-              <Button type="submit">Save resource</Button>
+              <Button data-usability-id="resource-save" type="submit">Save resource</Button>
               <Button secondary type="reset" onClick={() => setEditing(null)}>
                 Cancel
               </Button>

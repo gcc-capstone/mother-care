@@ -96,3 +96,9 @@ serve its `index.html` for client-side routes, including direct links to admin p
 - New and edited resources include a default follow-up duration of 1–365 days.
   New recommendations calculate an editable follow-up date from the fixed demo
   date (October 1, 2026). Existing referral dates remain part of their saved history.
+
+## Usability testing in both apps
+
+Run `npm run dev:usability:mother` (5173) and `npm run dev:usability:admin` (5174) in separate terminals. Open the observer panel, confirm consent, start an anonymous session, then start a task. Both apps share compatible CSV/JSON exports and local JSON import for combined results. Recording is disabled by default and excluded from production builds.
+
+See [the testing guide](docs/usability-testing-guide.md) for task scripts, reporting definitions, export/import instructions and verification commands. Run `npm test`, `npm run lint`, and `npm run build` from this directory.

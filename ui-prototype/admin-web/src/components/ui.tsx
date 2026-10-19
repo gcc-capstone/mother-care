@@ -116,6 +116,7 @@ export function MotherPicker() {
   return (
     <Field label="Selected mother">
       <select
+        data-usability-id="mother-picker"
         className="rounded-lg border border-line bg-white p-2 font-normal"
         value={selectedId}
         onChange={(e) => setSelectedId(e.target.value)}

@@ -22,7 +22,7 @@ export default function GoalDetails() {
       {opportunity && <ActionLink to={`/earn/${opportunity.id}`}>{opportunity.id === 'parenting-group' ? 'View group details' : 'View learning content'}</ActionLink>}
       {goal.id === 'family-check-in' && <ActionLink to="/forms/monthly-check-in">Open your check-in form</ActionLink>}
       {goal.id === 'log-mood' && <ActionLink to="/">Log your mood on Home</ActionLink>}
-      <PrimaryButton disabled={Boolean(goal.credits && goal.done)} onClick={toggle}>{goal.done ? goal.credits ? 'Completed' : 'Reopen goal' : 'Complete goal'}</PrimaryButton>
+      <PrimaryButton usabilityId="goal-complete" disabled={Boolean(goal.credits && goal.done)} onClick={toggle}>{goal.done ? goal.credits ? 'Completed' : 'Reopen goal' : 'Complete goal'}</PrimaryButton>
     </section>
   </Page>
 }

@@ -52,7 +52,7 @@ function ProfileContent() {
         <label className="flex flex-col gap-2 font-medium">Transportation<select className={inputClass} value={draft.transportation ?? ''} onChange={e => update('transportation', e.target.value)}><option value="">Choose (optional)</option>{['Own vehicle', 'Public transit', 'Rides from family or friends', 'Need transportation support', 'Prefer not to say'].map(v => <option key={v}>{v}</option>)}</select></label>
       </fieldset>
       <fieldset className="flex flex-col gap-2 rounded-3xl bg-white p-5"><legend className="float-left mb-3 text-lg font-semibold text-[var(--ink)]">What would help right now?</legend>{supportOptions.map(need => <label key={need} className="flex min-h-11 items-center gap-3"><input type="checkbox" className="size-5 accent-[var(--ink)]" checked={draft.supportNeeds?.includes(need) ?? false} onChange={e => update('supportNeeds', e.target.checked ? [...(draft.supportNeeds ?? []), need] : (draft.supportNeeds ?? []).filter(n => n !== need))} />{need}</label>)}</fieldset>
-      {error && <p role="alert">{error}</p>}{keptOriginal && <p role="status">Your original profile details have been kept.</p>}{saved && <p role="status">✓ Your profile is updated. New forms will use these details.</p>}<PrimaryButton type="submit">Save changes</PrimaryButton><ActionLink to="/">Cancel</ActionLink>
+      {error && <p role="alert">{error}</p>}{keptOriginal && <p role="status">Your original profile details have been kept.</p>}{saved && <p role="status">✓ Your profile is updated. New forms will use these details.</p>}<PrimaryButton usabilityId="profile-save" type="submit">Save changes</PrimaryButton><ActionLink to="/">Cancel</ActionLink>
     </form>
   </Page>
 }

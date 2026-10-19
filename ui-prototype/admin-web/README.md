@@ -92,3 +92,7 @@ Browser verification covered every mother’s profile, case activity, goals, for
 referrals, and meeting history; goal/form completion actions; all counselor
 caseload links, profile selection, and meeting authors; populated layouts at
 1440, 1024, and 390 pixels. No runtime errors or external requests were detected.
+
+## Usability testing
+
+From `ui-prototype/`, run `npm run dev:usability:admin` and open http://localhost:5174. Set the existing demo role needed for the task, then confirm consent in the observer panel and start an anonymous session/task. See the [cross-application testing guide](../docs/usability-testing-guide.md) for staff tasks, exports and combining results with the Mother's PWA. Recording is disabled in ordinary development and all builds.

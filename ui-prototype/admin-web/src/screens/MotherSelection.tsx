@@ -106,6 +106,7 @@ export default function MotherSelection() {
             <Field label="Search mothers">
               <input
                 className={inputClass}
+                data-usability-id="mother-search"
                 placeholder="Name or case ID"
                 value={search}
                 onChange={(e) => {
@@ -175,6 +176,7 @@ export default function MotherSelection() {
                       <td>
                         <div className="flex items-center justify-between gap-3">
                         <button
+                          data-usability-id="mother-open"
                           className="text-left font-semibold text-accent underline"
                           onClick={() => selectMother(m.id)}
                         >

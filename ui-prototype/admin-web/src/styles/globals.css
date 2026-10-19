@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@source "../../../shared/usability";
 
 @theme {
   --color-ink: #20312e;

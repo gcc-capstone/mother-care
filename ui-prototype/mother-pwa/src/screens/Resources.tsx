@@ -52,12 +52,13 @@ export default function Resources() {
           <input
             type="search"
             aria-label="Search resources"
+            data-usability-id="resource-search"
             placeholder="Search resources"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>
-        <button className="flex size-[46px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)]" type="button" aria-label="Filters" aria-expanded={showFilters} onClick={() => setShowFilters(v => !v)}>
+        <button className="flex size-[46px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)]" type="button" data-usability-id="resource-filters" aria-label="Filters" aria-expanded={showFilters} onClick={() => setShowFilters(v => !v)}>
           <img src={filterIcon} width={20} height={20} alt="" />
         </button>
       </form>
@@ -68,6 +69,7 @@ export default function Resources() {
         {categories.map((c) => (
           <button
             key={c}
+            data-usability-id={c === 'Diapers' ? 'resource-category-diapers' : 'resource-category'}
             className="min-h-11 shrink-0 rounded-full border border-[var(--border)] bg-white px-3.5 py-2 text-[13px] font-semibold aria-pressed:border-[var(--ink)] aria-pressed:bg-[var(--ink)] aria-pressed:text-white"
             aria-pressed={category === c}
             onClick={() => setCategory(c)}
@@ -80,7 +82,7 @@ export default function Resources() {
       <section className="flex flex-col gap-3 rounded-3xl bg-[var(--sage-strip)] p-5" aria-labelledby="counselor-resources">
         <h2 id="counselor-resources" className="text-lg font-semibold text-[var(--ink)]">From your counselor</h2>
         <p className="text-sm">Recommendations from {counselorName}</p>
-        {recommendations.map(rec => { const resource = resources.find(r => r.id === rec.resourceId); return resource ? <article key={resource.id} className="flex flex-col gap-2 rounded-2xl bg-white p-4"><h3 className="font-semibold text-[var(--ink)]">{resource.name}</h3><p className="text-sm">{rec.note}</p><Link className="flex min-h-11 items-center font-semibold text-[var(--ink)]" to={`/resources/${resource.id}`}>Explore resource →</Link></article> : null })}
+        {recommendations.map(rec => { const resource = resources.find(r => r.id === rec.resourceId); return resource ? <article key={resource.id} className="flex flex-col gap-2 rounded-2xl bg-white p-4"><h3 className="font-semibold text-[var(--ink)]">{resource.name}</h3><p className="text-sm">{rec.note}</p><Link data-usability-id="assigned-resource" className="flex min-h-11 items-center font-semibold text-[var(--ink)]" to={`/resources/${resource.id}`}>Explore resource →</Link></article> : null })}
       </section>
       <section className="flex flex-col gap-3" aria-labelledby="recent-activity"><h2 id="recent-activity" className="text-lg font-semibold">Recently viewed & searched</h2>
         {recentlyViewed.length ? <div className="flex flex-col gap-2">{recentlyViewed.map(id => { const resource = resources.find(r => r.id === id); return resource ? <Link key={id} className="flex min-h-11 items-center rounded-2xl bg-white p-3 font-semibold text-[var(--ink)]" to={`/resources/${id}`}>{resource.name} →</Link> : null })}</div> : <p className="text-sm text-[var(--muted)]">Resources you open will appear here.</p>}
@@ -121,7 +123,7 @@ export default function Resources() {
                 <p className="text-[13px] leading-snug text-[var(--muted)]">{r.address}</p>
               </div>
 
-              <Link to={`/resources/${r.id}`} className="inline-flex min-h-11 items-center justify-center rounded-full font-semibold leading-snug disabled:cursor-not-allowed disabled:opacity-40 w-full bg-[var(--ink)] p-3 text-[15px] text-white">View</Link>
+              <Link data-usability-id="resource-view" to={`/resources/${r.id}`} className="inline-flex min-h-11 items-center justify-center rounded-full font-semibold leading-snug disabled:cursor-not-allowed disabled:opacity-40 w-full bg-[var(--ink)] p-3 text-[15px] text-white">View</Link>
             </article>
           ))
         )}

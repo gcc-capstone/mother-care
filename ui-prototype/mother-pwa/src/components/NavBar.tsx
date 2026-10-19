@@ -23,7 +23,7 @@ export default function NavBar() {
   return (
     <nav className="sticky bottom-0 z-10 flex items-start border-t border-[var(--border)] bg-white px-2 pt-3 pb-[max(18px,env(safe-area-inset-bottom))]" aria-label="Main">
       {tabs.map((tab) => (
-        <NavLink key={tab.to} to={tab.to} end={tab.to === '/'} className="flex min-h-11 flex-1 flex-col items-center gap-[5px] text-[11px] font-medium text-[var(--muted)] aria-[current=page]:text-[var(--ink)]">
+        <NavLink data-usability-id={`nav-${tab.label.toLowerCase()}`} key={tab.to} to={tab.to} end={tab.to === '/'} className="flex min-h-11 flex-1 flex-col items-center gap-[5px] text-[11px] font-medium text-[var(--muted)] aria-[current=page]:text-[var(--ink)]">
           {({ isActive }) => (
             <>
               <img src={isActive ? tab.activeIcon : tab.icon} width={24} height={24} alt="" />

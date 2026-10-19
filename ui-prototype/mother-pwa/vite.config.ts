@@ -1,6 +1,8 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+import { loadEnv } from 'vite'
+import { usabilityEnabled } from '../shared/usability/buildGate.ts'
 
 // Cache only the built frontend shell and local assets, never application data.
 function offlineShell(): Plugin {
@@ -34,8 +36,9 @@ self.addEventListener('fetch', event => {
     },
   }
 }
-export default defineConfig({
+export default defineConfig(({ command, mode }) => ({
+  define: { __USABILITY_TESTING__: JSON.stringify(usabilityEnabled(command, mode, loadEnv(mode, process.cwd(), 'VITE_').VITE_ENABLE_USABILITY_TESTING)) },
   plugins: [react(), tailwindcss(), offlineShell()],
   server: { port: 5173, strictPort: true },
   preview: { port: 4173, strictPort: true },
-})
+}))
