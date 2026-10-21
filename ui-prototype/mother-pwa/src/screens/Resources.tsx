@@ -62,7 +62,6 @@ export default function Resources() {
           <img src={filterIcon} width={20} height={20} alt="" />
         </button>
       </form>
-      <button className="min-h-11 self-start font-semibold text-[var(--ink)]" onClick={() => recordSearch(query)} disabled={!query.trim()}>Search</button>
 
       {showFilters && <section className="flex flex-col gap-2 rounded-2xl bg-white p-4" aria-label="Resource filters"><label className="flex min-h-11 items-center gap-3"><input type="checkbox" checked={openOnly} onChange={e => setOpenOnly(e.target.checked)} className="size-5 accent-[var(--ink)]" />Open now only</label><button className="min-h-11 self-start font-semibold" onClick={() => { setQuery(''); setCategory('All'); setOpenOnly(false) }}>Reset filters</button></section>}
       <div className="flex gap-2 overflow-x-auto pb-1">
@@ -120,10 +119,10 @@ export default function Resources() {
 
               <div className="flex flex-col gap-1">
                 <p className="whitespace-pre-wrap text-[13px]">{r.provides}</p>
-                <p className="text-[13px] leading-snug text-[var(--muted)]">{r.address}</p>
+                <p className="flex items-start gap-1.5 text-[13px] leading-snug text-[var(--muted)]"><img className="mt-px shrink-0" src={pinIcon} width={14} height={14} alt="" />{r.address}</p>
               </div>
 
-              <Link data-usability-id="resource-view" to={`/resources/${r.id}`} className="inline-flex min-h-11 items-center justify-center rounded-full font-semibold leading-snug disabled:cursor-not-allowed disabled:opacity-40 w-full bg-[var(--ink)] p-3 text-[15px] text-white">View</Link>
+              <Link data-usability-id="resource-view" to={`/resources/${r.id}`} aria-label={`View ${r.name}`} className="inline-flex min-h-11 items-center justify-center rounded-full font-semibold leading-snug disabled:cursor-not-allowed disabled:opacity-40 w-full bg-[var(--ink)] p-3 text-[15px] text-white">View</Link>
             </article>
           ))
         )}
