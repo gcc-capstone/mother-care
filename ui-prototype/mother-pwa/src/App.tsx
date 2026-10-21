@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import { ActionLink, Page, ScrollToTop } from './components/Page'
 import MotherStateProvider from './layouts/MotherStateProvider'
@@ -19,29 +19,39 @@ import Notifications from './screens/Notifications'
 // The dynamic import is removed entirely from production bundles.
 const UsabilityTesting = __USABILITY_TESTING__ ? lazy(() => import('../../shared/usability/UsabilityTesting.tsx')) : null
 
-export default function App() {
-  return <MotherStateProvider><BrowserRouter>
+function AppLayout() {
+  return <MotherStateProvider>
     {UsabilityTesting && <Suspense fallback={null}><UsabilityTesting application="mother-pwa" /></Suspense>}
     <ScrollToTop />
     <div className="mx-auto flex min-h-dvh max-w-[430px] flex-col bg-[var(--bg)]">
       <a href="#main-content" className="sr-only z-20 bg-white p-3 focus:not-sr-only">Skip to content</a>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/forms" element={<Forms />} />
-        <Route path="/forms/:id" element={<FormDetails />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/resources/:id" element={<ResourceDetails />} />
-        <Route path="/earn" element={<Earn />} />
-        <Route path="/earn/:id" element={<OpportunityDetails />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/store/:id" element={<Store />} />
-        <Route path="/goals" element={<Goals />} />
-        <Route path="/goals/:id" element={<GoalDetails />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="*" element={<Page title="Page not found"><p>Choose a tab below or return home.</p><ActionLink to="/">Go home</ActionLink></Page>} />
-      </Routes>
+      <Outlet />
       <NavBar />
     </div>
-  </BrowserRouter></MotherStateProvider>
+  </MotherStateProvider>
+}
+
+const router = createBrowserRouter([{
+  path: '/',
+  element: <AppLayout />,
+  children: [
+    { index: true, element: <Home /> },
+    { path: 'forms', element: <Forms /> },
+    { path: 'forms/:id', element: <FormDetails /> },
+    { path: 'resources', element: <Resources /> },
+    { path: 'resources/:id', element: <ResourceDetails /> },
+    { path: 'earn', element: <Earn /> },
+    { path: 'earn/:id', element: <OpportunityDetails /> },
+    { path: 'store', element: <Store /> },
+    { path: 'store/:id', element: <Store /> },
+    { path: 'goals', element: <Goals /> },
+    { path: 'goals/:id', element: <GoalDetails /> },
+    { path: 'profile', element: <Profile /> },
+    { path: 'notifications', element: <Notifications /> },
+    { path: '*', element: <Page title="Page not found"><p>Choose a tab below or return home.</p><ActionLink to="/">Go home</ActionLink></Page> },
+  ],
+}])
+
+export default function App() {
+  return <RouterProvider router={router} />
 }
