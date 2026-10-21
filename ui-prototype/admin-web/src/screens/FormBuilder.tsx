@@ -55,7 +55,8 @@ function EditorContent({ id }: { id: string | undefined }) {
     if (publish && draft.questionDefaults?.some(d => d.source === 'custom' && !d.value.trim())) { setError('Enter the pre-populated response for each question using a custom response.'); return }
     const saved = { ...draft, title: draft.title.trim(), questions: draft.questions.map(q => q.trim()), questionDefaults: draft.questionDefaults?.map(d => ({ ...d, value: d.value.trim() })), published: publish, version: publish ? (original?.version ?? 0) + 1 : draft.version }
     setForms(prev => original ? prev.map(f => f.id === original.id ? saved : f) : [...prev, saved])
-    navigate(publish ? '/admin/forms' : '/admin/form-builder')
+    if (publish) navigate('/admin/forms', { state: { formId: saved.id } })
+    else navigate('/admin/form-builder')
   }
   return <Page title={id === 'new' ? 'New form' : `Edit ${original?.title}`}>
     <WorkspaceTabs section="forms" />

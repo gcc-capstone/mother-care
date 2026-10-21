@@ -3,7 +3,7 @@ import WorkspaceTabs from '../components/WorkspaceTabs'
 import { resolveDefault } from '../utils/formDefaults'
 import { mockCounselors } from '../data/mockData'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useDemo } from '../hooks/demoContext'
 import {
   Badge,
@@ -177,6 +177,7 @@ export function Appointments() {
 }
 export function Forms() {
   const { forms, assignments, setAssignments, selectedId, mothers, role } = useDemo()
+  const { state } = useLocation()
   const [message, setMessage] = useState('')
   return (
     <Page title="Forms" action={role === 'Administrator' ? <Link to="/admin/form-builder/new" className="inline-flex min-h-10 items-center rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white">New form +</Link> : undefined}>
@@ -211,7 +212,7 @@ export function Forms() {
             }}
           >
             <Field label="Published form">
-              <select className={inputClass} name="form" required>
+              <select className={inputClass} name="form" required defaultValue={state?.formId}>
                 {forms
                   .filter((f) => f.published)
                   .map((f) => (
