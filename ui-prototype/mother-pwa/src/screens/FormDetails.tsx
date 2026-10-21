@@ -1,9 +1,10 @@
 import { useState, type FormEvent } from 'react'
-import { useParams } from 'react-router-dom'
+import { useBlocker, useParams } from 'react-router-dom'
 import { assignedForms, intakeForm, otherForms } from '../data/forms'
 import { Page, ActionLink, MissingRecord, PrimaryButton } from '../components/Page'
 import { useMotherState } from '../hooks/useMotherState'
 import ProfileChangesDialog from '../components/ProfileChangesDialog'
+import UnsavedChangesDialog from '../components/UnsavedChangesDialog'
 import { getFormProfileUpdates, getProfileChanges } from '../utils/profileChanges'
 import type { Mother } from '../types'
 
@@ -35,6 +36,12 @@ function FormContent({ id }: { id: string | undefined }) {
   const [error, setError] = useState('')
   const [pendingUpdates, setPendingUpdates] = useState<Partial<Mother> | null>(null)
   const [profileUpdated, setProfileUpdated] = useState(false)
+  const [savedValues, setSavedValues] = useState(() => ({ name, notes, fields }))
+  const hasUnsentChanges = name !== savedValues.name || notes !== savedValues.notes ||
+    Object.keys(fields).some(key => fields[key] !== savedValues.fields[key]) ||
+    Object.keys(savedValues.fields).some(key => !(key in fields))
+  const blocker = useBlocker(({ currentLocation, nextLocation }) =>
+    hasUnsentChanges && !submitted && currentLocation.pathname !== nextLocation.pathname)
   if (!form) return <MissingRecord back="/forms" />
   function update(key: string, value: string) { setFields(prev => ({ ...prev, [key]: value })) }
   function submit(e: FormEvent) {
@@ -54,11 +61,13 @@ function FormContent({ id }: { id: string | undefined }) {
     setProfileUpdated(updateProfile)
     setPendingUpdates(null)
     setFormResponses(prev => ({ ...prev, [form.id]: { name: name.trim(), notes: notes.trim(), fields: Object.fromEntries(Object.entries(fields).map(([key, value]) => [key, value.trim()])), submittedAt: new Date().toISOString() } }))
+    setSavedValues({ name, notes, fields })
     if (form.id === 'monthly-check-in') setGoals(prev => prev.map(g => g.id === 'family-check-in' ? { ...g, done: true } : g))
     setError(''); setSubmitted(true)
   }
   return <Page title={form.title} back="/forms">
     <p>{form.description}</p>
+    {blocker.state === 'blocked' && <UnsavedChangesDialog onKeepEditing={() => blocker.reset()} onDiscard={() => blocker.proceed()} />}
     {pendingUpdates && <ProfileChangesDialog changes={getProfileChanges(profile, pendingUpdates)} fromForm onDecline={() => saveResponse(false)} onSave={() => saveResponse(true)} onDismiss={() => setPendingUpdates(null)} />}
     {submitted ? <section className="flex flex-col gap-4 rounded-3xl bg-white p-5" role="status"><h2 className="text-lg font-semibold">Thank you, your form is saved</h2><p>Your response is ready for your next visit with {counselorName}.</p><p>{profileUpdated ? 'Your profile is updated. New forms will use these details.' : 'Your profile details have been kept.'}</p><ActionLink to="/forms">Back to forms</ActionLink><button className="min-h-11 font-semibold" onClick={() => setSubmitted(false)}>Edit response</button></section> :
       <form onSubmit={submit} className="flex flex-col gap-4 rounded-3xl bg-white p-5">
