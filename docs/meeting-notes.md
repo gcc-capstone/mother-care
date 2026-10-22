@@ -67,3 +67,6 @@ Questions for them:
     - **Task:** Find a Resource for a Diaper Bank
     - **Potential 2nd Task:** You have an appointment coming up, find the form you need to fill out. (Which Button do they click? Home or Forms?)
 
+## UI Presentation Notes
+- Form Publishing Improvement slide does not show before/after UI
+- "Mother Filling out Check in Form" might be too much information on one slide. Maybe add arrows between pages, then circle the thing that is actually changing.
