@@ -9,9 +9,10 @@ import { moods, recommended, today } from '../data/home'
 
 export default function Home() {
   const { mood, setMood, goals: allGoals, setGoals, profile: user, credits, notifications, completeOpportunity } = useMotherState()
-  const goals = allGoals.filter(g => g.when === 'today')
+  const todayGoals = allGoals.filter(g => g.when === 'today')
+  const goals = todayGoals.filter(g => !g.done)
 
-  const doneCount = goals.filter((g) => g.done).length
+  const doneCount = todayGoals.filter((g) => g.done).length
 
   function toggleGoal(id: string) {
     const goal = goals.find(g => g.id === id)
@@ -82,7 +83,13 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        {!goals.length && <p className="rounded-2xl bg-white p-4 text-sm">No goals for today. Visit Goals to add your own.</p>}
+        {!goals.length && (
+          <p className="rounded-2xl bg-white p-4 text-sm">
+            {todayGoals.length
+              ? 'All goals for today are complete. Visit Goals to review them.'
+              : 'No goals for today. Visit Goals to add your own.'}
+          </p>
+        )}
       </section>
 
       <Link to="/store" className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-[var(--sage-strip)] p-4">
