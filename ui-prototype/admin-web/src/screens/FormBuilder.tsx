@@ -92,8 +92,10 @@ function EditorContent({ id }: { id: string | undefined }) {
           {draft.questions.map((q, i) => { const value = resolveDefault(draft.questionDefaults?.[i], mother); return <div key={`${i}-${selectedId}-${value}`} className="space-y-1"><Field label={q || `Question ${i + 1}`}><input className={inputClass} defaultValue={value} placeholder="Your response" /></Field>{draft.questionDefaults?.[i]?.source && <p className="text-xs text-accent">Pre-populated · editable before submission</p>}</div> })}
         </Panel>
       </div>
-      {error && <p role="alert" className="text-red-800">{error}</p>}
-      <div className="sticky bottom-0 flex flex-wrap gap-3 rounded-xl border border-line bg-white p-4 shadow-sm"><Button type="submit">Publish form</Button><Button secondary onClick={() => save(false)}>Save draft</Button><Button secondary onClick={() => navigate('/admin/form-builder')}>Cancel</Button></div>
+      <div className="sticky bottom-0 space-y-3 rounded-xl bg-white">
+        {error && <p role="alert" className="text-red-800">{error}</p>}
+        <div className="flex flex-wrap gap-3 rounded-xl border border-line bg-white p-4 shadow-sm"><Button type="submit">Publish form</Button><Button secondary onClick={() => save(false)}>Save draft</Button><Button secondary onClick={() => navigate('/admin/form-builder')}>Cancel</Button></div>
+      </div>
       <p className="text-sm text-muted">Publishing creates a new version. Previously assigned forms keep their original questions and pre-populated responses.</p>
     </form>
   </Page>
