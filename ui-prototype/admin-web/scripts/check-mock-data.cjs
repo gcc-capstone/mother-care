@@ -108,7 +108,25 @@ for (const f of followUps) {
 for (const a of assignments) {
   assert(a.questions.length > 0)
   assert(forms.some((f) => f.title === a.title && f.version === a.version))
-  if (a.status === 'Completed') assert(a.due <= demoToday)
+  if (a.status === 'Completed') {
+    assert(a.due <= demoToday)
+    assert(a.completedAt && a.completedAt.slice(0, 10) <= demoToday)
+    assert.equal(a.responses?.length, a.questions.length, `Answer count: ${a.id}`)
+    assert(a.responses.every((response) => response.trim()), `Missing answer: ${a.id}`)
+  }
+}
+const monthStartDate = new Date(`${demoToday}T12:00:00Z`)
+monthStartDate.setUTCDate(monthStartDate.getUTCDate() - 30)
+const monthStart = monthStartDate.toISOString().slice(0, 10)
+for (const mother of mothers) {
+  if (mother.mood) {
+    assert.equal(mother.moodCheckIns?.[0]?.mood, mother.mood)
+    assert.equal(mother.moodCheckIns?.[0]?.loggedAt, mother.moodLoggedAt)
+    const days = mother.moodCheckIns.map((entry) => entry.loggedAt.slice(0, 10))
+    assert(days.length >= 24, `Month-long mood coverage: ${mother.id}`)
+    assert.equal(new Set(days).size, days.length, `Duplicate mood day: ${mother.id}`)
+    assert(days.every((day) => day >= monthStart && day <= demoToday))
+  }
 }
 for (const m of meetings) {
   assert(names.has(m.author))

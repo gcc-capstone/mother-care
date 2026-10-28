@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useDemo } from '../hooks/demoContext'
 import { demoToday } from '../data/mockData'
 import {
@@ -309,10 +309,10 @@ export default function FollowUp() {
                       }
                     >
                       <td>
-                        <p className="font-semibold">
+                        <Link className="font-semibold text-accent underline" to={`/admin/mothers/${f.motherId}`}>
                           {mothers.find((m) => m.id === f.motherId)?.name ??
                             'Unknown mother'}
-                        </p>
+                        </Link>
                         <button
                           className="text-left text-accent underline"
                           onClick={() => {

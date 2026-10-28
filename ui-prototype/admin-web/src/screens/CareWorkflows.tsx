@@ -1,7 +1,9 @@
 import MoodBadge from '../components/MoodBadge'
+import FormQuestions from '../components/FormQuestions'
 import WorkspaceTabs from '../components/WorkspaceTabs'
 import { resolveDefault } from '../utils/formDefaults'
-import { mockCounselors } from '../data/mockData'
+import { demoToday, mockCounselors } from '../data/mockData'
+import { simulatedFormResponses } from '../utils/simulatedFormResponses'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useDemo } from '../hooks/demoContext'
@@ -176,7 +178,7 @@ export function Appointments() {
   )
 }
 export function Forms() {
-  const { forms, assignments, setAssignments, selectedId, mothers, role } = useDemo()
+  const { forms, assignments, setAssignments, selectedId, mothers, setMothers, role } = useDemo()
   const { state } = useLocation()
   const [message, setMessage] = useState('')
   return (
@@ -249,36 +251,59 @@ export function Forms() {
                   {a.title} · v{a.version}
                 </strong>
                 <p>
-                  {mothers.find((m) => m.id === a.motherId)?.name} · Due {a.due}
+                  <Link className="font-semibold text-accent underline" to={`/admin/mothers/${a.motherId}`}>
+                    {mothers.find((m) => m.id === a.motherId)?.name ?? 'Unknown mother'}
+                  </Link>{' '}· Due {a.due}
                 </p>
-                <Badge>{a.status}</Badge>
-                <details>
-                  <summary className="cursor-pointer text-accent">
-                    View assigned questions
-                  </summary>
-                  <ol className="list-decimal pl-5">
-                    {a.questions.map((q, i) => (
-                      <li key={i}>{q}{a.responses?.[i] && <p className="text-sm text-accent">Pre-populated response: {a.responses[i]} (editable by mother)</p>}</li>
-                    ))}
-                  </ol>
-                </details>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge>{a.status}</Badge>
+                  {a.completedAt && <span className="text-xs text-muted">Completed {new Date(a.completedAt).toLocaleDateString('en-US')}</span>}
+                </div>
+                <FormQuestions assignment={a} />
                 <Button
                   secondary
-                  onClick={() =>
+                  onClick={() => {
+                    const completedAt = `${demoToday}T10:00:00`
+                    const selectedMother = mothers.find((m) => m.id === a.motherId)
+                    const completedResponses = simulatedFormResponses(a, selectedMother)
                     setAssignments((as) =>
                       as.map((item) =>
                         item.id === a.id
                           ? {
                               ...item,
-                              status:
-                                item.status === 'Assigned'
-                                  ? 'Completed'
-                                  : 'Assigned',
+                              status: item.status === 'Assigned' ? 'Completed' : 'Assigned',
+                              completedAt: item.status === 'Assigned' ? completedAt : undefined,
+                              responses: item.status === 'Assigned'
+                                ? completedResponses
+                                : item.questions.map((_, index) =>
+                                    resolveDefault(item.questionDefaults?.[index], selectedMother),
+                                  ),
                             }
                           : item,
                       ),
                     )
-                  }
+                    if (a.status === 'Assigned') {
+                      const moodQuestion = a.questions.findIndex((question) =>
+                        question.toLowerCase().includes('how are you feeling today'))
+                      const mood = (['rough', 'low', 'okay', 'good', 'great'] as const)[
+                        Number(completedResponses[moodQuestion]) - 1
+                      ]
+                      if (mood) {
+                        setMothers((items) => items.map((item) => item.id === a.motherId
+                          ? {
+                              ...item,
+                              mood,
+                              moodLoggedAt: completedAt,
+                              moodCheckIns: [
+                                { mood, loggedAt: completedAt },
+                                ...(item.moodCheckIns ?? []).filter((entry) => entry.loggedAt !== completedAt),
+                              ],
+                            }
+                          : item))
+                      }
+                    }
+                    setMessage(a.status === 'Assigned' ? `${a.title} completed with sample answers.` : `${a.title} reopened.`)
+                  }}
                 >
                   {a.status === 'Assigned'
                     ? 'Simulate completion'

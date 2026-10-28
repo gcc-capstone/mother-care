@@ -22,8 +22,10 @@ npm run check:data # validate coverage, relationships, IDs, and dates
 - Care dashboard: shared review queue and care workflow links.
 - Analytics (admin): county/date summaries, counselor activity, local CSV/PDF downloads,
   and session export history. Exports contain aggregate counts without names or notes.
-- Mothers: search, status/county filters, sorting, pagination, quick intake,
-  case preview, counselor/status updates, and links to related workflows.
+- Mothers: search, mood/county filters, sorting, pagination, quick intake,
+  and a dedicated case dashboard with overview, completed form answers,
+  a mood trend with one-week, two-week, and one-month views, counselor
+  assignment, and links to care workflows.
 - Goals: selected mother's goals, search/status filters, pagination, create,
   edit, complete, reopen, and deletion with a keyboard-accessible confirmation.
 - Resources: directory search and service/county/location/availability filters;
@@ -33,8 +35,8 @@ npm run check:data # validate coverage, relationships, IDs, and dates
   Successful goal reviews complete their linked goal.
 
 - Appointments: schedule changes update the mother record and appointment list.
-- Forms: assign published forms with deadlines and simulate completion; assignments
-  retain their original questions and version.
+- Forms: assign published forms with deadlines and simulate completion with
+  sample answers; assignments retain their original questions and version.
 - Meeting notes: log mother-visible summaries and separate internal notes; optional
   follow-up dates add queue entries. Case profiles show related activity.
 - Admin form builder: create templates, edit/reorder/remove questions, preview,
