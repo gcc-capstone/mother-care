@@ -5,10 +5,15 @@ export interface Mother {
   status: 'Stable' | 'Watch' | 'High' | 'New'
   mood?: 'rough' | 'low' | 'okay' | 'good' | 'great' | null
   moodLoggedAt?: string
+  moodCheckIns?: MoodCheckIn[]
   counselor: string
   contact: string
   needs: string[]
   appointment: string
+}
+export interface MoodCheckIn {
+  mood: NonNullable<Mother['mood']>
+  loggedAt: string
 }
 export interface Goal {
   id: string
@@ -78,6 +83,7 @@ export interface FormAssignment {
   version: number
   questions: string[]
   responses?: string[]
+  completedAt?: string
   questionDefaults?: QuestionDefault[]
   due: string
   status: 'Assigned' | 'Completed'

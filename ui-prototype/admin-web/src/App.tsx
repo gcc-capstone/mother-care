@@ -18,6 +18,7 @@ import AdminGoals from './screens/AdminGoals'
 import Performance from './screens/Performance'
 import RecommendedResources from './screens/ReccomendResources'
 import MotherSelection from './screens/MotherSelection'
+import MotherDashboard from './screens/MotherDashboard'
 import FollowUp from './screens/FollowUp'
 import DemoProvider from './components/DemoProvider'
 import AdminLayout from './layouts/AdminLayout'
@@ -96,7 +97,7 @@ export default function App() {
             />
             <Route
               path="/admin/mothers/:motherId"
-              element={<MotherSelection />}
+              element={<MotherDashboard />}
             />
             <Route path="/admin/followup" element={<FollowUp />} />
             <Route

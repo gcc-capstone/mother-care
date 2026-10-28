@@ -463,6 +463,16 @@ mockResources.push(
     availability: 'Available',
     address: '60 Market Street, Beaver, PA',
   },
+  {
+    id: 'resource-013',
+    name: 'Western PA Diaper Bank',
+    service: 'Diapers',
+    county: 'Allegheny',
+    mode: 'Physical',
+    hours: 'Hours vary by distribution partner',
+    availability: 'Available',
+    address: 'Allegheny Valley community pickup location',
+  },
 )
 interface CareScenario {
   motherId: string
@@ -752,7 +762,7 @@ for (const [index, scenario] of careScenarios.entries()) {
   const assignedForm = mockForms.find(
     (f) => f.id === (mother.status === 'New' ? 'intake' : 'practical-needs'),
   )!
-  const completedForm = mockForms.find((f) => f.id === 'check-in')!
+  const completedForm = mockForms.find((f) => f.id === (mother.status === 'New' ? 'intake' : 'check-in'))!
   mockAssignments.push(
     {
       id: `${prefix}-form-upcoming`,
@@ -769,8 +779,16 @@ for (const [index, scenario] of careScenarios.entries()) {
       title: completedForm.title,
       version: completedForm.version,
       questions: [...completedForm.questions],
+      responses: mother.status === 'New'
+        ? [mother.needs.join(', '), mother.contact]
+        : [
+            String([4, 3, 2, 5, 4, 2, 4, 3, 3][index] ?? 3),
+            'Yes, I feel safe today.',
+            `Help with ${mother.needs[0]?.toLowerCase() ?? 'my care plan'} would be useful.`,
+          ],
       due: '2026-09-22',
       status: 'Completed',
+      completedAt: '2026-09-22T10:30:00',
     },
     {
       id: `${prefix}-form-review`,
@@ -835,10 +853,30 @@ mockGroups.push(
   },
 )
 
-// Sample mother-reported moods, matching the mother demo where records overlap.
+// Mother-reported mood history for the demo's longest (one-month) chart view.
 const reportedMoods: Mother['mood'][] = ['good', 'okay', 'low', 'great', null, 'rough', 'good', 'low', 'okay']
+const moodByScore = ['rough', 'low', 'okay', 'good', 'great'] as const
+const moodOffsets = [
+  -1, -1, -2, -1, 0, 0, -1, -2, -2, -1, -1, 0, 1, 0, -1, -1,
+  0, 0, 1, 1, 0, -1, 0, 1, 0, -1, 0, 1, 0, 0, 0,
+]
 mockMothers.forEach((mother, index) => {
   mother.mood = reportedMoods[index] ?? null
-  if (mother.mood) mother.moodLoggedAt = '2026-10-01T09:00:00'
+  if (mother.mood) {
+    mother.moodLoggedAt = '2026-10-01T09:00:00'
+    const baseline = moodByScore.indexOf(mother.mood) + 1
+    mother.moodCheckIns = Array.from({ length: 31 }, (_, daysAgo) => {
+      if (daysAgo !== 0 && (daysAgo + index) % 7 === 0) return null
+      if (daysAgo === 0) return { mood: mother.mood!, loggedAt: mother.moodLoggedAt! }
+      const date = new Date(`${demoToday}T12:00:00Z`)
+      date.setUTCDate(date.getUTCDate() - daysAgo)
+      const offset = moodOffsets[(30 - daysAgo + index * 3) % moodOffsets.length]
+      const score = Math.max(1, Math.min(5, baseline + offset))
+      return {
+        mood: moodByScore[score - 1],
+        loggedAt: `${date.toISOString().slice(0, 10)}T${daysAgo % 2 ? '08:45:00' : '09:15:00'}`,
+      }
+    }).filter((checkIn): checkIn is NonNullable<typeof checkIn> => checkIn !== null)
+  }
 })
 mockResources.forEach(resource => { resource.followUpDays = resource.service === 'Housing' ? 3 : resource.availability === 'Waitlist' ? 14 : 7 })

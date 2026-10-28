@@ -15,7 +15,7 @@ export default function CaseActivity({ motherId }: { motherId: string }) {
       .filter((a) => a.motherId === motherId)
       .map((a) => ({
         id: a.id,
-        date: a.due,
+        date: a.status === 'Completed' ? (a.completedAt ?? a.due) : a.due,
         title: `Form: ${a.title} v${a.version}`,
         detail: a.status,
       })),
