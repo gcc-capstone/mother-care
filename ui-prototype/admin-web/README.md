@@ -76,7 +76,7 @@ form version snapshots, groups, and layouts at 1440, 1024, and 390 pixels.
 ## Populated demonstration records
 
 The local dataset includes 9 fictional mothers, 3 counselors (3 cases each),
-34 goals, 12 community resources, 32 reviews/referrals, 28 form assignments,
+34 goals, 13 community resources, 32 reviews/referrals, 28 form assignments,
 19 meetings, and 5 care groups. Every mother has active and completed goals,
 open and completed referrals, assigned and completed forms, meeting history,
 an upcoming appointment, and a care group. Dates use the fixed October 1, 2026

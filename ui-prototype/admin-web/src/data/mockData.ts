@@ -463,6 +463,16 @@ mockResources.push(
     availability: 'Available',
     address: '60 Market Street, Beaver, PA',
   },
+  {
+    id: 'resource-013',
+    name: 'Western PA Diaper Bank',
+    service: 'Diapers',
+    county: 'Allegheny',
+    mode: 'Physical',
+    hours: 'Hours vary by distribution partner',
+    availability: 'Available',
+    address: 'Allegheny Valley community pickup location',
+  },
 )
 interface CareScenario {
   motherId: string
