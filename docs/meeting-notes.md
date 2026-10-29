@@ -70,3 +70,40 @@ Questions for them:
 ## UI Presentation Notes
 - Form Publishing Improvement slide does not show before/after UI
 - "Mother Filling out Check in Form" might be too much information on one slide. Maybe add arrows between pages, then circle the thing that is actually changing.
+
+## Formal Presentation Notes
+- Got through the walkthroughs very fast
+- Smile and be engaging
+- Jacqueline: 
+    - mention mothers not just faily
+- Purpose Slide:
+    - add "Forms"
+    - Need to focus on Pain Points more
+    - Include the fact that we add feedback 
+    - Add a Pain Point Slide after the Purpose slide.
+    - Goal: something more about "Helping Mothers Grow and Counselors Care" as well as the consolidated resources
+- Pain Point Slides:
+    - Counseling can be more complicated than it has to be..
+        - Split into categories:
+        - "There are a lot of problems. Let me share a couple of stories"
+        - Forms (saving information to database, prefilled forms)
+            - User refills forms everytime
+        - Resources (followups and stuff)
+            - Story counselor has to remember to manually send followup email after recommending a resource
+        - General Communication
+- "Counselor Assigns Resource" Walkthrough
+    - Talk about dashboard features (personalization for counselor?)
+    - maybe mention how counselor side compares to admin
+    - remove or minimize text slide before walkthrough
+- "Mother finds resource"
+    - once we add notifications, this will take straight to that page
+- Anticipated difficulties:
+    - get rid of "plan" 
+    - Feature Rich
+        - "we've only shown a small part of the app"
+         - mention complicated architecture/PWA
+    - Personalization
+        - daily goals and encouraging (this makes app actually help the struggling mothers)
+       
+
+
