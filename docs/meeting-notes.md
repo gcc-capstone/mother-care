@@ -70,3 +70,85 @@ Questions for them:
 ## UI Presentation Notes
 - Form Publishing Improvement slide does not show before/after UI
 - "Mother Filling out Check in Form" might be too much information on one slide. Maybe add arrows between pages, then circle the thing that is actually changing.
+
+## Meeting With Client Notes
+- General Notes: 
+    - MOTHERcare??? fathers too?
+        - Change wording to "Parent" rather than "Mother" throughout
+    - EVERY counselor should have access to EVERY mother
+        - Counselors aren't necessarily assigned mothers, its more whoever is available
+        - Every counselor should be able to READ all the information, but any action they take should be assigned to their name, so every counselor knows who did what
+    - Keep in mind Mothers who don't have phones, are homeless, etc
+        - Maybe add a way for counselors to send resources through texts, emails, etc in case the mother doesn't have the app
+        - Would be very important for the admins to create accounts for mother's who don't have the app to make a way for them to get resources/forms
+        - The app would be very good for "most" of the clients but for a lot of them it is not viable
+        - Feature addition? : Make a print resource feature to make it look nice and easy print workflow (admin side)
+    - Get more information overall about the mothers 
+        - Income amount
+        - due date
+        - pregnancy status
+        - mood
+        
+- Mother Side:
+    - General:
+        - REMOVE: STORE Feature (too heavy of a load on the FamilyLife counselors)
+        - NEW FEATURE: "I NEED HELP" Kind of quick action on the homepage
+    - Home Page:
+        - Maybe add a section like the "How are you feeling?" for pregnancy status, countdown, encouragement
+            - Should be able to insert due date somewhere: maybe pregnancy form? maybe just a goal?
+            - This should be able to be REMOVED quickly for something like a miscarriage
+    - Resource Page:
+        - Doesn't need to say "from Counselor"
+        - If there is a message attatched to a Resource Recommendation, then the mother should see which counselor it came from
+        - If the mother finds a resource and contacts them, how will the counselors know if the mother did that (counselors can see if a mother reviews a resource but not just if they look at it)
+    - Forms Page:
+        - Really like the idea of prefilling forms
+        - Most of the time a resource will be assigned with a goal (or seeing the resource is the goal)
+
+- Admin Side:
+    - General:
+        - Be able to assign goals or resources to a lot or ALL mothers at once
+        - COMBINE: Mothers page and Meeting Notes
+        - REMOVE: Care Groups
+        - REMOVE: Appointment page (for now)
+    - Resource Page:
+        - Rather than a dropdown for choosing mothers, maybe Checkboxes to quick select a bunch of mothers
+        - Making Resources:
+            - What county it is in?
+            - What county it SERVES?
+            - Website
+            - Description
+            - Attatchments?
+            - Income Guidelines checkbox? (Some resources aren't available to everyone)
+            - Categories
+    - Forms Page:
+        - Checkboxes instead of dropdown for assigning to mothers
+        - Add different types of questions: Multiple Choice, Check Boxes, Short Answer, 1-5, Optional, Required
+    - Follow-Up Page:
+        - Log the outcome as a counselor is important
+    - Mother Page:
+        - We don't want to have to wait for a Mother to fill out a form to get information about them
+            - Is a Mother Pregnant? Did she give birth? This stuff should be goals or in an account setup
+    - Counselor Page:
+        - More focused on counselors being able to see what other counselors are doing
+            - See stats from other counselors, see their messages
+    - Analytics Page:
+        - Should include goals, how many resources sent out, resource categories, 
+        - she will share with us all the analytics she needs for grants and stuff
+    - Meeting Notes Page:
+        - Notes should inlcude resource recommendations and information
+    - Goals Page:
+        - Add default goals
+        - Checkboxes to assing to many mothers at once
+    - Appointments Page:
+        - They use Acuity right now for scheduling
+        - As of now, don't even need appointments
+        - POTENTIAL CHANGE: add integration with Acuity
+            - FEATURE: have all the appointments, then a timeline of when you assigned resource, when they followed up
+    
+    
+
+
+
+    
+    
