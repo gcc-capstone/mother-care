@@ -71,6 +71,41 @@ Questions for them:
 - Form Publishing Improvement slide does not show before/after UI
 - "Mother Filling out Check in Form" might be too much information on one slide. Maybe add arrows between pages, then circle the thing that is actually changing.
 
+## Practice Formal Presentation Notes (Dr. Hutchins)
+- Got through the walkthroughs very fast
+- Smile and be engaging
+- Jacqueline: 
+    - mention mothers not just faily
+- Purpose Slide:
+    - add "Forms"
+    - Need to focus on Pain Points more
+    - Include the fact that we add feedback 
+    - Add a Pain Point Slide after the Purpose slide.
+    - Goal: something more about "Helping Mothers Grow and Counselors Care" as well as the consolidated resources
+- Pain Point Slides:
+    - Counseling can be more complicated than it has to be..
+        - Split into categories:
+        - "There are a lot of problems. Let me share a couple of stories"
+        - Forms (saving information to database, prefilled forms)
+            - User refills forms everytime
+        - Resources (followups and stuff)
+            - Story counselor has to remember to manually send followup email after recommending a resource
+        - General Communication
+- "Counselor Assigns Resource" Walkthrough
+    - Talk about dashboard features (personalization for counselor?)
+    - maybe mention how counselor side compares to admin
+    - remove or minimize text slide before walkthrough
+- "Mother finds resource"
+    - once we add notifications, this will take straight to that page
+- Anticipated difficulties:
+    - get rid of "plan" 
+    - Feature Rich
+        - "we've only shown a small part of the app"
+         - mention complicated architecture/PWA
+    - Personalization
+        - daily goals and encouraging (this makes app actually help the struggling mothers)
+       
+
 ## Meeting With Client Notes
 - General Notes: 
     - MOTHERcare??? fathers too?
@@ -147,44 +182,26 @@ Questions for them:
             - FEATURE: have all the appointments, then a timeline of when you assigned resource, when they followed up
     
     
-
-
-
+## UI Version 2.0 (changes we are going to make after the Formal Presentation + Meeting with FLN)
+- Main Point: Take away the "Vibe-Code" slop and AI clutter
+- General:
+    - “Mother” → “Parent” throughout
+    - Profile info up front (income, due date, pregnancy status), set at account setup instead of waiting for a form.
     
-    
-## Formal Presentation Notes
-- Got through the walkthroughs very fast
-- Smile and be engaging
-- Jacqueline: 
-    - mention mothers not just faily
-- Purpose Slide:
-    - add "Forms"
-    - Need to focus on Pain Points more
-    - Include the fact that we add feedback 
-    - Add a Pain Point Slide after the Purpose slide.
-    - Goal: something more about "Helping Mothers Grow and Counselors Care" as well as the consolidated resources
-- Pain Point Slides:
-    - Counseling can be more complicated than it has to be..
-        - Split into categories:
-        - "There are a lot of problems. Let me share a couple of stories"
-        - Forms (saving information to database, prefilled forms)
-            - User refills forms everytime
-        - Resources (followups and stuff)
-            - Story counselor has to remember to manually send followup email after recommending a resource
-        - General Communication
-- "Counselor Assigns Resource" Walkthrough
-    - Talk about dashboard features (personalization for counselor?)
-    - maybe mention how counselor side compares to admin
-    - remove or minimize text slide before walkthrough
-- "Mother finds resource"
-    - once we add notifications, this will take straight to that page
-- Anticipated difficulties:
-    - get rid of "plan" 
-    - Feature Rich
-        - "we've only shown a small part of the app"
-         - mention complicated architecture/PWA
-    - Personalization
-        - daily goals and encouraging (this makes app actually help the struggling mothers)
-       
+- Admin Side:
+    - DELETE: appointments, care groups
+    - Things are both horizontal and vertical throughout
+    - Rethink the recommendation workflow, not just its steps.
+    - Checkboxes for mother selection throughout whole Counselor side
+    - A way for a counselor to make a mother profile on their behalf 
+    - Make the Resource Recommendation Page for the Counselor have all the information like it does on the mother side (like location from Mother)
+        - New resource fields: county it’s in, counties it serves, website, description, attachments, income guidelines, categories.
+    - Merge the Mothers and Meeting Notes pages, with resource recommendations shown in the notes.
+    - Counselor page: see what other counselors are doing (stats, messages).
 
-
+- Mother Side:
+    - DELETE: store system
+    - Make "Inbox" rather than "Notifications" icon on the Mother Homepage. 
+    - Restructure Resource Page on Mother Side
+    - “I need help” quick action on the mother’s home page.
+    - Pregnancy countdown and encouragement card, which she can remove quickly (for example after a miscarriage).
