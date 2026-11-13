@@ -53,3 +53,10 @@ Questions for them:
 - Clarify the admin vs volunteer access and roles
 
 
+## 11/13/26 Meeting
+Ideas for milestones
+- Background workers for notifications (Josh)
+- Set up database and be able to read and write from frontend (Dr. Hutchins)
+- Creating and saving forms
+- Get data for resources
+- Set up docker container running in oracle cloud that has an endpoint for [emails?]
