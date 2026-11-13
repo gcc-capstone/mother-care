@@ -205,3 +205,11 @@ Questions for them:
     - Restructure Resource Page on Mother Side
     - “I need help” quick action on the mother’s home page.
     - Pregnancy countdown and encouragement card, which she can remove quickly (for example after a miscarriage).
+
+
+## 11/13/26 Meeting Notes
+Milestone Ideas
+- Be able to read and write from database (Dr. Hutchins)
+- Be able to create and save forms
+- Get data for resources ?
+- Josh's oracle email thing
