@@ -1,0 +1,13 @@
+package org.FamilyLifeNetwork.MotherCare;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MotherCareApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MotherCareApplication.class, args);
+	}
+
+}
