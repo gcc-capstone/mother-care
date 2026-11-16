@@ -8,10 +8,16 @@ Briefly describe exactly what functionality will be working by the end of the se
 Be specific enough that your team and advisor can determine whether the milestone has been completed.
 
 - Build and connect database to backend
+Users will be able to add and edit resources in the database and be able to request data from endpoints in the backend.
 - skeleton linking goals, resources, and forms
-- skeleton of admin frontend
-- skeleton of parent frontend
-- 
+- skeleton of admin frontend ui
+- skeleton of parent frontend ui
+- Parent filling out forms
+Parent users will be able to put information into the short answer questions in a form and view and complete the forms they've been assigned.
+- Admin creating and assingning forms
+Administrative users will be able to create short answer form questions and assign forms to specific parents.
+- authentication
+Admins and parents ...
 
 ### 2. Individual Responsibilities
 
@@ -19,9 +25,12 @@ For each team member, describe what they will build to accomplish the milestone.
 
 **Example:**
 
-- **Jack:** Build the database tables for clubs and events and the backend API endpoints for retrieving them.
-- **Alice:** Build the backend API endpoints for creating clubs and events, including server-side validation.
-- **Bob:** Build the React frontend for creating a club and displaying the list of clubs.
 - **Charles:** Build the React frontend for creating an event and displaying the list of events.
+
+- **Josh:** Authentication
+- **Carl:**
+- **Christian:**
+- **Ryan:**
+- **Jacqueline:** Databse
 
 Your responsibilities should be specific, realistic, and collectively sufficient to complete the milestone.
