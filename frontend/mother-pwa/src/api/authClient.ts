@@ -1,6 +1,7 @@
 // src/api/authClient.ts
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080';
+const API_PREFIX = '/mother-care/api/v1';
 
 const ROUTES = {
     csrf: '/autoauth/csrf',
@@ -83,3 +84,7 @@ export async function refreshTokens(): Promise<RefreshResult> {
   
     return refreshPromise;
   }
+
+export async function apiFetch(path: string, init:RequestInit = {}): Promise<Response> {
+
+}
