@@ -31,6 +31,6 @@ For each team member, describe what they will build to accomplish the milestone.
 - **Carl:**
 - **Christian:**
 - **Ryan:**
-- **Jacqueline:** Databse
+- **Jacqueline:** Set up and fill the database with the current FamilyLife Network Resource documents and add get endpoints to the backend to connect the database to the project.
 
 Your responsibilities should be specific, realistic, and collectively sufficient to complete the milestone.
