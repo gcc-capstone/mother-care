@@ -3,7 +3,7 @@
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080';
 const API_PREFIX = '/mother-care/api/v1';
 
-const ROUTES = {
+const AUTH_ROUTES = {
     csrf: '/autoauth/csrf',
     login: '/auth/login',
     refresh: `/${API_PREFIX}/auth/refresh`,
@@ -25,6 +25,11 @@ function normalizePath(path: string): string {
     return path.startsWith('/') ? path : `/${path}`;
 }
 
+function isMutatingMethod(method?: string): boolean {
+    const m = (method ?? 'GET').toUpperCase();
+    return !['GET', 'HEAD', 'OPTIONS', 'TRACE'].includes(m);
+}
+
 /**
  * fetch and cache crsf token and header
  */
@@ -33,7 +38,7 @@ export async function ensureCsrf(force = false): Promise<CsrfResponse> {
     if (csrfPromise && !force) return csrfPromise;
   
     csrfPromise = (async () => {
-      const res = await fetch(`${API_BASE}${ROUTES.csrf}`, {
+      const res = await fetch(`${API_BASE}${AUTH_ROUTES.csrf}`, {
         method: 'GET',
         credentials: 'include',
         cache: 'no-store',
@@ -60,7 +65,7 @@ export async function refreshTokens(): Promise<RefreshResult> {
     refreshPromise = (async (): Promise<RefreshResult> => {
       try {
         const csrf = await ensureCsrf();
-        const res = await fetch(`${API_BASE}${ROUTES.refresh}`, {
+        const res = await fetch(`${API_BASE}${AUTH_ROUTES.refresh}`, {
           method: 'POST',
           credentials: 'include',
           headers: {
@@ -105,6 +110,12 @@ export async function motherApiFetch(path: string, init:RequestInit = {}): Promi
     const send = async (): Promise<Response> => {
         const headers = new Headers(init.headers);
 
+        // if its a put patch post etc. make sure you have csrf token
+        if (isMutatingMethod(init.method)) {
+            const csrf = await ensureCsrf();
+            headers.set(csrf.headerName, csrf.token)
+        }
+
         return fetch(`${API_BASE}${path}`, {
             ...init,
             credentials: 'include',
@@ -119,6 +130,24 @@ export async function motherApiFetch(path: string, init:RequestInit = {}): Promi
     } catch {
         // error for failure
         throw new Error("This is filler to compile make a real error!!!!!")
+    }
+
+    const authBypass = path === AUTH_ROUTES.csrf;
+
+    if (result.status === 401 && authBypass) {
+        const status = await refreshTokens();
+
+        if (status === 'ok') {
+            try {
+                result = await send();
+            } catch {
+                throw new Error("This is filler make this a real error!1!!!!");
+            }
+        } else if (status === 'offline') {
+            // continue for now throw error
+        } else {
+            window.dispatchEvent(new Event('auth:session-expired'));
+        }
     }
 
     return result;
