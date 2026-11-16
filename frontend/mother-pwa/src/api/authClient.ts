@@ -6,7 +6,7 @@ const API_PREFIX = '/mother-care/api/v1';
 const AUTH_ROUTES = {
     csrf: '/autoauth/csrf',
     login: '/auth/login',
-    refresh: `/${API_PREFIX}/auth/refresh`,
+    refresh: `${API_PREFIX}/auth/refresh`,
     logout: '/auth/logout',
 } as const;
 
@@ -134,7 +134,7 @@ export async function motherApiFetch(path: string, init:RequestInit = {}): Promi
 
     const authBypass = path === AUTH_ROUTES.csrf;
 
-    if (result.status === 401 && authBypass) {
+    if (result.status === 401 && !authBypass) {
         const status = await refreshTokens();
 
         if (status === 'ok') {
