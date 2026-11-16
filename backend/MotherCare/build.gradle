@@ -29,6 +29,8 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testRuntimeOnly 'com.h2database:h2'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	implementation 'io.github.autosprings:autoauth:1.0.0'
 }
 
 tasks.named('test') {
