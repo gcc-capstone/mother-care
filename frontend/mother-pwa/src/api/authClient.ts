@@ -6,7 +6,7 @@ const API_PREFIX = '/mother-care/api/v1';
 const ROUTES = {
     csrf: '/autoauth/csrf',
     login: '/auth/login',
-    refresh: '/auth/refresh',
+    refresh: '/{API_PREFIX}/auth/refresh',
     logout: '/auth/logout',
 } as const;
 
@@ -85,6 +85,36 @@ export async function refreshTokens(): Promise<RefreshResult> {
     return refreshPromise;
   }
 
-export async function apiFetch(path: string, init:RequestInit = {}): Promise<Response> {
+/**
+ * Runs prior to every request to the backend.
+ * 
+ * Use this method instead of 'fetch'
+ * 
+ * @param path 
+ * @param init 
+ * @returns 
+ */
+export async function motherApiFetch(path: string, init:RequestInit = {}): Promise<Response> {
+
+    const send = async (): Promise<Response> => {
+        const headers = new Headers(init.headers);
+
+        return fetch(`${API_BASE}${path}`, {
+            ...init,
+            credentials: 'include',
+            headers,
+        });
+    }
+
+    let result: Response;
+
+    try {
+        result = await send();
+    } catch {
+        // error for failure
+        throw new Error("This is filler to compile make a real error!!!!!")
+    }
+
+    return result;
 
 }
