@@ -21,6 +21,10 @@ let csrfState: CsrfResponse | null = null;
 let csrfPromise: Promise<CsrfResponse> | null = null;
 let refreshPromise:  Promise<RefreshResult> | null = null;
 
+function normalizePath(path: string): string {
+    return path.startsWith('/') ? path : `/${path}`;
+}
+
 /**
  * fetch and cache crsf token and header
  */
@@ -95,6 +99,8 @@ export async function refreshTokens(): Promise<RefreshResult> {
  * @returns 
  */
 export async function motherApiFetch(path: string, init:RequestInit = {}): Promise<Response> {
+
+    path = normalizePath(path);
 
     const send = async (): Promise<Response> => {
         const headers = new Headers(init.headers);
