@@ -118,3 +118,10 @@ export async function motherApiFetch(path: string, init:RequestInit = {}): Promi
     return result;
 
 }
+
+/**
+ * fetch for all mother-care backend endpoints
+ */
+export function motherApiFetchV1 (path: string, init: RequestInit = {}): Promise<Response> {
+    return motherApiFetch(`${API_PREFIX}${path}`, init);
+}
