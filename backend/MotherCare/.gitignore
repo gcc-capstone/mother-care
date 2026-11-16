@@ -35,3 +35,29 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Local secrets and authentication keys ###
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+.env
+.env.*
+!.env.example
+!.env.sample
+src/main/resources/application-local.properties
+src/main/resources/application-local.yml
+src/main/resources/application-local.yaml
+
+### Logs and local tooling ###
+*.log
+logs/
+*.hprof
+hs_err_pid*
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
