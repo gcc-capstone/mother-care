@@ -49,4 +49,12 @@ public class UserService {
             .filter(user -> passwordEncoder.matches(password, user.getPasswordHash()))
             .map(this::toAutoAuthUser);
     }
+
+    private AutoAuthUser toAutoAuthUser(User user){
+        return new AutoAuthUser (
+            user.getId().toString(),
+            user.getRoles().stream().map(UserRole::name).toList(),
+            Map.of()
+        );
+    }
 }

@@ -45,7 +45,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Void> login(
         @RequestBody LoginRequest request,
-        HttpServletRequest response
+        HttpServletResponse response
     ){
         var tokens = authService.login(request.getUsername(), request.getPassword());
         if (tokens.isEmpty()) {
