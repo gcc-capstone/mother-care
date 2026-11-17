@@ -1,6 +1,6 @@
 package org.FamilyLifeNetwork.MotherCare.auth;
 
-// import org.FamilyLifeNetwork.MotherCare.user.UserService;
+import org.FamilyLifeNetwork.MotherCare.auth.dto.*;
 
 import com.autoauth.annotation.PublicEndpoint;
 import com.autoauth.config.AutoAuthProperties;
@@ -41,13 +41,18 @@ public class AuthController {
         this.authService = authService;
     }
 
-    public record LoginRequest(String username, String password) {}
-
     @PublicEndpoint
     @PostMapping("/login")
-    public ResponseEntity<Void> login()
+    public ResponseEntity<Void> login(
+        @RequestBody LoginRequest request,
+        HttpServletRequest response
+    ){
+        var tokens = authService.login(request.username(), request.password());
+        if (tokens.isEmpty()) {
+            return ResponseEntity.status(401).build();
+        }
 
-        jwtCookies.write(response, jwtGenerator.generateTokenPair(DEMO_ADMIN));
+        jwtCookies.write(response, tokens.get());
         return ResponseEntity.noContent().build();
     }
 
