@@ -14,7 +14,9 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     public Optional<AutoAuthUser> findEnabledIdentity(String subject) {
@@ -33,5 +35,17 @@ public class UserService {
                 user.getRoles().stream().map(UserRole::name).toList(),
                 Map.of()
             ));
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<AutoAuthUser> authenticate(String username, String password) {
+        if (username == null || username.isBlank() || password == null || password.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return userRepository.findByUsername(username)
+            .filter(User::isEnabled)
+            .filter(user -> passwordEncoder.matches(password, user.getPasswordHash()))
+            .map(this::toAuthAuthUser);
     }
 }
