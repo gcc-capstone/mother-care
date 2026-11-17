@@ -47,7 +47,7 @@ public class AuthController {
         @RequestBody LoginRequest request,
         HttpServletRequest response
     ){
-        var tokens = authService.login(request.username(), request.password());
+        var tokens = authService.login(request.getUsername(), request.getPassword());
         if (tokens.isEmpty()) {
             return ResponseEntity.status(401).build();
         }
