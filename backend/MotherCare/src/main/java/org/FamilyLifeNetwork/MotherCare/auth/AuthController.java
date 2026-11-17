@@ -13,6 +13,7 @@ import com.autoauth.model.AutoAuthUser;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,21 @@ public class AuthController {
         this.jwtCookies = jwtCookies;
         this.properties = properties;
         this.authService = authService;
+    }
+
+    @PublicEndpoint
+    @PostMapping("/register")
+    public ResponseEntity<Void> register(
+        @Valid @RequestBody RegisterRequest request,
+        HttpServletResponse response
+    ) {
+        var tokens = authService.register(request.getUsername(), request.getPassword());
+        if (tokens.isEmpty()) {
+            return ResponseEntity.status(403).build();
+        }
+
+        jwtCookies.write(response, tokens.get());
+        return ResponseEntity.noContent().build();
     }
 
     @PublicEndpoint

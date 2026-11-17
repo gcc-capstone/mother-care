@@ -26,6 +26,11 @@ public class AuthService {
             .map(jwtGenerator::generateTokenPair);
     }
 
+    public Optional<TokenPair> register(String username, String password) {
+        return userService.registerUser(username, password)
+            .map(jwtGenerator::generateTokenPair);
+    }
+
     public Optional<TokenPair> refresh(String refreshToken) {
         if (refreshToken == null || refreshToken.isBlank()) {
             return Optional.empty();

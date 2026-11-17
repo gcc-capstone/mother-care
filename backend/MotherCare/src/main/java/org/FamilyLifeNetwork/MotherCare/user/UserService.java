@@ -50,6 +50,23 @@ public class UserService {
             .map(this::toAutoAuthUser);
     }
 
+    @Transactional
+    public Optional<AutoAuthUser> registerUser(String username, String password){
+        if (username == null || username.isBlank() || password == null || password .isEmpty()) {
+            return Optional.empty();
+        }
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPasswordHash(passwordEncoder.encode(password));
+
+        userRepository.save(user);
+
+        return userRepository.findByUsername(username)
+            .filter(User::isEnabled)
+            .map(this::toAutoAuthUser);
+    }
+
     private AutoAuthUser toAutoAuthUser(User user){
         return new AutoAuthUser (
             user.getId().toString(),

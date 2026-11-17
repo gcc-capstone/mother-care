@@ -14,10 +14,10 @@ import java.util.HashSet;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
+// @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public abstract class User {
+@NoArgsConstructor //(access = AccessLevel.PROTECTED)
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -38,9 +38,11 @@ public abstract class User {
     @Column(name = "role", nullable = false)
     private Set<UserRole> roles = new HashSet<>();
 
+    @Setter
     @Column(name = "name", length = 20, nullable = false, unique = true)
     private String username;
 
+    @Setter
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 }
