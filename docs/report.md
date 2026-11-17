@@ -14,9 +14,9 @@
 
      The system MotherCare intends to support FamilyLife Network's care of parents in need by taking away the burden of automatable process from administrators to allow them more time to care for the mothers.
 
-     The administrators for this application will be FamilyLife Network's volunteers and counselors and the users will be mothers that the volunteers are ministering to.
+     The administrators for this application will be FamilyLife Network's volunteers and counselors and the primary users will be mothers that the volunteers are ministering to.
 
-     FamilyLife Network counselors can set goals for the mothers they minister to and can update the resources that they point mothers towards. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
+     FamilyLife Network counselors can set goals for the mothers under their care and can update the resources that they recommend. Mothers can view the resources and goals that they've been assigned, find other resources, and update their information before appointments. 
 
 
 
@@ -26,19 +26,32 @@ The following are the representative tasks that tell the stories of those who wo
 
 ### Task 1: Finding Emergency Diaper Resource (Mothers View All Resources)
 
-**\*\*MVP\*\*** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6-month-old child. She has a 20-minute drive from work to daycare, and she wants somewhere nearby where she can get diapers for free or very cheaply. Before leaving work, she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already has diaper bank locations near her home based on her profile. She finds a location, confirms that it is open, and goes there using her phone's map app.
+**\*\*MVP\*\*** It is Thursday, and Jan doesn't get paid until Friday. She has run out of diapers for her 6-month-old child. She has a 20-minute drive from work to daycare, and she wants somewhere nearby where she can get diapers for free or very cheaply. Before leaving work, she looks for diaper resources in her county that FamilyLife trusts. Because she has used the app before, it already displays diaper bank locations near her home based on her profile. She finds a location, confirms that it is open, and goes there using her phone's map app.
 
 ### Task 2: Reward Users for Interaction
 
 It is a Tuesday night, and Jan has 15 minutes of free time while her baby is sleeping. She wants to earn store credits to afford diapers which cost 30 credits. Jan currently has 20 credits. She finds two videos on baby CPR and feeding, each giving 5 credits. Once completed, Jan officially has the 30 credits so she can pick up the diapers next visit.
 
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> Sounds like credits are out - remove or alter this.  Probably remove.
+
+
 ### Task 3: Forms Affect Personalization
 
 **\*\*MVP\*\*** Sarah has a newborn and is looking for support with some of the challenges of raising her child. She hears about Family Life Network and wants to find out what resources are available to her family. She contacts Family Life Network, and an employee sends her a family check-in form that she can complete on her own time. Sarah completes the form, reporting that her family needs help with food and childcare, that she is interested in finding a local church, and the best time of day for her to attend a group. Family Life Network saves her responses to her profile and uses the information to recommend resources and services that meet her family's needs.
+  
 
 ### Task 4: Admin Set Goals
 
 **\*\*MVP\*\*** During Jan's first meeting with counselor Carol, Carol recommends a goal of taking a daily prenatal vitamin. Carol titles the goal "Take Daily Prenatal Vitamin," scheduled with a reminder at 8:00AM daily.
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> Please add admin ability to make this daily with an end date, or a one time task like the one below.
 
 ### Task 5: Admin Reccomend Resources
 
@@ -52,6 +65,7 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 **\*\*MVP\*\*** On Friday afternoon after visiting The Sparrows Nest, Jan logs that she completed her goal and found a professional shirt and pants for her upcoming receptionist interview. When submitting her visit record she rates the resource well and leaves a comment "Very kind staff and great selection". She submits her feedback so Carol and the FamilyLife Network team have updated records on resource engagement.
 
+
 ### Task 8: Forms Edit Profile
 
 **\*\*MVP\*\*** Before Jan's appointment on Thursday, she completes the standard intake form and notes that her location has changed from Westmoreland to Allegheny. Carol, her counselor, reads over the changes before the appointment and changes her outstanding "Visit The Clothesline" task to "Visit The Sparrows Nest" in Allegheny county.
@@ -59,6 +73,11 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 ### Task 9: Different Admin Roles
 
 **\*\*MVP\*\*** On Saturday, Stella is volunteering at FamilyLife store. When Jan comes to the counter to purchase a box of diapers for 30 credits, Stella looks up Jan and sees she has 40 credits, while keeping Jan's counseling, goals, and notes private. Stella confirms Jan has enough and deducts 30 credits from her account. Jan's new balance is 10 and she walks away with the diapers.
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> Probably remove this as well - at least from mvp -- we can still discuss making this kind of functionality easy to add...
 
 ### Task 10: Admin Follow Ups
 
@@ -72,13 +91,28 @@ On Friday afternoon Lisa is preparing for a Q3 community impact report for Famil
 
 On Wednesday night after putting her child to bed, Jan sits down to log her daily mood. She records her mood as overwhelmed and that she had low energy today. She types that she is worried about paying this month's rent, along with her grocery bill. She saves her daily check-in, giving her counselor, Carol, a full record of her worries and things to discuss at the next session.
 
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> I think we have to be careful about text here --- we can potentially add automated encouragement for when they click that they are feeling bad -- but if they leave text, they probably will expect a response -- this is fine if this is a feature the center wants and will respond to, but i think we have to be a little careful here.
+
 ### Task 13: Admins Assign Forms
 
 **\*\*MVP\*\*** On Monday morning, Carol is looking over her schedule to prepare for this week's counseling sessions. She sees a session with Jan for 2:00PM Thursday. Carol assigns the standard intake form to Jan's profile with a deadline of 12:00PM Thursday before their session so Carol has the most up to date information before the appointment.
 
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> I think this is good - however the standard intake form should always be available to the mother even if it has not been assigned -- i think you already have that, but just checking.
+
 ### Task 14: Admins Can Edit Forms
 
 During a weekly review, Lisa notices that multiple mothers have asked for Bible study groups. To help track interest and locality of these requests better to help the mothers, Lisa updates the standard check-in form to include a "Find local Bible Study" section, ensuring all mothers receive the new question at the start of their next appointment.
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> This is an important one, we dont want forms to be cached.
 
 ## 4. Related Work
 
@@ -87,6 +121,11 @@ The following are applications and websites that MotherCare seeks to emulate at 
 ### findhelp.org
 
 FindHelp [1] is a website that connects people with resources based on a simple search and location. There is no login required, and when you search, it immediately pulls resources that are closest to you and most applicable to your search. It is a pretty simple result page that lists important information like location, hours of operation, and contact info.
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> Interesting - do you want this non-logged on feature for your clients?  I can see the value for a father or family member that wants to check resources - but i am not sure all resources want to make their info publicly available --- lets talk.
 
 This is similar to the vision for MotherCare in terms of the recommendation results and a simple interface. Both applications aim to connect users to real-world community resources (food, housing, childcare), and use location data to find the best resources near the user. Also, when you are signed in as a user, you have the ability to save resources to custom folders for future reference, which is similar to how MotherCare would build a profile for a mother over time.
 
@@ -102,9 +141,19 @@ Mother Care would operate on a similar credit system, where you gain points for 
 
 Microsoft Rewards [2] targets mostly engagement, search engines, and gaming. Mother Care's focus would be repurposed toward health and community support for mothers. This encourages learning and user participation in the app while addressing the needs of mothers.
 
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> You can still leave this here -- potential future work
+
 ### 211
 
 211 [3] is a service that helps connect people in need to relevant assistance. Users can narrow down the type of help they need to particular types of services such as caregiver resources or disaster recovery aid. These pages provide basic information and link to relevant resources such as the government benefits and financial help finder [4]. 211 also prominently displays options to call for assistance or find a local office across many of its pages.
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> [4]????
 
 Similarly, Mother Care will help people find resources that meet their needs. However, instead of primarily relying on users to identify and navigate to the type of assistance they need, Mother Care will collect initial information about a user's family in a check-in form and use that information to tailor resource recommendations on their profile. This funtionality is important for Mother Care since Family Life Network needs to understand a mother's overall situation, not simply point them to resources for individual issues. A mother may have pressing material needs while she is also interested in finding a local church to attend. Collecting all of this information allows Mother Care to provide ongoing support for a family rather than addressing a single problem. On the other hand, 211 is primarily a starting point for users to find services and organizations that can help them with specific issues.
 
@@ -115,6 +164,11 @@ BetterHelp [4] connects people with licensed therapists through an online platfo
 BetterHelp has an onboarding questionnaire that asks about things like goals, concerns, preferences, and what the user is looking for. That information is used to personalize the user's experience and match them with a therapist.
 
 Mother Care [4] will likely be similar to BetterHelp because information from forms the users fill out could be saved and used to recommend resources, goals, priorities, etc.
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> again [4]?
 
 ### Bible App
 
@@ -137,3 +191,8 @@ However, while the Bible App [5] prioritizes digital resources in their discover
 [4] usa.gov - Find government benefits and financial help. usa.gov. (n.d.). https\://www\.usa.gov/benefit-finder?modal=b-welcome-1899
 
 [5] Life.Church. (2008) Bible App [Mobile App]. https\://www\.bible\.com/app
+
+> [!IMPORTANT]
+> **INSTRUCTOR COMMENT — ACTION REQUIRED**
+>
+> Two [4]'s???
