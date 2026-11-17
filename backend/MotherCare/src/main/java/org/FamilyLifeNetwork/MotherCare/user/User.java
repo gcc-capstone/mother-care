@@ -37,4 +37,10 @@ public abstract class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Set<UserRole> roles = new HashSet<>();
+
+    @Column(name = "name", length = 20, nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
 }

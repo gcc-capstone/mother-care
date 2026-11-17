@@ -47,6 +47,6 @@ public class UserService {
         return userRepository.findByUsername(username)
             .filter(User::isEnabled)
             .filter(user -> passwordEncoder.matches(password, user.getPasswordHash()))
-            .map(this::toAuthAuthUser);
+            .map(this::toAutoAuthUser);
     }
 }
