@@ -22,6 +22,13 @@ For each team member, describe what they will build to accomplish the milestone.
 - **Charles:** Build the React frontend for creating an event and displaying the list of events.
 
 - **Josh:** Authentication
+    - JWT security - Header.Payload.Signature (iss, kid, aud, etc.)
+    - CSRF security - Signed key for all POST PUT PATCH DELETE to verify from proper place
+    - Access + Refresh Tokens - 15 minute access tokens / 7 day refresh tokens - if refresh token expired force mother to relogin
+    - Swagger - OpenAPI configuration and authentication workflow
+    - motherFetchV1 - Fetch method that sends cookies / refreshes tokens for authentication and statelessness
+    - CORS - CORS setup / origin allowance (:5173 / :5174)
+    - Refresh Endpoint - Get new token pair when access token expires (called in background by frontend async while in a session)
 - **Carl:** Grabbing/sharing resources (endpoints to post and get from the database)
 - **Christian:** Assinging resources and goals?
 - **Ryan:** Forms
